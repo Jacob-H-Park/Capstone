@@ -39,7 +39,7 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500).send(err.message || "Internal server error.");
 });
 
-// // sends index.html (redirects invalid urls to homepage)
-// app.use("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "..", "public/index.html"));
-// });
+// sends index.html (redirects invalid urls to homepage)
+app.use("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "public/index.html"));
+});

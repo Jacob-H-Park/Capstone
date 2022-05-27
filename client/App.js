@@ -11,9 +11,10 @@ import Landing from "./components/Landing";
 import { fetchRestaurants } from "./store/restaurants";
 
 const App = (props) => {
-  const { isLoggedIn, fetchRestaurants } = props;
+  const { isLoggedIn, fetchRestaurants, loadInitialData } = props;
 
   useEffect(() => {
+    loadInitialData();
     fetchRestaurants();
   }, []);
 
@@ -25,7 +26,7 @@ const App = (props) => {
           <Route path="/home" component={Home} />
           <Route path="/welcome" component={Welcome} />
           <Route path="/landing" component={Landing} />
-          <Redirect to="/home" />
+          {/* <Redirect to="/home" /> */}
         </Switch>
       ) : (
         <Switch>
@@ -48,6 +49,7 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
+    loadInitialData: () => dispatch(me()),
     fetchRestaurants: () => dispatch(fetchRestaurants()),
   };
 };
