@@ -103,7 +103,7 @@ const Navbar = () => {
               textDecoration: "none",
             }}
           >
-            <Link to="/home">LOGO</Link>
+            <Link to="/landing">LOGO</Link>
           </Typography>
 
           <Box
