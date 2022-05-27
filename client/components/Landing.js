@@ -1,12 +1,32 @@
-import React from "react";
-import { connect} from "react-redux"
+import React, { useEffect } from "react";
+import { connect, useSelector, useDispatch } from "react-redux";
 
+import { fetchRestaurants } from "../store/restaurants";
 
-export const Landing = ( {restaurants} ) => {
-  console.log('hello',console.log(restaurants))
-  return <div>Landing</div>;
+const Landing = () => {
+  const restaurants = useSelector(({ restaurants }) => restaurants);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchRestaurants());
+  }, []);
+
+  if (!restaurants) {
+    return null;
+  }
+  return (
+    <>
+      <div>Landing Page</div>
+      <ul>
+        {restaurants.map((place) => {
+          return <li key={place.id}>{place.name}</li>;
+        })}
+      </ul>
+    </>
+  );
 };
 
-const mapState = (state) => state;
+// const mapState = ({ restaurants }) => ({ restaurants });
+// export default connect(mapState)(Landing);
 
-export default connect(mapState)(Landing);
+export default Landing;

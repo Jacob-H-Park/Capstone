@@ -8,12 +8,13 @@ import { me } from "./store";
 import Navbar from "./components/Navbar";
 import Welcome from "./components/Welcome";
 import Landing from "./components/Landing";
+import { fetchRestaurants } from "./store/restaurants";
 
 const App = (props) => {
-  const { isLoggedIn, loadInitialData } = props;
+  const { isLoggedIn, fetchRestaurants } = props;
 
   useEffect(() => {
-    loadInitialData();
+    fetchRestaurants();
   }, []);
 
   return (
@@ -24,6 +25,7 @@ const App = (props) => {
           <Route path="/home" component={Home} />
           <Route path="/welcome" component={Welcome} />
           <Route path="/landing" component={Landing} />
+          <Redirect to="/home" />
         </Switch>
       ) : (
         <Switch>
@@ -41,13 +43,12 @@ const mapState = (state) => {
     // Being 'logged in' for our purposes will be defined has having a state.auth that has a truthy id.
     // Otherwise, state.auth will be an empty object, and state.auth.id will be falsey
     isLoggedIn: !!state.auth.id,
-   
   };
 };
 
 const mapDispatch = (dispatch) => {
   return {
-    loadInitialData: () => dispatch(me()),
+    fetchRestaurants: () => dispatch(fetchRestaurants()),
   };
 };
 

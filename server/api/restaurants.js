@@ -1,12 +1,15 @@
-const router = require('express').Router()
-const { models: { Restaurant }} = require('../db')
-module.exports = router
+const router = require("express").Router();
+const {
+  models: { Restaurant },
+} = require("../db");
+module.exports = router;
 
-router.get('/', async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
-    const restaurants = await Restaurant.findAll()
-    res.json(restaurants)
+    const restaurants = await Restaurant.findAll();
+    console.log(restaurants);
+    res.json(restaurants);
   } catch (err) {
-    next(err)
+    next(err);
   }
-})
+});
