@@ -10,6 +10,8 @@ app.use(morgan("dev"));
 // body parsing middleware
 app.use(express.json());
 
+app.use("/public", express.static(path.join(__dirname, "../public")));
+
 // auth and api routes
 app.use("/auth", require("./auth"));
 app.use("/api", require("./api"));
