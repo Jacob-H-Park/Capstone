@@ -17,9 +17,19 @@ async function seed() {
   ])
 
   const restaurants = await Promise.all([
-    Restaurant.create({name: "mcdonalds"}),
-    Restaurant.create({name: "dominos"}),
-    Restaurant.create({name: "burger king"}),
+    Restaurant.create({
+      name: "mcdonalds", 
+      address: "304 Grand Street", 
+      image: "./public/photos/mcdonalds.jpg"}),
+    Restaurant.create({
+      name: "dominos", 
+      address: "121 Broadway",
+    image: "./public/photos/dominos.jpg"}),
+    Restaurant.create({
+      name: "burger king", 
+      address: "1300 Nostrand Avenue",
+      image: "./public/photos/bk.jpg"
+    }),
   ])
   console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`)

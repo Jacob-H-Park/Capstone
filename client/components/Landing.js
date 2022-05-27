@@ -9,10 +9,14 @@ const Landing = () => {
   }
   return (
     <>
-      <div>Landing Page</div>
+      <div >Landing Page</div>
       <ul>
         {restaurants.map((place) => {
-          return <li key={place.id}>{place.name}</li>;
+          return <li key={place.id}>{place.name} {place.address}
+            <img className="logos" src={place.image} />
+           </li>;
+       
+          
         })}
       </ul>
     </>
