@@ -1,11 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Component, Fragment } from "react";
 import { connect } from "react-redux";
-import {
-  withRouter,
-  BrowserRouter as Router,
-  Route,
-  Switch,
-} from "react-router-dom";
+import { withRouter, Redirect, Route, Switch } from "react-router-dom";
 
 import { Login, Signup } from "./components/AuthForm";
 import Home from "./components/Home";
@@ -21,12 +16,12 @@ const App = (props) => {
   }, []);
 
   return (
-    <Router>
+    <div>
       <Navbar />
       {isLoggedIn ? (
         <Switch>
           <Route path="/home" component={Home} />
-          <Route path="/welcome" component={Welcome} />
+          <Redirect to="/home" />
         </Switch>
       ) : (
         <Switch>
@@ -35,7 +30,7 @@ const App = (props) => {
           <Route path="/signup" component={Signup} />
         </Switch>
       )}
-    </Router>
+    </div>
   );
 };
 
