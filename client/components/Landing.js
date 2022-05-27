@@ -1,15 +1,8 @@
-import React, { useEffect } from "react";
-import { connect, useSelector, useDispatch } from "react-redux";
-
-import { fetchRestaurants } from "../store/restaurants";
+import React from "react";
+import { useSelector } from "react-redux";
 
 const Landing = () => {
   const restaurants = useSelector(({ restaurants }) => restaurants);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchRestaurants());
-  }, []);
 
   if (!restaurants) {
     return null;
