@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { withRouter, Redirect, Route, Switch } from "react-router-dom";
 
 import { Login, Signup } from "./components/AuthForm";
-import Home from "./components/Home";
+import Profile from "./components/Profile";
 import { me } from "./store";
 import Navbar from "./components/Navbar";
 import Welcome from "./components/Welcome";
@@ -23,8 +23,7 @@ const App = (props) => {
       <Navbar />
       {isLoggedIn ? (
         <Switch>
-          <Redirect to="/landing" />
-          <Route path="/home" component={Home} />
+          <Route path="/profile" component={Profile} />
           <Route path="/welcome" component={Welcome} />
           <Route path="/landing" component={Landing} />
         </Switch>
