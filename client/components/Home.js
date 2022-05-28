@@ -4,9 +4,7 @@ import { connect } from "react-redux";
 /**
  * COMPONENT
  */
-const Home = (props) => {
-  const { username } = props;
-
+const Home = ({ username }) => {
   return (
     <div>
       <h3>Welcome, {username}</h3>

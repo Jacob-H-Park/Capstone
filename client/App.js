@@ -23,10 +23,10 @@ const App = (props) => {
       <Navbar />
       {isLoggedIn ? (
         <Switch>
+          <Redirect to="/landing" />
           <Route path="/home" component={Home} />
           <Route path="/welcome" component={Welcome} />
           <Route path="/landing" component={Landing} />
-          {/* <Redirect to="/home" /> */}
         </Switch>
       ) : (
         <Switch>
