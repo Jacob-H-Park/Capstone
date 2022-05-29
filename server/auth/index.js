@@ -6,13 +6,7 @@ const {
   models: { User },
 } = require("../db");
 
-=======
-const {
-  models: { User },
-} = require("../db");
-module.exports = router;
 
->>>>>>> ee92111f5d2d276d62762601b99ae6e2b9fa816d
 router.post("/login", async (req, res, next) => {
   try {
     res.send({ token: await User.authenticate(req.body) });
@@ -39,7 +33,6 @@ router.get("/me", async (req, res, next) => {
     res.send(await User.findByToken(req.headers.authorization));
   } catch (ex) {
     next(ex);
-<<<<<<< HEAD
   }
 });
 
@@ -73,7 +66,4 @@ router.get(
 );
 
 module.exports = router;
-=======
-  }
-});
->>>>>>> ee92111f5d2d276d62762601b99ae6e2b9fa816d
+
