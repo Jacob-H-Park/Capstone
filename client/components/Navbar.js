@@ -65,7 +65,7 @@ import AdbIcon from "@mui/icons-material/Adb";
 
 const navbarMenu = ["tab1", "tab2", "tab3"];
 
-const Navbar = ({ isLoggedIn }) => {
+const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const dispatch = useDispatch();
@@ -103,7 +103,9 @@ const Navbar = ({ isLoggedIn }) => {
               textDecoration: "none",
             }}
           >
-            <Link to="/landing"> <img className="logo" src='./photos/LoopedIn2.png' /></Link>
+            <Link to="/landing">
+              <img className="logo" src="./photos/LoopedIn2.png" />
+            </Link>
           </Typography>
 
           <Box
@@ -127,6 +129,7 @@ const Navbar = ({ isLoggedIn }) => {
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
               <Avatar alt="Remy Sharp" src="/favicon.ico" />
             </IconButton>
+
             {isLoggedIn ? (
               <Menu
                 sx={{ mt: "45px" }}
@@ -144,33 +147,14 @@ const Navbar = ({ isLoggedIn }) => {
                 open={Boolean(anchorElUser)}
                 onClick={handleCloseUserMenu}
               >
-                <MenuItem>
-                <Typography textAlign="center">
-                  <Link to="/login">Login</Link>
-                </Typography>
-              </MenuItem>
-              <MenuItem
-                key="login"
-                onClick={() => {
-                  handleCloseUserMenu;
-                }}
-              >
-                <Typography textAlign="center">
-                  <Link to="/google-login">Google Login</Link>
-                </Typography>
-              </MenuItem>
-              <MenuItem
-                key="signup"
-                onClick={() => {
-                  handleCloseUserMenu;
                 <MenuItem
-                  key="login"
+                  key="profile"
                   onClick={() => {
                     handleCloseUserMenu;
                   }}
                 >
                   <Typography textAlign="center">
-                    <Link to="/profile">profile</Link>
+                    <Link to="/profile">Profile</Link>
                   </Typography>
                 </MenuItem>
                 <MenuItem
@@ -210,6 +194,18 @@ const Navbar = ({ isLoggedIn }) => {
                     <Link to="/login">Login</Link>
                   </Typography>
                 </MenuItem>
+
+                <MenuItem
+                  key="login"
+                  onClick={() => {
+                    handleCloseUserMenu;
+                  }}
+                >
+                  <Typography textAlign="center">
+                    <Link to="/google">Google Login</Link>
+                  </Typography>
+                </MenuItem>
+
                 <MenuItem
                   key="signup"
                   onClick={() => {
