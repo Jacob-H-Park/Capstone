@@ -21,14 +21,12 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: "babel-loader",
+        loader: "babel-loader", 
         options: {
           presets: ["@babel/preset-react"],
         },
       },
     ],
   },
-  return: {
-    plugins: [new webpack.DefinePlugin(envKeys)],
-  },
+  plugins: [new webpack.DefinePlugin(envKeys)],
 };
