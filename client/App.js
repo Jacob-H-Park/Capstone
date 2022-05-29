@@ -8,6 +8,7 @@ import { me } from "./store";
 import Navbar from "./components/Navbar";
 import Welcome from "./components/Welcome";
 import Landing from "./components/Landing";
+import GoogleLogin from "./components/GoogleLogin";
 import { fetchRestaurants } from "./store/restaurants";
 
 const App = (props) => {
@@ -33,6 +34,8 @@ const App = (props) => {
           <Route exact path="/" component={Login} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
+          <Route path="/home" component={Home} />
+          <Route path="/google-login" component={GoogleLogin} />
         </Switch>
       )}
     </div>

@@ -163,6 +163,16 @@ const Navbar = () => {
                 </Typography>
               </MenuItem>
               <MenuItem
+                key="login"
+                onClick={() => {
+                  handleCloseUserMenu;
+                }}
+              >
+                <Typography textAlign="center">
+                  <Link to="/google-login">Google Login</Link>
+                </Typography>
+              </MenuItem>
+              <MenuItem
                 key="signup"
                 onClick={() => {
                   handleCloseUserMenu;
