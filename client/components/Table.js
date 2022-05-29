@@ -2,6 +2,8 @@ import React, {Component} from "react"
 import "../App"
 import axios from "axios"
 
+const API_KEY = process.env.API_KEY
+
 
 
 
@@ -35,7 +37,7 @@ export default class Table extends Component {
           },
           headers: {
             'X-RapidAPI-Host': 'travel-advisor.p.rapidapi.com',
-            'X-RapidAPI-Key': '10dd303346msh4a1350bd925519dp10bf90jsnaf67b00f3469'
+            'X-RapidAPI-Key': API_KEY
           }
         };
 
