@@ -45,39 +45,25 @@ export default class Table extends Component {
   }
 
   render() {
-    const restaurants = this.state.restaurantCollection.data;
-    console.log("roobby", restaurants);
+    const restaurants = this.state.restaurantCollection.data
 
     if (!restaurants) {
       return null;
     }
     return (
-      <div className="wrapper-users">
-        <div className="container">
-          <div className="row">
-            <div className="col-12 col-md-4 offset-md-8"></div>
-          </div>
-        </div>
-        <br></br>
-        <div className="container">
-          <table className="table table-striped table-dark">
-            <thead className="thead-dark">
-              <tr>
-                <td>NAME</td>
-                <td>ADDRESS</td>
-                <td>RANKING</td>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td> {restaurants.map((restaurant) => restaurant.name)}</td>
-                <td> {restaurants.map((restaurant) => restaurant.address)}</td>
-                <td> {restaurants.map((restaurant) => restaurant.ranking)}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <br></br>
+       
+      <div >
+       
+         <ul > {restaurants.map((restaurant) =>
+         
+         
+         <li key={restaurant.id}>
+            {restaurant.name} --
+            {restaurant.address} --
+           {restaurant.ranking?.slice(0,10)}
+         </li>)}
+         </ul>       
+     
       </div>
     );
   }
