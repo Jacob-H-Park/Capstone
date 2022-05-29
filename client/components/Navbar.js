@@ -1,51 +1,3 @@
-// import React from "react";
-// import { connect } from "react-redux";
-// import { Link } from "react-router-dom";
-// import { logout } from "../store";
-
-// const Navbar = ({ handleClick, isLoggedIn }) => (
-//   <div>
-//     <h1>Capstone</h1>
-//     <nav>
-//       {isLoggedIn ? (
-//         <div>
-//           {/* The navbar will show these links after you log in */}
-//           <Link to="/home">Home</Link>
-//           <a href="#" onClick={handleClick}>
-//             Logout
-//           </a>
-//         </div>
-//       ) : (
-//         <div>
-//           {/* The navbar will show these links before you log in */}
-//           <Link to="/login">Login</Link>
-//           <Link to="signup">Sign Uppp</Link>
-//         </div>
-//       )}
-//     </nav>
-//     <hr />
-//   </div>
-// );
-
-// /**
-//  * CONTAINER
-//  */
-// const mapState = (state) => {
-//   return {
-//     isLoggedIn: !!state.auth.id,
-//   };
-// };
-
-// const mapDispatch = (dispatch) => {
-//   return {
-//     handleClick() {
-//       dispatch(logout());
-//     },
-//   };
-// };
-
-// export default connect(mapState, mapDispatch)(Navbar);
-
 import * as React from "react";
 import { useDispatch, connect } from "react-redux";
 import { logout } from "../store";
@@ -64,6 +16,10 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 
 const navbarMenu = ["tab1", "tab2", "tab3"];
+
+const googleLogin = () => {
+  window.open("http://localhost:8080/auth/google", "_self");
+};
 
 const Navbar = ({ isLoggedIn }) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -103,7 +59,9 @@ const Navbar = ({ isLoggedIn }) => {
               textDecoration: "none",
             }}
           >
-            <Link to="/landing"> <img className="logo" src='./photos/LoopedIn2.png' /></Link>
+            <Link to="/landing">
+              <img className="logo" src="./photos/LoopedIn2.png" />
+            </Link>
           </Typography>
 
           <Box
@@ -127,6 +85,7 @@ const Navbar = ({ isLoggedIn }) => {
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
               <Avatar alt="Remy Sharp" src="/favicon.ico" />
             </IconButton>
+
             {isLoggedIn ? (
               <Menu
                 sx={{ mt: "45px" }}
@@ -145,13 +104,13 @@ const Navbar = ({ isLoggedIn }) => {
                 onClick={handleCloseUserMenu}
               >
                 <MenuItem
-                  key="login"
+                  key="profile"
                   onClick={() => {
                     handleCloseUserMenu;
                   }}
                 >
                   <Typography textAlign="center">
-                    <Link to="/profile">profile</Link>
+                    <Link to="/profile">Profile</Link>
                   </Typography>
                 </MenuItem>
                 <MenuItem
@@ -191,6 +150,19 @@ const Navbar = ({ isLoggedIn }) => {
                     <Link to="/login">Login</Link>
                   </Typography>
                 </MenuItem>
+
+                <MenuItem
+                  key="google-login"
+                  onClick={() => {
+                    handleCloseUserMenu;
+                    googleLogin();
+                  }}
+                >
+                  <Typography textAlign="center">
+                    <Link to="/google">Google Login</Link>
+                  </Typography>
+                </MenuItem>
+
                 <MenuItem
                   key="signup"
                   onClick={() => {

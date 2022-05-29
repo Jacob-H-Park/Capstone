@@ -21,7 +21,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: "babel-loader", 
+        loader: "babel-loader",
         options: {
           presets: ["@babel/preset-react"],
         },
@@ -29,4 +29,9 @@ module.exports = {
     ],
   },
   plugins: [new webpack.DefinePlugin(envKeys)],
+  // plugins: [
+  //   new webpack.ProvidePlugin({
+  //     process: "process/browser",
+  //   }),
+  // ],
 };

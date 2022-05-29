@@ -1,8 +1,14 @@
 const path = require("path");
 const express = require("express");
 const morgan = require("morgan");
+const cors = require("cors");
+
 const app = express();
-module.exports = app;
+
+//Google OAuth
+const cookieSession = require("cookie-session");
+const passportSetup = require("./passport");
+const passport = require("passport");
 
 // logging middleware
 app.use(morgan("dev"));
@@ -41,7 +47,17 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500).send(err.message || "Internal server error.");
 });
 
+app.use(
+  cookieSession({ name: "session", keys: ["jake"], maxAge: 24 * 60 * 60 * 100 })
+);
+
+// app.use(cors());
+app.use(passport.initialize());
+app.use(passport.session());
+
 // sends index.html (redirects invalid urls to homepage)
 app.use("*", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "public/index.html"));
 });
+
+module.exports = app;
