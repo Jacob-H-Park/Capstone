@@ -89,7 +89,7 @@ const Navbar = ({ isLoggedIn }) => {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          {/* <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
           <Typography
             variant="h6"
             noWrap
@@ -103,7 +103,7 @@ const Navbar = ({ isLoggedIn }) => {
               textDecoration: "none",
             }}
           >
-            <Link to="/landing">LOGO</Link>
+            <Link to="/landing"> <img className="logo" src='./photos/LoopedIn2.png' /></Link>
           </Typography>
 
           <Box
