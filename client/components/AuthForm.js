@@ -63,8 +63,8 @@ const mapDispatch = (dispatch, { history }) => {
       const username = evt.target.username.value;
       const password = evt.target.password.value;
       dispatch(authenticate(username, password, formName));
-      //this line will push you to '/home' and render the page whereas the history.push in the authenticate method in the backend won't work.
-      history.push("/home");
+      //this line will push you to '/landing' and render the page whereas the history.push in the authenticate method in the backend won't work.
+      history.push("/landing");
     },
   };
 };

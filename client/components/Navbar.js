@@ -65,7 +65,7 @@ import AdbIcon from "@mui/icons-material/Adb";
 
 const navbarMenu = ["tab1", "tab2", "tab3"];
 
-const Navbar = () => {
+const Navbar = ({ isLoggedIn }) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const dispatch = useDispatch();
@@ -127,37 +127,24 @@ const Navbar = () => {
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
               <Avatar alt="Remy Sharp" src="/favicon.ico" />
             </IconButton>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClick={handleCloseUserMenu}
-            >
-              <MenuItem
-                key="logout"
-                onClick={() => {
-                  handleCloseUserMenu;
-                  dispatch(logout());
+            {isLoggedIn ? (
+              <Menu
+                sx={{ mt: "45px" }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
                 }}
-              >
-                <Typography textAlign="center">Logout</Typography>
-              </MenuItem>
-              <MenuItem
-                key="login"
-                onClick={() => {
-                  handleCloseUserMenu;
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
                 }}
+                open={Boolean(anchorElUser)}
+                onClick={handleCloseUserMenu}
               >
+                <MenuItem>
                 <Typography textAlign="center">
                   <Link to="/login">Login</Link>
                 </Typography>
@@ -176,13 +163,65 @@ const Navbar = () => {
                 key="signup"
                 onClick={() => {
                   handleCloseUserMenu;
+                <MenuItem
+                  key="login"
+                  onClick={() => {
+                    handleCloseUserMenu;
+                  }}
+                >
+                  <Typography textAlign="center">
+                    <Link to="/profile">profile</Link>
+                  </Typography>
+                </MenuItem>
+                <MenuItem
+                  key="logout"
+                  onClick={() => {
+                    handleCloseUserMenu;
+                    dispatch(logout());
+                  }}
+                >
+                  <Typography textAlign="center">Logout</Typography>
+                </MenuItem>
+              </Menu>
+            ) : (
+              <Menu
+                sx={{ mt: "45px" }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
                 }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorElUser)}
+                onClick={handleCloseUserMenu}
               >
-                <Typography textAlign="center">
-                  <Link to="/signup">Signupp</Link>
-                </Typography>
-              </MenuItem>
-            </Menu>
+                <MenuItem
+                  key="login"
+                  onClick={() => {
+                    handleCloseUserMenu;
+                  }}
+                >
+                  <Typography textAlign="center">
+                    <Link to="/login">Login</Link>
+                  </Typography>
+                </MenuItem>
+                <MenuItem
+                  key="signup"
+                  onClick={() => {
+                    handleCloseUserMenu;
+                  }}
+                >
+                  <Typography textAlign="center">
+                    <Link to="/signup">Signup</Link>
+                  </Typography>
+                </MenuItem>
+              </Menu>
+            )}
           </Box>
         </Toolbar>
       </Container>
