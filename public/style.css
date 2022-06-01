@@ -35,3 +35,11 @@ form div {
   height: 50px;
   width: 175px;
 }
+
+#light {
+  background-color: white;
+}
+
+#dark {
+  background-color: #1F2525;
+}
