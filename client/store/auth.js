@@ -26,10 +26,14 @@ export const me = () => async (dispatch) => {
     });
     return dispatch(setAuth(res.data));
   }
+  // cookies
+  const { user } = (await axios.get("/google/login/success")).data;
+  return dispatch(setAuth(user));
 };
 
 export const authenticate =
-  (username, password, method) => async (dispatch) => {
+  (username, password, method = "login") =>
+  async (dispatch) => {
     try {
       const res = await axios.post(`/auth/${method}`, { username, password });
       window.localStorage.setItem(TOKEN, res.data.token);
