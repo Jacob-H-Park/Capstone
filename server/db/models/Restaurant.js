@@ -1,5 +1,5 @@
-const Sequelize = require("sequelize");
-const { STRING } = Sequelize;
+const { STRING } = require("sequelize");
+
 const db = require("../db");
 
 const Restaurant = db.define("restaurant", {
@@ -7,12 +7,11 @@ const Restaurant = db.define("restaurant", {
     type: STRING,
   },
   address: {
-    type: STRING 
+    type: STRING,
   },
   image: {
-    type: STRING
-
-  }
+    type: STRING,
+  },
 });
 
 module.exports = Restaurant;
