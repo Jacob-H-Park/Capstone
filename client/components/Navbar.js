@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useDispatch, connect } from "react-redux";
 import { logout } from "../store";
+
 import { Link } from "react-router-dom";
 
 import AppBar from "@mui/material/AppBar";
@@ -18,7 +19,7 @@ import AdbIcon from "@mui/icons-material/Adb";
 const navbarMenu = ["tab1", "tab2", "tab3"];
 
 const googleLogin = () => {
-  window.open("http://localhost:8080/auth/google", "_self");
+  window.open("http://localhost:8080/google", "_self");
 };
 
 const Navbar = ({ isLoggedIn }) => {

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
 
+
 const Profile = () => {
   const auth = useSelector(({ auth }) => auth);
   const [data, setData] = useState({});
