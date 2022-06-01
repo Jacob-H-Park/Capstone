@@ -10,9 +10,19 @@ import Welcome from "./components/Welcome";
 import Landing from "./components/Landing";
 import Map from "./components/Search";
 import { fetchRestaurants } from "./store/restaurants";
+import { createContext, useState } from "react";
+import ReactSwitch from 'react-switch';
+
+export const ThemeContext = createContext(null);
 
 const App = (props) => {
   const { isLoggedIn, fetchRestaurants, loadInitialData } = props;
+
+  const [theme, setTheme] = useState("light")
+
+  const toggleTheme = () => {
+    setTheme((curr) => (curr === "light" ? "dark" : "light"))
+  }
 
   useEffect(() => {
     loadInitialData();
@@ -20,8 +30,10 @@ const App = (props) => {
   }, []);
 
   return (
-    <div>
+    <ThemeContext.Provider value={{theme, toggleTheme}}>
+    <div id={theme}>
       <Navbar />
+      <ReactSwitch onChange={toggleTheme} checked={theme === "dark"}/>
       {isLoggedIn ? (
         <Switch>
           <Route path="/profile" component={Profile} />
@@ -37,6 +49,7 @@ const App = (props) => {
         </Switch>
       )}
     </div>
+    </ThemeContext.Provider>
   );
 };
 

@@ -7,7 +7,7 @@ const app = express();
 
 //Google OAuth
 const cookieSession = require("cookie-session");
-const passportSetup = require("./passport");
+const passportSetup = require("./auth/passportSetup");
 const passport = require("passport");
 
 // logging middleware
@@ -16,10 +16,22 @@ app.use(morgan("dev"));
 // body parsing middleware
 app.use(express.json());
 
+app.use(
+  cookieSession({
+    name: "session",
+    keys: ["LoopedIn!!"],
+    maxAge: 24 * 60 * 60 * 1000,
+  })
+);
+app.use(cors());
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use("/public", express.static(path.join(__dirname, "../public")));
 
 // auth and api routes
 app.use("/auth", require("./auth"));
+app.use("/google", require("./auth/googleOauth"));
 app.use("/api", require("./api"));
 
 app.get("/", (req, res) =>
@@ -46,14 +58,6 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(err.status || 500).send(err.message || "Internal server error.");
 });
-
-app.use(
-  cookieSession({ name: "session", keys: ["jake"], maxAge: 24 * 60 * 60 * 100 })
-);
-
-// app.use(cors());
-app.use(passport.initialize());
-app.use(passport.session());
 
 // sends index.html (redirects invalid urls to homepage)
 app.use("*", (req, res) => {

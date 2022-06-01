@@ -29,6 +29,7 @@ const Table = () => {
     });
   };
 
+
   useEffect(() => {
     auth.city
       ? getUserLocation()
@@ -47,6 +48,7 @@ const Table = () => {
         setIsLoading(false);
       });
     }
+
   }, [coordinates, bounds]);
 
   return (
@@ -75,3 +77,5 @@ const Table = () => {
 };
 
 export default Table;
+
+
