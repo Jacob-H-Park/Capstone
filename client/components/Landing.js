@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import Table from "./Table";
 
 const Landing = () => {
   const restaurants = useSelector(({ restaurants }) => restaurants);
@@ -10,28 +9,62 @@ const Landing = () => {
   if (!restaurants) {
     return null;
   }
+
   return (
     <>
-      <div id="landing">
+      <div className="landing">
         <h1> Welcome {auth.username}</h1>
         <h2> {auth.username} , we recommend the following resturants! </h2>
         <ul>
           {restaurants.map((place) => {
-            return (
-              <li key={place.id}>
-                {place.name} {place.address}
-                <img className="logos" src={place.image} />
-              </li>
-            );
+            if (place.ranking < 5)
+              return (
+                <li key={place.id}>
+                  Restaurant Name: {place.name}
+                  <br></br>
+                  Category: {place.category}
+                  <br></br>
+                  Restaurant Address {place.address}
+                  <br></br>
+                  City: {place.city}
+                  <br></br>
+                  State: {place.state}
+                  <br></br>
+                  RANKING: {place.ranking}
+                  <br></br>
+                  <img className="logos" src={place.image} />
+                  <br></br>
+                </li>
+              );
+              
           })}
         </ul>
-        <h2>
-          {" "}
-          {auth.username} , the below restuarants are TRENDING near {auth.city}{" "}
-          , {auth.state}!{" "}
-        </h2>
-
-        <Table />
+      </div>
+      <div className="landing" >
+        <h2>Here is a list of top restuarants in BROOKLYN, NY!</h2>
+        <ul>
+          {restaurants.map((place) => {
+              return (
+                <li key={place.id}>
+                  Restaurant Name: {place.name}
+                  <br></br>
+                  Category: {place.category}
+                  <br></br>
+                  Restaurant Address {place.address}
+                  <br></br>
+                  City: {place.city}
+                  <br></br>
+                  State: {place.state}
+                  <br></br>
+                  RANKING: {place.ranking}
+                  <br></br>
+                  <img className="logos" src={place.image} />
+                  <br></br>
+                </li>
+              );
+              
+          })}
+        </ul>
       </div>
     </>
   );
