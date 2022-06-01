@@ -1,24 +1,22 @@
+
 import React from "react";
 import { useSelector } from "react-redux";
-import ByCity from "./ByCity";
 
-const Landing = () => {
+const ByCity= () => {
   const restaurants = useSelector(({ restaurants }) => restaurants);
-  const auth = useSelector(({ auth }) => auth);
-  console.log(auth);
+  console.log(restaurants)
 
   if (!restaurants) {
     return null;
   }
 
   return (
-    <>
-      <div className="landing">
-        <h1> Welcome {auth.username}</h1>
-        <h2> {auth.username} , we recommend the following resturants! </h2>
+    
+      <div>
+        
         <ul>
           {restaurants.map((place) => {
-            if (place.ranking < 4)
+            if (place.city === "Brooklyn")
               return (
                 <li key={place.id}>
                   Restaurant Name: {place.name}
@@ -40,15 +38,13 @@ const Landing = () => {
           })}
         </ul>
       </div>
-      <div className="landing">
-        <h2>Here is a list of top restuarants in BROOKLYN, NY!</h2>
-      </div>
-      <ByCity />
-    </>
+     
+      
+      
+ 
+  
   );
 };
 
-// const mapState = ({ restaurants }) => ({ restaurants });
-// export default connect(mapState)(Landing);
 
-export default Landing;
+export default ByCity;
