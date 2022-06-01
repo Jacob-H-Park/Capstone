@@ -42,7 +42,7 @@ const Navbar = ({ isLoggedIn }) => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{ backgroundColor: "white" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
@@ -57,12 +57,14 @@ const Navbar = ({ isLoggedIn }) => {
               letterSpacing: ".3rem",
               color: "inherit",
               textDecoration: "none",
+              backgroundColor: "white",
             }}
           >
             <Link to="/landing">
               <img className="logo" src="./photos/LoopedIn2.png" />
             </Link>
           </Typography>
+          <Link to="/map">map</Link>
 
           <Box
             sx={{
@@ -74,7 +76,7 @@ const Navbar = ({ isLoggedIn }) => {
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{ my: 2, color: "black", display: "block" }}
               >
                 {page}
               </Button>

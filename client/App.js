@@ -8,6 +8,7 @@ import { me } from "./store";
 import Navbar from "./components/Navbar";
 import Welcome from "./components/Welcome";
 import Landing from "./components/Landing";
+import Map from "./components/Search";
 import { fetchRestaurants } from "./store/restaurants";
 
 const App = (props) => {
@@ -26,6 +27,7 @@ const App = (props) => {
           <Route path="/profile" component={Profile} />
           <Route path="/welcome" component={Welcome} />
           <Route path="/landing" component={Landing} />
+          <Route path="/map" component={Map} />
         </Switch>
       ) : (
         <Switch>
