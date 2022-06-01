@@ -12,7 +12,7 @@ const AllRestaurants = () => {
   return (
     <>
       <div>
-        <h2> A list of all Restaurants </h2>
+        
         <ul>
           {restaurants.map((place) => {
             return (

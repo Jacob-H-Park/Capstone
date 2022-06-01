@@ -35,6 +35,7 @@ const Landing = () => {
                   RANKING: {place.ranking}
                   <br></br>
                   <img className="logos" src={place.image} />
+                  <button />
                   <br></br>
                 </li>
               );
@@ -44,8 +45,11 @@ const Landing = () => {
       <div className="landing">
         <h2>Here is a list of top restuarants in BROOKLYN, NY!</h2>
       </div>
-      <ByCity />
-      <AllRestaurants />
+      <ByCity className="landing"/>
+      <div className="landing">
+        <h2>Here is a list of all RESTAURANTS!</h2>
+      </div>
+      <AllRestaurants className="landing"/>
     </>
   );
 };
