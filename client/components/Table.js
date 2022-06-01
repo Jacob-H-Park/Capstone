@@ -20,6 +20,7 @@ const Table = () => {
   const [autocomplete, setAutocomplete] = useState(null);
   const [childClicked, setChildClicked] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [rating, setRating] = useState("");
 
   const getUserLocation = async () => {
     const response = await axios.get(place);
@@ -28,6 +29,12 @@ const Table = () => {
       lng: response.data.results[0].geometry.location.lng,
     });
   };
+
+  useEffect(() => {
+    const filtered = places.filter((place) => Number(place.rating) > rating);
+
+    setFilteredPlaces(filtered);
+  }, [rating]);
 
   useEffect(() => {
     auth.city
@@ -44,6 +51,7 @@ const Table = () => {
       setIsLoading(true);
       getPlacesData(bounds.sw, bounds.ne).then((data) => {
         setPlaces(data);
+        setFilteredPlaces([]);
         setIsLoading(false);
       });
     }
@@ -55,9 +63,11 @@ const Table = () => {
       <Grid container spacing={3} style={{ width: "100%" }}>
         <Grid item xs={12} md={4}>
           <List
-            places={places}
+            places={filteredPlaces.length ? filteredPlaces : places}
             childClicked={childClicked}
             isLoading={isLoading}
+            rating={rating}
+            setRating={setRating}
           />
         </Grid>
         <Grid item xs={12} md={8}>
@@ -65,7 +75,7 @@ const Table = () => {
             setCoordinates={setCoordinates}
             setBounds={setBounds}
             coordinates={coordinates}
-            places={places}
+            places={filteredPlaces.length ? filteredPlaces : places}
             setChildClicked={setChildClicked}
           />
         </Grid>
