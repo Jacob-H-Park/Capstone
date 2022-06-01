@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import ByCity from "./ByCity";
+import AllRestaurants from "./AllRestaurants"
 
 const Landing = () => {
   const restaurants = useSelector(({ restaurants }) => restaurants);
@@ -44,6 +45,7 @@ const Landing = () => {
         <h2>Here is a list of top restuarants in BROOKLYN, NY!</h2>
       </div>
       <ByCity />
+      <AllRestaurants />
     </>
   );
 };
