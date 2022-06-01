@@ -36,33 +36,31 @@ const Landing = () => {
                   <br></br>
                 </li>
               );
-              
           })}
         </ul>
       </div>
-      <div className="landing" >
+      <div className="landing">
         <h2>Here is a list of top restuarants in BROOKLYN, NY!</h2>
         <ul>
           {restaurants.map((place) => {
-              return (
-                <li key={place.id}>
-                  Restaurant Name: {place.name}
-                  <br></br>
-                  Category: {place.category}
-                  <br></br>
-                  Restaurant Address {place.address}
-                  <br></br>
-                  City: {place.city}
-                  <br></br>
-                  State: {place.state}
-                  <br></br>
-                  RANKING: {place.ranking}
-                  <br></br>
-                  <img className="logos" src={place.image} />
-                  <br></br>
-                </li>
-              );
-              
+            return (
+              <li key={place.id}>
+                Restaurant Name: {place.name}
+                <br></br>
+                Category: {place.category}
+                <br></br>
+                Restaurant Address {place.address}
+                <br></br>
+                City: {place.city}
+                <br></br>
+                State: {place.state}
+                <br></br>
+                RANKING: {place.ranking}
+                <br></br>
+                <img className="logos" src={place.image} />
+                <br></br>
+              </li>
+            );
           })}
         </ul>
       </div>
