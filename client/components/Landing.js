@@ -19,7 +19,4 @@ const Landing = () => {
   );
 };
 
-// const mapState = ({ restaurants }) => ({ restaurants });
-// export default connect(mapState)(Landing);
-
 export default Landing;

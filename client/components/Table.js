@@ -4,7 +4,6 @@ import "../App";
 import axios from "axios";
 import { CssBaseline, Grid } from "@material-ui/core";
 import { getPlacesData } from "../../server/api/map";
-import Header from "./map/Header/Header";
 import List from "./map/List/List";
 import Map from "./map/Map/Map";
 
@@ -31,13 +30,19 @@ const Table = () => {
   };
 
   useEffect(() => {
-    getUserLocation();
+    auth.city
+      ? getUserLocation()
+      : navigator.geolocation.getCurrentPosition(
+          ({ coords: { latitude, longitude } }) => {
+            setCoordinates({ lat: latitude, lng: longitude });
+          }
+        );
   }, []);
 
   useEffect(() => {
     if (bounds) {
+      setIsLoading(true);
       getPlacesData(bounds.sw, bounds.ne).then((data) => {
-        console.log(data);
         setPlaces(data);
         setIsLoading(false);
       });
@@ -47,10 +52,13 @@ const Table = () => {
   return (
     <div className="wrapper-users">
       <CssBaseline />
-      {/* <Header /> */}
       <Grid container spacing={3} style={{ width: "100%" }}>
         <Grid item xs={12} md={4}>
-          <List places={places} />
+          <List
+            places={places}
+            childClicked={childClicked}
+            isLoading={isLoading}
+          />
         </Grid>
         <Grid item xs={12} md={8}>
           <Map
@@ -58,6 +66,7 @@ const Table = () => {
             setBounds={setBounds}
             coordinates={coordinates}
             places={places}
+            setChildClicked={setChildClicked}
           />
         </Grid>
       </Grid>
@@ -66,51 +75,3 @@ const Table = () => {
 };
 
 export default Table;
-
-// export default class Table extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = { restaurantCollection: [] };
-//   }
-
-//   componentDidMount() {
-//     const options = {
-//       method: "GET",
-//       url: "https://travel-advisor.p.rapidapi.com/restaurants/list-in-boundary",
-//       params: {
-//         bl_latitude: "40.63911",
-//         tr_latitude: "40.643331",
-//         bl_longitude: "-74.020374",
-//         tr_longitude: "-73.990926",
-//         restaurant_tagcategory_standalone: "10591",
-//         restaurant_tagcategory: "10591",
-//         limit: "30",
-//         currency: "USD",
-//         open_now: "false",
-//         lunit: "km",
-//         lang: "en_US",
-//       },
-//       headers: {
-//         "X-RapidAPI-Host": "travel-advisor.p.rapidapi.com",
-//         "X-RapidAPI-Key": API_KEY,
-//       },
-//     };
-
-//     axios
-//       .request(options)
-//       .then((response) => {
-//         this.setState({ restaurantCollection: response.data });
-//         console.log(response.data);
-//       })
-//       .catch((error) => {
-//         console.error(error);
-//       });
-//   }
-
-//   render() {
-//     const restaurants = this.state.restaurantCollection.data;
-//     console.log("roobby", restaurants);
-
-//     if (!restaurants) {
-//       return null;
-//     }
