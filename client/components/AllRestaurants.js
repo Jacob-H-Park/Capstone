@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 
 const AllRestaurants = () => {
   const restaurants = useSelector(({ restaurants }) => restaurants);
-  console.log(restaurants);
 
   if (!restaurants) {
     return null;
@@ -12,7 +11,6 @@ const AllRestaurants = () => {
   return (
     <>
       <div>
-        
         <ul>
           {restaurants.map((place) => {
             return (

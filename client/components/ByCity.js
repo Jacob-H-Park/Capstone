@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 const ByCity= () => {
   const restaurants = useSelector(({ restaurants }) => restaurants);
-  console.log(restaurants)
+  
 
   if (!restaurants) {
     return null;

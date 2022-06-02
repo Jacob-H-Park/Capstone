@@ -27,7 +27,11 @@ form div {
 }
 
 .landing {
-  margin: 15px
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
 }
 
