@@ -45,25 +45,23 @@ export default class Table extends Component {
   }
 
   render() {
-    const restaurants = this.state.restaurantCollection.data
+    const restaurants = this.state.restaurantCollection.data;
 
     if (!restaurants) {
       return null;
     }
     return (
-       
-      <div >
-       
-         <ul > {restaurants.map((restaurant) =>
-         
-         
-         <li key={restaurant.id}>
-            {restaurant.name} --
-            {restaurant.address} --
-           {restaurant.ranking?.slice(0,10)}
-         </li>)}
-         </ul>       
-     
+      <div>
+        <ul>
+          {" "}
+          {restaurants.map((restaurant) => (
+            <li key={restaurant.id}>
+              {restaurant.name} --
+              {restaurant.address} --
+              {restaurant.ranking?.slice(0, 10)}
+            </li>
+          ))}
+        </ul>
       </div>
     );
   }

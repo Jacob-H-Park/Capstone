@@ -5,7 +5,6 @@ import Table from "./Table";
 const Landing = () => {
   const restaurants = useSelector(({ restaurants }) => restaurants);
   const auth = useSelector(({ auth }) => auth);
-  console.log(auth);
 
   if (!restaurants) {
     return null;

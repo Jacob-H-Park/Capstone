@@ -1,7 +1,11 @@
 import React from "react";
+import axios from "axios";
 import { connect } from "react-redux";
+import Cookies from "universal-cookie";
 
 import { authenticate } from "../store/auth";
+const cookies = new Cookies();
+
 /**
  * COMPONENT
  */
@@ -58,12 +62,30 @@ const mapSignup = (state) => {
 
 const mapDispatch = (dispatch, { history }) => {
   return {
-    handleSubmit(evt) {
+    handleSubmit: async (evt) => {
       evt.preventDefault();
       const formName = evt.target.name;
       const username = evt.target.username.value;
       const password = evt.target.password.value;
       dispatch(authenticate(username, password, formName));
+
+      // //Stream
+      // const {
+      //   data: { token, userId, username: streamUserName, hashedPassword },
+      // } = await axios.post(`/auth-stream/${formName}`, {
+      //   username,
+      //   password,
+      // });
+
+      // // In case of Signup
+      // if (formName === "signup") {
+      //   cookies.set("hashedPassword", hashedPassword);
+      // }
+
+      // cookies.set("token", token);
+      // cookies.set("username", streamUserName);
+      // cookies.set("userId", userId);
+
       history.push("/landing");
     },
   };
