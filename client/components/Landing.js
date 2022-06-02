@@ -1,6 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import Table from "./Table";
+import {Route} from 'react-router-dom';
+import CreatePost from "./CreatePost";
+import Posts from "./Posts";
 
 const Landing = () => {
   const restaurants = useSelector(({ restaurants }) => restaurants);
@@ -14,6 +17,8 @@ const Landing = () => {
     <>
       <div id="landing">
         <h1> Welcome {auth.username}</h1>
+        <Route component={CreatePost} />
+        <Route component={Posts} />
       </div>
     </>
   );
