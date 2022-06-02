@@ -1,22 +1,21 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-const AllRestaurants = () => {
+const Favorites = () => {
   const restaurants = useSelector(({ restaurants }) => restaurants);
+  const auth = useSelector(({ auth }) => auth);
 
   if (!restaurants) {
     return null;
   }
 
   return (
-    
-    
-      <div>
+    <div>
+      <h1> {auth.username}' favorites</h1>
 
-      <h2>Here is a list of all RESTAURANTS!</h2>
-
-        <ul>
-          {restaurants.map((place) => {
+      <ul>
+        {restaurants.map((place) => {
+          if (place.isFavorite)
             return (
               <li key={place.id}>
                 Restaurant Name: {place.name}
@@ -35,12 +34,10 @@ const AllRestaurants = () => {
                 <br></br>
               </li>
             );
-          })}
-        </ul>
-      </div>
-    
-    
+        })}
+      </ul>
+    </div>
   );
 };
 
-export default AllRestaurants;
+export default Favorites;

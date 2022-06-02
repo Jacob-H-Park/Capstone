@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import ByCity from "./ByCity";
 import AllRestaurants from "./AllRestaurants"
 import Trending from "./Trending";
+import Favorites from "./Favorites"
 
 const Landing = () => {
   const restaurants = useSelector(({ restaurants }) => restaurants);
@@ -19,14 +20,12 @@ const Landing = () => {
       <div className="landing">
         
         <Trending />
-     
-        <h2>Here is a list of top restuarants in BROOKLYN, NY!</h2>
     
-      <ByCity/>
-      
-        <h2>Here is a list of all RESTAURANTS!</h2>
+        <ByCity/>
     
-      <AllRestaurants />
+       <AllRestaurants />
+       
+       <Favorites />
 
       </div>
     

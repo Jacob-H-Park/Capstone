@@ -1,4 +1,4 @@
-const { STRING, INTEGER } = require("sequelize");
+const { STRING, INTEGER, BOOLEAN} = require("sequelize");
 
 const db = require("../db");
 
@@ -23,6 +23,9 @@ const Restaurant = db.define("restaurant", {
   },
   ranking: {
     type: INTEGER
+  },
+  isFavorite: {
+    type: BOOLEAN
   }
 });
 
