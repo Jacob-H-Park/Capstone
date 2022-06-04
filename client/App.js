@@ -1,7 +1,14 @@
-import React, { useEffect, Component, Fragment } from "react";
+import React, {
+  useState,
+  useEffect,
+  Component,
+  Fragment,
+  createContext,
+} from "react";
 import { connect } from "react-redux";
 import { withRouter, Redirect, Route, Switch } from "react-router-dom";
 
+import history from "./history";
 import { Login, Signup } from "./components/AuthForm";
 import Profile from "./components/Profile";
 import { me } from "./store";
@@ -9,20 +16,20 @@ import Navbar from "./components/Navbar";
 import Welcome from "./components/Welcome";
 import Landing from "./components/Landing";
 import Map from "./components/Search";
+import News from "./components/News/News";
 import { fetchRestaurants } from "./store/restaurants";
-import { createContext, useState } from "react";
-import ReactSwitch from 'react-switch';
+import ReactSwitch from "react-switch";
+import alanBtn from "@alan-ai/alan-sdk-web";
 
 export const ThemeContext = createContext(null);
 
 const App = (props) => {
   const { isLoggedIn, fetchRestaurants, loadInitialData } = props;
-
-  const [theme, setTheme] = useState("light")
+  const [theme, setTheme] = useState("light");
 
   const toggleTheme = () => {
-    setTheme((curr) => (curr === "light" ? "dark" : "light"))
-  }
+    setTheme((curr) => (curr === "light" ? "dark" : "light"));
+  };
 
   useEffect(() => {
     loadInitialData();
@@ -30,25 +37,26 @@ const App = (props) => {
   }, []);
 
   return (
-    <ThemeContext.Provider value={{theme, toggleTheme}}>
-    <div id={theme}>
-      <Navbar />
-      <ReactSwitch onChange={toggleTheme} checked={theme === "dark"}/>
-      {isLoggedIn ? (
-        <Switch>
-          <Route path="/profile" component={Profile} />
-          <Route path="/welcome" component={Welcome} />
-          <Route path="/landing" component={Landing} />
-          <Route path="/map" component={Map} />
-        </Switch>
-      ) : (
-        <Switch>
-          <Route exact path="/" component={Login} />
-          <Route path="/login" component={Login} />
-          <Route path="/signup" component={Signup} />
-        </Switch>
-      )}
-    </div>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      <div id={theme}>
+        <Navbar />
+        <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
+        {isLoggedIn ? (
+          <Switch>
+            <Route path="/profile" component={Profile} />
+            <Route path="/welcome" component={Welcome} />
+            <Route path="/landing" component={Landing} />
+            <Route path="/map" component={Map} />
+            <Route path="/news" component={News} />
+          </Switch>
+        ) : (
+          <Switch>
+            <Route exact path="/" component={Login} />
+            <Route path="/login" component={Login} />
+            <Route path="/signup" component={Signup} />
+          </Switch>
+        )}
+      </div>
     </ThemeContext.Provider>
   );
 };
