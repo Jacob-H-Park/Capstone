@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import Table from "./Table";
+// import Table from "./Table";
 
 const Landing = () => {
   const restaurants = useSelector(({ restaurants }) => restaurants);
@@ -30,7 +30,7 @@ const Landing = () => {
           , {auth.state}!{" "}
         </h2>
 
-        <Table />
+        {/* <Table /> */}
       </div>
     </>
   );

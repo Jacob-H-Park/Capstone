@@ -9,7 +9,7 @@ import { me } from "./store";
 import Navbar from "./components/Navbar";
 import Welcome from "./components/Welcome";
 import Landing from "./components/Landing";
-import StreamMessenger from "./components/StreamChat";
+import Stream from "./components/Stream";
 
 import { fetchRestaurants } from "./store/restaurants";
 import ReactSwitch from "react-switch";
@@ -34,13 +34,13 @@ const App = (props) => {
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <div id={theme}>
         <Navbar />
-        <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
+        {/* <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} /> */}
         {isLoggedIn ? (
           <Switch>
             <Route path="/profile" component={Profile} />
             <Route path="/welcome" component={Welcome} />
             <Route path="/landing" component={Landing} />
-            <Route path="/streamchat" component={StreamMessenger} />
+            <Route path="/streamchat" component={Stream} />
           </Switch>
         ) : (
           <Switch>

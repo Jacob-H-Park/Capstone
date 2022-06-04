@@ -67,25 +67,20 @@ const mapDispatch = (dispatch, { history }) => {
       const formName = evt.target.name;
       const username = evt.target.username.value;
       const password = evt.target.password.value;
+
+      //Stream
+      const {
+        data: { token, userId, username: streamUserName },
+      } = await axios.post(`/auth-stream/${formName}`, {
+        username,
+        password,
+      });
+
+      cookies.set("token", token);
+      cookies.set("username", streamUserName);
+      cookies.set("userId", userId);
+
       dispatch(authenticate(username, password, formName));
-
-      // //Stream
-      // const {
-      //   data: { token, userId, username: streamUserName, hashedPassword },
-      // } = await axios.post(`/auth-stream/${formName}`, {
-      //   username,
-      //   password,
-      // });
-
-      // // In case of Signup
-      // if (formName === "signup") {
-      //   cookies.set("hashedPassword", hashedPassword);
-      // }
-
-      // cookies.set("token", token);
-      // cookies.set("username", streamUserName);
-      // cookies.set("userId", userId);
-
       history.push("/landing");
     },
   };
