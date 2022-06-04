@@ -29,13 +29,12 @@ const Landing = () => {
       <AllRestaurants />
 
       <Favorites />
-      <>
+  
         <div id="landing">
           <h1> Welcome {auth.username}</h1>
           <Route component={CreatePost} />
           <Route component={Posts} />
         </div>
-      </>
     </div>
   );
 };
