@@ -26,6 +26,27 @@ module.exports = {
           presets: ["@babel/preset-react"],
         },
       },
+      {
+        test: /\.(sass|scss|css)$/,
+        use: [
+          {
+            loader: "style-loader",
+          },
+          {
+            loader: "css-loader",
+          },
+          { loader: "sass-loader" },
+        ],
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: "url-loader",
+          },
+        ],
+        // options: {},
+      },
     ],
   },
   plugins: [new webpack.DefinePlugin(envKeys)],
