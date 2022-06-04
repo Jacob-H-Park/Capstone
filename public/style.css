@@ -59,3 +59,7 @@ form {
   align-content: flex-start;
   align-items: flex-start;
 }
+.topPhoto{
+  width:400px;
+  height:auto
+}
