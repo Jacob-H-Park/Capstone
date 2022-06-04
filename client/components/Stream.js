@@ -6,12 +6,10 @@ import Cookies from "universal-cookie";
 import {
   ChannelListContainer,
   ChannelContainer,
-  Auth,
 } from "./StreamPackage/index.js";
 
 import "stream-chat-react/dist/css/index.css";
 import "./assets/Stream.css";
-// import "./assets/App.css";
 
 const cookies = new Cookies();
 
@@ -25,10 +23,6 @@ if (authToken) {
     {
       id: cookies.get("userId"),
       name: cookies.get("username"),
-      // fullName: cookies.get('fullName'),
-      // image: cookies.get('avatarURL'),
-      // hashedPassword: cookies.get('hashedPassword'),
-      // phoneNumber: cookies.get("phoneNumber"),
     },
     authToken
   );
