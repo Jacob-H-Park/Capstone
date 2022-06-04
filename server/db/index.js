@@ -4,6 +4,7 @@ const db = require("./db");
 
 const User = require("./models/User");
 const Restaurant = require("./models/Restaurant");
+const Post = require("./models/Post")
 
 //associations could go here!
 
@@ -12,5 +13,6 @@ module.exports = {
   models: {
     User,
     Restaurant,
+    Post
   },
 };

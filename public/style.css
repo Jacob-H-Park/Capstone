@@ -47,3 +47,15 @@ form div {
 #dark {
   background-color: #1F2525;
 }
+
+textarea {
+  width: 600px;
+  height: 150px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  align-items: flex-start;
+}
