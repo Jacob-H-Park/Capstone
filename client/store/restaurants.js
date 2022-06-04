@@ -13,7 +13,7 @@ const _fetchRestaurants = (restaurants) => {
 
 export const fetchRestaurants = () => {
   return async (dispatch) => {
-    const restaurants = (await axios.get("/api/restaurants")).data;
+    const restaurants = (await axios.get("/api/restaurants/yelp")).data;
     dispatch(_fetchRestaurants(restaurants));
   };
 };
