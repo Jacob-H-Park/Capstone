@@ -1,8 +1,6 @@
 import axios from "axios";
 import history from "../history";
-import Cookies from "universal-cookie";
 
-const cookies = new Cookies();
 const TOKEN = "token";
 
 /**
@@ -46,13 +44,7 @@ export const authenticate =
   };
 
 export const logout = () => {
-  //remove jwt token upon logout
   window.localStorage.removeItem(TOKEN);
-
-  //remove cookies for stream chat client's info
-  cookies.remove("username");
-  cookies.remove("userId");
-  cookies.remove("token");
   history.push("/");
   return {
     type: SET_AUTH,

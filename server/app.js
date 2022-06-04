@@ -2,7 +2,6 @@ const path = require("path");
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
-require("dotenv").config();
 
 const app = express();
 
@@ -16,7 +15,6 @@ app.use(morgan("dev"));
 
 // body parsing middleware
 app.use(express.json());
-app.use(express.urlencoded());
 
 app.use(
   cookieSession({
@@ -32,9 +30,7 @@ app.use(passport.session());
 app.use("/public", express.static(path.join(__dirname, "../public")));
 
 // auth and api routes
-app.use("/auth-stream", require("./auth/stream"));
 app.use("/auth", require("./auth"));
-
 app.use("/google", require("./auth/googleOauth"));
 app.use("/api", require("./api"));
 
