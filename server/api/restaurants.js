@@ -8,11 +8,10 @@ const {
 } = require("../db");
 module.exports = router;
 
-
 router.get("/yelp", async (req, res, next) => {
   try {
     const response = await axios.get(
-      "https://api.yelp.com/v3/businesses/search?term=coffee&location=brooklyn",
+      "https://api.yelp.com/v3/businesses/search?term=coffee&location=newyorkcity",
       {
         headers: {
           Authorization: `Bearer ${process.env.bearerToken}`,

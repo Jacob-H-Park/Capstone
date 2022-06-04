@@ -15,7 +15,7 @@ const Favorites = () => {
       <ul>
          {restaurants.map(restaurant => {
             return (
-              <li>
+              <li key={restaurant.id}>
                 {restaurant.name}
               </li>
             )
