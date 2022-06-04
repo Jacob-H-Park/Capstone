@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import * as React from "react";
 import { useDispatch, connect } from "react-redux";
 import { logout } from "../store";
 
@@ -116,18 +116,6 @@ const Navbar = ({ isLoggedIn }) => {
                     <Link to="/profile">Profile</Link>
                   </Typography>
                 </MenuItem>
-
-                <MenuItem
-                  key="chat"
-                  onClick={() => {
-                    handleCloseUserMenu;
-                  }}
-                >
-                  <Typography textAlign="center">
-                    <Link to="/streamchat">Chat</Link>
-                  </Typography>
-                </MenuItem>
-
                 <MenuItem
                   key="logout"
                   onClick={() => {

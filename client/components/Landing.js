@@ -13,6 +13,8 @@ import Posts from "./Posts";
 const Landing = () => {
   const restaurants = useSelector(({ restaurants }) => restaurants);
   const auth = useSelector(({ auth }) => auth);
+  console.log(auth);
+  console.log(restaurants);
 
   if (!restaurants) {
     return null;
@@ -27,12 +29,12 @@ const Landing = () => {
       <AllRestaurants />
 
       <Favorites />
-
-      <div id="landing">
-        <h1> Welcome {auth.username}</h1>
-        <Route component={CreatePost} />
-        <Route component={Posts} />
-      </div>
+  
+        <div id="landing">
+          <h1> Welcome {auth.username}</h1>
+          <Route component={CreatePost} />
+          <Route component={Posts} />
+        </div>
     </div>
   );
 };
