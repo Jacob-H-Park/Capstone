@@ -1,6 +1,14 @@
 import React from "react";
 import { useSelector } from "react-redux";
-// import Table from "./Table";
+
+import ByCity from "./ByCity";
+import AllRestaurants from "./AllRestaurants";
+import Trending from "./Trending";
+import Favorites from "./Favorites";
+import Table from "./Table";
+import { Route } from "react-router-dom";
+import CreatePost from "./CreatePost";
+import Posts from "./Posts";
 
 const Landing = () => {
   const restaurants = useSelector(({ restaurants }) => restaurants);
@@ -9,34 +17,24 @@ const Landing = () => {
   if (!restaurants) {
     return null;
   }
+
   return (
-    <>
+    <div className="landing">
+      <Trending />
+
+      <ByCity />
+
+      <AllRestaurants />
+
+      <Favorites />
+
       <div id="landing">
         <h1> Welcome {auth.username}</h1>
-        <h2> {auth.username} , we recommend the following resturants! </h2>
-        <ul>
-          {restaurants.map((place) => {
-            return (
-              <li key={place.id}>
-                {place.name} {place.address}
-                <img className="logos" src={place.image} />
-              </li>
-            );
-          })}
-        </ul>
-        <h2>
-          {" "}
-          {auth.username} , the below restuarants are TRENDING near {auth.city}{" "}
-          , {auth.state}!{" "}
-        </h2>
-
-        {/* <Table /> */}
+        <Route component={CreatePost} />
+        <Route component={Posts} />
       </div>
-    </>
+    </div>
   );
 };
-
-// const mapState = ({ restaurants }) => ({ restaurants });
-// export default connect(mapState)(Landing);
 
 export default Landing;
