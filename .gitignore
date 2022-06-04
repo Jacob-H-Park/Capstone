@@ -8,5 +8,5 @@ package-lock.json
 .env
 
 public/vendors-*
-# *.png
+*.png
 *.woff2
