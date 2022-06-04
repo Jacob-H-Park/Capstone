@@ -16,7 +16,6 @@ import Navbar from "./components/Navbar";
 import Welcome from "./components/Welcome";
 import Landing from "./components/Landing";
 import Map from "./components/Search";
-import News from "./components/News/News";
 import { fetchRestaurants } from "./store/restaurants";
 import ReactSwitch from "react-switch";
 import alanBtn from "@alan-ai/alan-sdk-web";
@@ -30,6 +29,23 @@ const App = (props) => {
   const toggleTheme = () => {
     setTheme((curr) => (curr === "light" ? "dark" : "light"));
   };
+
+  useEffect(() => {
+    alanBtn({
+      key: process.env.ALAN_KEY,
+      onCommand: ({ command, articles, number }) => {
+        if (command === "homepage") {
+          history.push("/landing");
+        } else if (command === "map") {
+          history.push("/map");
+        } else if (command === "profile") {
+          history.push("/profile");
+        } else if (command === "night") {
+          toggleTheme();
+        }
+      },
+    });
+  }, []);
 
   useEffect(() => {
     loadInitialData();
@@ -47,7 +63,6 @@ const App = (props) => {
             <Route path="/welcome" component={Welcome} />
             <Route path="/landing" component={Landing} />
             <Route path="/map" component={Map} />
-            <Route path="/news" component={News} />
           </Switch>
         ) : (
           <Switch>

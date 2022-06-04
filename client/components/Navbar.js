@@ -66,7 +66,6 @@ const Navbar = ({ isLoggedIn }) => {
             </Link>
           </Typography>
           <Link to="/map">map</Link>
-          <Link to="/news">news</Link>
 
           <Box
             sx={{
