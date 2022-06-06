@@ -36,6 +36,10 @@ const Table = () => {
     setFilteredPlaces(filtered);
   }, [rating]);
 
+<<<<<<< HEAD
+  render() {
+    const restaurants = this.state.restaurantCollection.data;
+=======
   useEffect(() => {
     auth.city
       ? getUserLocation()
@@ -45,6 +49,7 @@ const Table = () => {
           }
         );
   }, []);
+>>>>>>> ad77255fb8967533f36aa2db8bc1af746089ddc4
 
   useEffect(() => {
     if (bounds) {
@@ -55,6 +60,24 @@ const Table = () => {
         setIsLoading(false);
       });
     }
+<<<<<<< HEAD
+    return (
+      <div>
+        <ul>
+          {" "}
+          {restaurants.map((restaurant) => (
+            <li key={restaurant.id}>
+              {restaurant.name} --
+              {restaurant.address} --
+              {restaurant.ranking?.slice(0, 10)}
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
+}
+=======
   }, [coordinates, bounds]);
 
   return (
@@ -85,3 +108,4 @@ const Table = () => {
 };
 
 export default Table;
+>>>>>>> ad77255fb8967533f36aa2db8bc1af746089ddc4
