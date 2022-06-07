@@ -15,9 +15,12 @@ const Landing = () => {
   const restaurants = useSelector(({ restaurants }) => restaurants);
   const posts = useSelector(({ posts}) => posts);
   const auth = useSelector(({ auth }) => auth);
+<<<<<<< HEAD
   console.log(auth);
   console.log(restaurants);
   console.log(posts);
+=======
+>>>>>>> e0e63bab167ea1f0f8f6aa56b7bcc48656d439f4
 
   if (!restaurants) {
     return null;
@@ -32,6 +35,7 @@ const Landing = () => {
       <AllRestaurants />
 
       <Favorites />
+<<<<<<< HEAD
   
         <div id="landing">
           <h1> Welcome {auth.username}</h1>
@@ -39,6 +43,14 @@ const Landing = () => {
           <h2>My Feed</h2>
           <Route component={Posts} />
         </div>
+=======
+
+      <div id="landing">
+        <h1> Welcome {auth.username}</h1>
+        <Route component={CreatePost} />
+        <Route component={Posts} />
+      </div>
+>>>>>>> e0e63bab167ea1f0f8f6aa56b7bcc48656d439f4
     </div>
   );
 };

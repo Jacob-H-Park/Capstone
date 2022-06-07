@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-  Component,
-  Fragment,
-  createContext,
-} from "react";
+import React, { useState, useEffect, createContext } from "react";
 import { connect } from "react-redux";
 import { withRouter, Redirect, Route, Switch } from "react-router-dom";
 
@@ -15,17 +9,24 @@ import { me } from "./store";
 import Navbar from "./components/Navbar";
 import Welcome from "./components/Welcome";
 import Landing from "./components/Landing";
-import Map from "./components/Search";
+import Stream from "./components/Stream";
+
 import { fetchRestaurants } from "./store/restaurants";
 import { loadPosts } from "./store/posts";
 import Posts from "./components/Posts";
 import ReactSwitch from "react-switch";
+import Map from "./components/Search";
 import alanBtn from "@alan-ai/alan-sdk-web";
 
 export const ThemeContext = createContext(null);
 
 const App = (props) => {
+<<<<<<< HEAD
   const { isLoggedIn, fetchRestaurants, loadInitialData, loadPosts } = props;
+=======
+  const { isLoggedIn, fetchRestaurants, loadInitialData } = props;
+
+>>>>>>> e0e63bab167ea1f0f8f6aa56b7bcc48656d439f4
   const [theme, setTheme] = useState("light");
 
   const toggleTheme = () => {
@@ -65,6 +66,7 @@ const App = (props) => {
             <Route path="/welcome" component={Welcome} />
             <Route path="/landing" component={Landing} />
             <Route path="/map" component={Map} />
+            <Route path="/streamchat" component={Stream} />
           </Switch>
         ) : (
           <Switch>

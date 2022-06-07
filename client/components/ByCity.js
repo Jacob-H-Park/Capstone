@@ -16,9 +16,12 @@ const ByCity= () => {
         <h2>Here is a list of top restuarants in BROOKLYN, NY!</h2>
         <ul>
          {restaurants.map(restaurant => {
+           if(restaurant.location.city==="Brooklyn")
             return (
-              <li>
-                {restaurant.name}
+              <li key={restaurant.id}>
+                Restaurant Name:{restaurant.name}
+                <br></br>
+                Rating: {restaurant.rating}
               </li>
             )
          })}
