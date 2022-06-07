@@ -42,7 +42,7 @@ router.post("/", token, async (req ,res, next) => {
   router.delete("/:id", async (req,res,next) => {
     try {
       console.log("this is req.body", req.body)
-      const post = await Post.findByPk(req.body.post.id);
+      const post = await Post.findByPk(req.params.id);
       if(post) {
          await post.destroy();
       } else {
