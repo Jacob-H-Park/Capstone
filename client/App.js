@@ -21,12 +21,7 @@ import alanBtn from "@alan-ai/alan-sdk-web";
 export const ThemeContext = createContext(null);
 
 const App = (props) => {
-<<<<<<< HEAD
   const { isLoggedIn, fetchRestaurants, loadInitialData, loadPosts } = props;
-=======
-  const { isLoggedIn, fetchRestaurants, loadInitialData } = props;
-
->>>>>>> e0e63bab167ea1f0f8f6aa56b7bcc48656d439f4
   const [theme, setTheme] = useState("light");
 
   const toggleTheme = () => {

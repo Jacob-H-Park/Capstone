@@ -71,15 +71,8 @@ export const createPost = post => {
 export const deletePost = (post) => {
     return async (dispatch) => {
         try {
-           const token = window.localStorage.getItem("token");
-           if(token) {
-               await axios.delete(`/api/posts/${post.id}`, {
-                   headers: {
-                       authorization: token,
-                   }
-               })
-           } 
-           dispatch(_deletePost(post));
+             await axios.delete(`/api/posts/${post.id}`, post)
+             dispatch(_deletePost(post.id));      
         } catch (ex) {
            console.log(ex) 
         } 
@@ -114,7 +107,7 @@ const posts = (state = [], action) => {
        return [...state, action.post]
    } 
    if (action.type === DELETE_POST) {
-       return [...state.filter((post) => post.id !== action.post.id)];
+       return [...state.filter((post) => post.id !== action.postId)];
    }
    if (action.type === UPDATE_POST) {
        return state = state.map(post => post.id === action.post.id ? action.post : post)
