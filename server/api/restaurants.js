@@ -11,7 +11,7 @@ module.exports = router;
 router.get("/yelp", async (req, res, next) => {
   try {
     const response = await axios.get(
-      "https://api.yelp.com/v3/businesses/search?term=coffee&location=newyorkcity",
+      "https://api.yelp.com/v3/businesses/search?limit=50&term=coffee&location=newyorkcity",
       {
         headers: {
           Authorization: `Bearer ${process.env.bearerToken}`,
