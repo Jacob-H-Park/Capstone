@@ -1,11 +1,13 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import { deletePost } from '../store'
+import UpdatePost from './UpdatePost'
+import {Route} from 'react-router-dom';
 
 
-const Posts = ({ posts }) => {
+const Posts = ({ posts, deletePost }) => {
    return (
       <div>
-       <h2>My Feed</h2> 
        <div>
           <ul>
            {
@@ -15,16 +17,26 @@ const Posts = ({ posts }) => {
                   <h4> {post.title} </h4>
                     <span>Location: {post.location}</span>
                   <div>  {post.textpost} </div>
+                  <button onClick={()=> deletePost(post)}>Delete Review</button>
+                  <Route component={UpdatePost} /> 
                  </div>  
                )  
              })  
            }
           </ul> 
-       </div>
+       </div> 
       </div> 
    ) 
 }
 
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    deletePost: (post) => dispatch(deletePost(post))
+  }
+}
+
 export default connect(
-   state => state 
+   state => state,
+   mapDispatchToProps 
 )(Posts)
