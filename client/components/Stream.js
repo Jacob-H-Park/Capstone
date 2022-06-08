@@ -18,22 +18,27 @@ const Stream = () => {
   const [createType, setCreateType] = useState("");
   const [isCreating, setIsCreating] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
+  const [authToken, setAuthToken] = useState("");
+  const [client, setClient] = useState(null);
 
   useEffect(() => {
-    const authToken = cookies.get("token");
+    const token = cookies.get("token");
+    setAuthToken(token);
 
     const client = StreamChat.getInstance(apiKey);
+    setClient(client);
 
-    if (authToken) {
+    if (token) {
       client.connectUser(
         {
           id: cookies.get("userId"),
           name: cookies.get("username"),
         },
-        authToken
+        token
       );
     }
-  });
+  }, []);
+
   if (!authToken) return <div>token not set</div>;
 
   return (
