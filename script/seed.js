@@ -31,7 +31,7 @@ async function seed() {
 
   const post = await Promise.all([
     Post.create({
-      textpost: 'I visited a new restaurant in NYC today called Fish Cheeks! They have great thai food and great happy hour deals!',
+      review: 'I visited a new restaurant in NYC today called Fish Cheeks! They have great thai food and great happy hour deals!',
       location: "East Village, NYC",
       title: "NYC New Restaurant"
     })

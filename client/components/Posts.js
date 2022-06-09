@@ -16,7 +16,7 @@ const Posts = ({ posts, deletePost }) => {
                  <div key={post.id}>
                   <h4> {post.title} </h4>
                     <span>Location: {post.location}</span>
-                  <div>  {post.textpost} </div>
+                  <div>  {post.review} </div>
                   <button onClick={()=> deletePost(post)}>Delete Review</button>
                   <Route component={UpdatePost} /> 
                  </div>  

@@ -3,7 +3,7 @@ const db = require("../db")
 const {STRING} = require("sequelize")
 
 const Post = db.define("post", {
-  textpost: {
+  review: {
     type: STRING   
   },
   location: {

@@ -27,9 +27,9 @@ router.get("/", token, async(req,res,next) => {
 
 router.post("/", token, async (req ,res, next) => {
     try {
-      const {textpost, location, title} = req.body
+      const {review, location, title} = req.body
       const post = await Post.create({
-         textpost,
+         review,
          location,
          title
       })
@@ -56,12 +56,12 @@ router.post("/", token, async (req ,res, next) => {
 
   router.put('/:postId', token, async (req,res,next) => {
     try {
-      const {textpost, title, location} = req.body
+      const {review, title, location} = req.body
       const post = await Post.findByPk(req.params.postId)
       const updatedPost = await post.update({
         title,
         location, 
-        textpost
+        review
       })
       return res.json(updatedPost)
     } catch (e) {

@@ -7,7 +7,7 @@ export class UpdatePost extends React.Component {
        super(props);
        const {post} = this.props;
        this.state = {
-           textpost: post ? post.textpost : '',
+           review: post ? post.review : '',
            title: post ? post.title: '',
            location: post ? post.location: ''
        }
@@ -17,7 +17,7 @@ export class UpdatePost extends React.Component {
     componentDidUpdate(prevProps) {
         if(this.props.post !== prevProps.post) {
             this.setState({
-                textpost: this.props.post.textpost,
+                post: this.props.post.review,
                 title: this.props.post.title,
                 location: this.props.post.location
             })
@@ -33,7 +33,7 @@ export class UpdatePost extends React.Component {
         this.props.updatePost(this.props.post.id, {...this.state})
     }
    render() {
-      const {textpost, title, location} = this.state
+      const {review, title, location} = this.state
       const {handleSubmit, handleChange} = this
       return (
           <div>
@@ -53,10 +53,10 @@ export class UpdatePost extends React.Component {
                   onChange={handleChange}
                 />
                 <textarea
-                  name="textpost"
+                  name="review"
                   type="text"
-                  value={textpost || ""}
-                  placeholder="share your experience..."
+                  value={review || ""}
+                  placeholder="share your review..."
                   onChange={handleChange}
                 />
 
