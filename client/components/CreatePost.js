@@ -10,12 +10,14 @@ class CreatePost extends Component {
       location: "",
       title: "",
     };
+    this.initialState = this.state
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
   handleSubmit(e) {
     e.preventDefault();
     this.props.createPost({ ...this.state });
+    this.setState(() => this.initialState)
   }
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
@@ -47,10 +49,10 @@ class CreatePost extends Component {
             name="review"
             value={review}
             type="text"
-            placeholder="Share your experience.."
+            placeholder="Share your Review.."
             onChange={handleChange}
           ></textarea>
-          <button>Create Post</button>
+          <button>Add My Review</button>
         </form>
       </div>
     );

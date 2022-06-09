@@ -33,7 +33,8 @@ async function seed() {
     Post.create({
       review: 'I visited a new restaurant in NYC today called Fish Cheeks! They have great thai food and great happy hour deals!',
       location: "East Village, NYC",
-      title: "NYC New Restaurant"
+      title: "NYC New Restaurant",
+      userId: users[0].id
     })
   ])
 

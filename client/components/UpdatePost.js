@@ -5,7 +5,7 @@ import { updatePost } from "../store";
 export class UpdatePost extends React.Component {
     constructor(props) {
        super(props);
-       const {post} = this.props;
+       const { post } = this.props;
        this.state = {
            review: post ? post.review : '',
            title: post ? post.title: '',
@@ -56,7 +56,7 @@ export class UpdatePost extends React.Component {
                   name="review"
                   type="text"
                   value={review || ""}
-                  placeholder="share your review..."
+                  placeholder="Share your review..."
                   onChange={handleChange}
                 />
 
