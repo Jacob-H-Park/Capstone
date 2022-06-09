@@ -1,6 +1,6 @@
 const db = require("../db")
 
-const {STRING} = require("sequelize")
+const {STRING, Sequelize} = require("sequelize")
 
 const Post = db.define("post", {
   review: {
@@ -11,6 +11,9 @@ const Post = db.define("post", {
   },
   title: {
     type: STRING  
+  },
+  wifi: {
+    type: Sequelize.ENUM('Free-Wifi', 'Wifi Not Available', 'Wifi Costs Extra')
   }
 })
 

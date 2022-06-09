@@ -14,6 +14,7 @@ import Stream from "./components/Stream";
 import { fetchRestaurants } from "./store/restaurants";
 import { loadPosts } from "./store/posts";
 import Posts from "./components/Posts";
+import Post from "./components/Post";
 import ReactSwitch from "react-switch";
 import Map from "./components/Search";
 import alanBtn from "@alan-ai/alan-sdk-web";
@@ -62,6 +63,7 @@ const App = (props) => {
             <Route path="/landing" component={Landing} />
             <Route path="/map" component={Map} />
             <Route path="/streamchat" component={Stream} />
+            <Route path="/posts/:id" component={Post} />
           </Switch>
         ) : (
           <Switch>

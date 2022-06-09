@@ -9,7 +9,8 @@ export class UpdatePost extends React.Component {
        this.state = {
            review: post ? post.review : '',
            title: post ? post.title: '',
-           location: post ? post.location: ''
+           location: post ? post.location: '',
+           wifi: post ? post.wifi: ''
        }
        this.handleChange = this.handleChange.bind(this)
        this.handleSubmit = this.handleSubmit.bind(this) 
@@ -19,7 +20,8 @@ export class UpdatePost extends React.Component {
             this.setState({
                 post: this.props.post.review,
                 title: this.props.post.title,
-                location: this.props.post.location
+                location: this.props.post.location,
+                wifi: this.props.post.wifi
             })
         }
     }
@@ -30,10 +32,12 @@ export class UpdatePost extends React.Component {
     }
     handleSubmit(evt) {
         evt.preventDefault()
+        console.log("this is post" , this.props)
         this.props.updatePost(this.props.post.id, {...this.state})
+        
     }
    render() {
-      const {review, title, location} = this.state
+      const {review, title, location, wifi} = this.state
       const {handleSubmit, handleChange} = this
       return (
           <div>
@@ -52,6 +56,19 @@ export class UpdatePost extends React.Component {
                   placeholder="Location"
                   onChange={handleChange}
                 />
+
+                <select
+                  name='wifi'
+                  value={wifi || ""}
+                  placeholder='Wifi Availability'
+                  onChange={handleChange}
+                 >
+                <option value=''>Select Wifi Availability</option> 
+                <option value='Free-Wifi'>Free-Wifi</option>
+                <option value='Wifi Not Available'>Wifi Not Available</option>
+                <option value='Wifi Costs Extra'>Wifi Costs Extra</option>
+                </select>
+
                 <textarea
                   name="review"
                   type="text"
@@ -67,12 +84,19 @@ export class UpdatePost extends React.Component {
    } 
 }
 
-const mapState = (state, otherProps) => {
-    const id = otherProps.match.params.id;
+const mapState = (state, {match}) => {
+    const id = match.params.id;
+    console.log("this is id" , id)
+    
+    const post = state.posts.find((post) => post.id === id * 1) 
+    console.log("this is mapState Post", post)
     return {
-        post: state.posts.find((post) => post.id === id * 1)
+        post
     }
+        
+        
 }
+
 
 const mapDispatch = (dispatch) => {
     return {

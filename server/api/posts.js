@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { ProductionQuantityLimits } = require("@mui/icons-material");
 const {
     models: { Post, User },
 
@@ -25,13 +26,23 @@ router.get("/", token, async(req,res,next) => {
   }
 }) 
 
+router.get("/:id", async(req, res, next) => {
+  try {
+    const post = await Post.findByPk(req.params.id)
+    res.send(post);
+  } catch (ex) {
+    next(ex)
+  }
+})
+
 router.post("/", token, async (req ,res, next) => {
     try {
-      const {review, location, title} = req.body
+      const {review, location, title, wifi} = req.body
       const post = await Post.create({
          review,
          location,
-         title
+         title,
+         wifi
       })
       return res.json(post)
     } catch (e) {
@@ -56,12 +67,13 @@ router.post("/", token, async (req ,res, next) => {
 
   router.put('/:postId', token, async (req,res,next) => {
     try {
-      const {review, title, location} = req.body
+      const {review, title, location, wifi} = req.body
       const post = await Post.findByPk(req.params.postId)
       const updatedPost = await post.update({
         title,
         location, 
-        review
+        review,
+        wifi
       })
       return res.json(updatedPost)
     } catch (e) {
