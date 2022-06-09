@@ -46,7 +46,6 @@ const Navbar = ({ isLoggedIn }) => {
     <AppBar position="static" sx={{ backgroundColor: "white" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
           <Typography
             variant="h6"
             noWrap
@@ -106,27 +105,27 @@ const Navbar = ({ isLoggedIn }) => {
                 open={Boolean(anchorElUser)}
                 onClick={handleCloseUserMenu}
               >
-                <MenuItem
-                  key="profile"
-                  onClick={() => {
-                    handleCloseUserMenu;
-                  }}
-                >
-                  <Typography textAlign="center">
-                    <Link to="/profile">Profile</Link>
-                  </Typography>
-                </MenuItem>
+                <Link to="/profile">
+                  <MenuItem
+                    key="profile"
+                    onClick={() => {
+                      handleCloseUserMenu;
+                    }}
+                  >
+                    <Typography textAlign="center">Profile</Typography>
+                  </MenuItem>
+                </Link>
 
-                <MenuItem
-                  key="chat"
-                  onClick={() => {
-                    handleCloseUserMenu;
-                  }}
-                >
-                  <Typography textAlign="center">
-                    <Link to="/streamchat">Chat</Link>
-                  </Typography>
-                </MenuItem>
+                <Link to="/streamchat">
+                  <MenuItem
+                    key="chat"
+                    onClick={() => {
+                      handleCloseUserMenu;
+                    }}
+                  >
+                    <Typography textAlign="center">Chat</Typography>
+                  </MenuItem>
+                </Link>
 
                 <MenuItem
                   key="logout"
@@ -155,39 +154,39 @@ const Navbar = ({ isLoggedIn }) => {
                 open={Boolean(anchorElUser)}
                 onClick={handleCloseUserMenu}
               >
-                <MenuItem
-                  key="login"
-                  onClick={() => {
-                    handleCloseUserMenu;
-                  }}
-                >
-                  <Typography textAlign="center">
-                    <Link to="/login">Login</Link>
-                  </Typography>
-                </MenuItem>
+                <Link to="/login">
+                  <MenuItem
+                    key="login"
+                    onClick={() => {
+                      handleCloseUserMenu;
+                    }}
+                  >
+                    <Typography textAlign="center">Login</Typography>
+                  </MenuItem>
+                </Link>
 
-                <MenuItem
-                  key="google-login"
-                  onClick={() => {
-                    handleCloseUserMenu;
-                    googleLogin();
-                  }}
-                >
-                  <Typography textAlign="center">
-                    <Link to="/google">Google Login</Link>
-                  </Typography>
-                </MenuItem>
+                <Link to="/google">
+                  <MenuItem
+                    key="google-login"
+                    onClick={() => {
+                      handleCloseUserMenu;
+                      googleLogin();
+                    }}
+                  >
+                    <Typography textAlign="center">Google Login</Typography>
+                  </MenuItem>
+                </Link>
 
-                <MenuItem
-                  key="signup"
-                  onClick={() => {
-                    handleCloseUserMenu;
-                  }}
-                >
-                  <Typography textAlign="center">
-                    <Link to="/signup">Signup</Link>
-                  </Typography>
-                </MenuItem>
+                <Link to="/signup">
+                  <MenuItem
+                    key="signup"
+                    onClick={() => {
+                      handleCloseUserMenu;
+                    }}
+                  >
+                    <Typography textAlign="center">Signup</Typography>
+                  </MenuItem>
+                </Link>
               </Menu>
             )}
           </Box>

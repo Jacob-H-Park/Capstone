@@ -7,6 +7,14 @@ a {
   text-decoration: none;
 }
 
+input::placeholder {
+  color: gray;
+}
+textarea::placeholder {
+  color: gray;
+  font-family: sans-serif;
+}
+
 label {
   display: block;
 }
