@@ -2,7 +2,7 @@
 
 const {
   db,
-  models: { User, Restaurant },
+  models: { User, Restaurant, Post },
 } = require("../server/db");
 
 /**
@@ -28,6 +28,16 @@ async function seed() {
       state: "New York",
     }),
   ]);
+
+  const post = await Promise.all([
+    Post.create({
+      review: 'I visited a new restaurant in NYC today called Fish Cheeks! They have great thai food and great happy hour deals!',
+      location: "East Village, NYC",
+      title: "NYC New Restaurant",
+      userId: users[0].id,
+      wifi: "Free-Wifi"
+    })
+  ])
 
   const restaurants = await Promise.all([
     Restaurant.create({

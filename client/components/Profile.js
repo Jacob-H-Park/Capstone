@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import { Route } from "react-router-dom";
+import Posts from "./Posts";
 
 
 const Profile = () => {
@@ -72,6 +74,10 @@ const Profile = () => {
         <div>
           <p>{data.weather ? <span>{data.weather[0].main}</span> : null}</p>
         </div>
+      </div>
+      <div>
+      <h2>My Reviews</h2>  
+      <Route component={Posts} />
       </div>
     </div>
   );

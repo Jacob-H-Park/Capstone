@@ -8,6 +8,10 @@ const Post = require("./models/Post")
 
 //associations could go here!
 
+Post.belongsTo(User)
+User.hasMany(Post)
+
+
 module.exports = {
   db,
   models: {

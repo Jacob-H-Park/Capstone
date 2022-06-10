@@ -12,6 +12,9 @@ import Landing from "./components/Landing";
 import Stream from "./components/Stream";
 
 import { fetchRestaurants } from "./store/restaurants";
+import { loadPosts } from "./store/posts";
+import Posts from "./components/Posts";
+import Post from "./components/Post";
 import ReactSwitch from "react-switch";
 import Map from "./components/Search";
 import alanBtn from "@alan-ai/alan-sdk-web";
@@ -19,8 +22,7 @@ import alanBtn from "@alan-ai/alan-sdk-web";
 export const ThemeContext = createContext(null);
 
 const App = (props) => {
-  const { isLoggedIn, fetchRestaurants, loadInitialData } = props;
-
+  const { isLoggedIn, fetchRestaurants, loadInitialData, loadPosts } = props;
   const [theme, setTheme] = useState("light");
 
   const toggleTheme = () => {
@@ -47,13 +49,13 @@ const App = (props) => {
   useEffect(() => {
     loadInitialData();
     fetchRestaurants();
+    loadPosts();
   }, []);
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <div id={theme}>
         <Navbar />
-        <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
         {isLoggedIn ? (
           <Switch>
             <Route path="/profile" component={Profile} />
@@ -61,6 +63,7 @@ const App = (props) => {
             <Route path="/landing" component={Landing} />
             <Route path="/map" component={Map} />
             <Route path="/streamchat" component={Stream} />
+            <Route path="/posts/:id" component={Post} />
           </Switch>
         ) : (
           <Switch>
@@ -69,6 +72,7 @@ const App = (props) => {
             <Route path="/signup" component={Signup} />
           </Switch>
         )}
+        <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
       </div>
     </ThemeContext.Provider>
   );
@@ -86,6 +90,7 @@ const mapDispatch = (dispatch) => {
   return {
     loadInitialData: () => dispatch(me()),
     fetchRestaurants: () => dispatch(fetchRestaurants()),
+    loadPosts: ()=> dispatch(loadPosts())
   };
 };
 
