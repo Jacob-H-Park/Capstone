@@ -36,8 +36,19 @@ async function seed() {
       title: "NYC New Restaurant",
       userId: users[0].id,
       wifi: "Free-Wifi"
+    }),
+
+    Post.create({
+      review: 'I went to a cafe in Williamsburg today called Qahwah House! Their Adeni Chai drink is so good and there is free wifi so you can do work there!',
+      location: "Williamsburg, Brooklyn",
+      title: "Perfect Cafe Spot!",
+      userId: users[0].id,
+      wifi: "Free-Wifi"
     })
   ])
+
+  
+
 
   const restaurants = await Promise.all([
     Restaurant.create({

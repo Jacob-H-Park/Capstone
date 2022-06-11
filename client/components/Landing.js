@@ -17,9 +17,13 @@ const Landing = () => {
   const auth = useSelector(({ auth }) => auth);
   console.log(auth);
   console.log(restaurants);
-  console.log(posts);
+  console.log("this is posts on landing", posts);
 
   if (!restaurants) {
+    return null;
+  }
+
+  if(!posts) {
     return null;
   }
 
