@@ -1,13 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import { Route } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import Posts from "./Posts";
 
 
 const Profile = () => {
   const auth = useSelector(({ auth }) => auth);
+  console.log("this is auth id", auth.id)
+  const posts = useSelector(({ posts }) => {
+    return posts.filter((post) => post.userId === auth.id)
+  })
+  console.log("this is posts on profile", posts)
   const [data, setData] = useState({});
+
+ if(!posts) {
+   return null;
+ }
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -75,11 +84,29 @@ const Profile = () => {
           <p>{data.weather ? <span>{data.weather[0].main}</span> : null}</p>
         </div>
       </div>
-      <div>
+     
       <h2>My Reviews</h2>  
-      <Route component={Posts} />
+      <div>
+      {posts.map((post) => {
+         return (
+          <div>
+          <div>
+          <Link to= {`/posts/${post.id}`}><h4> {post.title} </h4></Link>
+          </div>
+          <div>
+              {post.location}
+          </div>
+          <div>
+              {post.wifi}
+          </div>
+          <div>
+              {post.review}
+          </div>
+          </div>
+         )
+         })}
       </div>
-    </div>
+      </div>
   );
 };
 

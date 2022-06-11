@@ -5,7 +5,7 @@ import UpdatePost from './UpdatePost'
 import {Link} from 'react-router-dom';
 
 
-const Posts = ({ posts, deletePost }) => {
+const Posts = ({ posts }) => {
    return (
       <div>
        <div>
@@ -14,11 +14,12 @@ const Posts = ({ posts, deletePost }) => {
              posts.map(post => {
                return (
                  <div key={post.id}>
-                  <Link to= {`/posts/${post.id}`}><h4> {post.title} </h4></Link>
+                  <h4> {post.title} </h4>
                     <span>Location: {post.location}</span>
                   <div>  {post.review} </div>
                   <div> {post.wifi}</div>
-                  <button onClick={()=> deletePost(post)}>Delete Review</button>
+                
+                  
                  </div>  
                )  
              })  
@@ -30,13 +31,7 @@ const Posts = ({ posts, deletePost }) => {
 }
 
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    deletePost: (post) => dispatch(deletePost(post))
-  }
-}
 
 export default connect(
    state => state,
-   mapDispatchToProps 
 )(Posts)

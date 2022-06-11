@@ -37,12 +37,13 @@ router.get("/:id", async(req, res, next) => {
 
 router.post("/", token, async (req ,res, next) => {
     try {
-      const {review, location, title, wifi} = req.body
+      const {review, location, title, wifi, userId} = req.body
       const post = await Post.create({
          review,
          location,
          title,
-         wifi
+         wifi,
+         userId
       })
       return res.json(post)
     } catch (e) {

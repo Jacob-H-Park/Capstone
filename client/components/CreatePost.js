@@ -9,7 +9,8 @@ class CreatePost extends Component {
       review: "",
       location: "",
       title: "",
-      wifi: ""
+      wifi: "",
+      userId: props.auth.id ? props.auth.id : 0
     };
     this.initialState = this.state
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -75,10 +76,14 @@ class CreatePost extends Component {
   }
 }
 
+const mapState = ({auth}) => {
+  return {auth}
+}
+
 const mapDispatchToProps = (dispatch, { history }) => {
   return {
     createPost: (post) => dispatch(createPost(post, history)),
   };
 };
 
-export default connect(null, mapDispatchToProps)(CreatePost);
+export default connect(mapState, mapDispatchToProps)(CreatePost);
