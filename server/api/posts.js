@@ -33,23 +33,6 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-<<<<<<< HEAD
-router.post("/", token, async (req ,res, next) => {
-    try {
-      const {review, location, title, wifi, userId} = req.body
-      const post = await Post.create({
-         review,
-         location,
-         title,
-         wifi,
-         userId
-      })
-      return res.json(post)
-    } catch (e) {
-      next (e)
-    }
-  })
-=======
 router.post("/", token, async (req, res, next) => {
   try {
     const { review, location, title, wifi, userId } = req.body;
@@ -65,7 +48,6 @@ router.post("/", token, async (req, res, next) => {
     next(e);
   }
 });
->>>>>>> 782fb0e (landing video and logo added, signup and login setup & style, routing changed to grant access to those who are logged in)
 
 router.delete("/:id", async (req, res, next) => {
   try {

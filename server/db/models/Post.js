@@ -13,15 +13,9 @@ const Post = db.define("post", {
     type: STRING,
   },
   wifi: {
-<<<<<<< HEAD
-    type: Sequelize.ENUM('Free-Wifi', 'Wifi Not Available', 'Wifi Costs Extra', ""),
-    defaultValue: "Wifi Not Available"
-  }
-})
-=======
     type: Sequelize.ENUM("Free-Wifi", "Wifi Not Available", "Wifi Costs Extra"),
+    defaultValue: "Wifi Not Available",
   },
 });
->>>>>>> 782fb0e (landing video and logo added, signup and login setup & style, routing changed to grant access to those who are logged in)
 
 module.exports = Post;

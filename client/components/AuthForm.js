@@ -47,7 +47,7 @@ const AuthForm = (props) => {
           }}
         >
           <div>
-            <Typography level="h4" component="h1">
+            <Typography ml={1} level="h4" component="h1">
               <b>Welcome!</b>
             </Typography>
             <Typography level="body2">Sign in to continue</Typography>
@@ -115,7 +115,7 @@ const AuthForm = (props) => {
               <div>Don't have an account?</div>
             )}
           </Typography>
-          <hr style={{ width: "95%", color: "gray" }} />
+          <hr style={{ width: "95%" }} />
 
           <Link to="/google">
             <Button
@@ -148,7 +148,7 @@ const mapDispatch = (dispatch, { history }) => {
       const formName = evt.target.name;
       const username = evt.target.username.value;
       const password = evt.target.password.value;
-
+      console.log("this is the formName", formName);
       //Stream
       const {
         data: { token, userId, username: streamUserName },
@@ -162,7 +162,6 @@ const mapDispatch = (dispatch, { history }) => {
       cookies.set("userId", userId);
 
       dispatch(authenticate(username, password, formName));
-      // history.push("/landing");
     },
   };
 };

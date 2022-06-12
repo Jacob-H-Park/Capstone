@@ -10,11 +10,7 @@ class CreatePost extends Component {
       location: "",
       title: "",
       wifi: "",
-<<<<<<< HEAD
-      userId: props.auth.id ? props.auth.id : 0
-=======
       userId: props.auth.id ? props.auth.id : 0,
->>>>>>> 782fb0e (landing video and logo added, signup and login setup & style, routing changed to grant access to those who are logged in)
     };
     this.initialState = this.state;
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -80,16 +76,9 @@ class CreatePost extends Component {
   }
 }
 
-<<<<<<< HEAD
-const mapState = ({auth}) => {
-  return {auth}
-}
-
-=======
 const mapState = ({ auth }) => {
   return { auth };
 };
->>>>>>> 782fb0e (landing video and logo added, signup and login setup & style, routing changed to grant access to those who are logged in)
 const mapDispatchToProps = (dispatch, { history }) => {
   return {
     createPost: (post) => dispatch(createPost(post, history)),
