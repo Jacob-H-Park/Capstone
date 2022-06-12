@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { withRouter, Redirect, Route, Switch } from "react-router-dom";
 
 import history from "./history";
-import { Login, Signup } from "./components/AuthForm";
+
 import Profile from "./components/Profile";
 import { me } from "./store";
 import Navbar from "./components/Navbar";
@@ -15,6 +15,7 @@ import { fetchRestaurants } from "./store/restaurants";
 import { loadPosts } from "./store/posts";
 import Posts from "./components/Posts";
 import Post from "./components/Post";
+import BasicModal from "./components/ModalTest";
 import ReactSwitch from "react-switch";
 import Map from "./components/Search";
 import alanBtn from "@alan-ai/alan-sdk-web";
@@ -55,24 +56,22 @@ const App = (props) => {
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <div id={theme}>
-        <Navbar />
         {isLoggedIn ? (
-          <Switch>
-            <Route path="/profile" component={Profile} />
-            <Route path="/welcome" component={Welcome} />
-            <Route path="/landing" component={Landing} />
-            <Route path="/map" component={Map} />
-            <Route path="/streamchat" component={Stream} />
-            <Route path="/posts/:id" component={Post} />
-          </Switch>
+          <>
+            <Navbar />
+            <Switch>
+              <Route path="/profile" component={Profile} />
+              <Route path="/welcome" component={Welcome} />
+              <Route path="/" component={Landing} />
+              <Route path="/map" component={Map} />
+              <Route path="/streamchat" component={Stream} />
+              <Route path="/posts/:id" component={Post} />
+            </Switch>
+            <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
+          </>
         ) : (
-          <Switch>
-            <Route exact path="/" component={Login} />
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
-          </Switch>
+          <Route exact path="/" component={BasicModal} />
         )}
-        <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
       </div>
     </ThemeContext.Provider>
   );
@@ -90,7 +89,7 @@ const mapDispatch = (dispatch) => {
   return {
     loadInitialData: () => dispatch(me()),
     fetchRestaurants: () => dispatch(fetchRestaurants()),
-    loadPosts: ()=> dispatch(loadPosts())
+    loadPosts: () => dispatch(loadPosts()),
   };
 };
 
