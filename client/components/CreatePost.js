@@ -27,18 +27,21 @@ class CreatePost extends Component {
   render() {
     const { review, location, title, wifi } = this.state;
     const { handleSubmit, handleChange } = this;
+    const {username} = this.props.auth
+
+    console.log("this is username", username)
     return (
       <div>
-        <form onSubmit={handleSubmit}>
-          <input
+        <form className='addform' onSubmit={handleSubmit}>
+          <input className="title"
             style={{ color: "black" }}
             name="title"
             value={title}
             type="text"
-            placeholder="Post Title"
+            placeholder="Title"
             onChange={handleChange}
           />
-          <input
+          <input className="location"
             style={{ color: "black" }}
             name="location"
             value={location}
@@ -47,13 +50,13 @@ class CreatePost extends Component {
             onChange={handleChange}
           />
 
-          <select
+          <select 
            name='wifi'
            value={wifi || ""}
            placeholder='Wifi Availability'
            onChange={handleChange}
            >
-            <option value=''>Select Wifi Availability</option> 
+            <option value=''>Wifi Availability?</option> 
             <option value='Free-Wifi'>Free-Wifi</option>
             <option value='Wifi Not Available'>Wifi Not Available</option>
             <option value='Wifi Costs Extra'>Wifi Costs Extra</option>
@@ -69,7 +72,7 @@ class CreatePost extends Component {
             onChange={handleChange}
           ></textarea>
 
-          <button>Share Review</button>
+          <button className='reviewbutton'>Post</button>
         </form>
       </div>
     );
