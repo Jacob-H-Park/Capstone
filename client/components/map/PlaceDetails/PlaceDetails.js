@@ -10,9 +10,11 @@ import {
   Chip,
 } from "@material-ui/core";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
+import CustomizedDialogs from "../../ShareDialog";
 import PhoneIcon from "@material-ui/icons/Phone";
+import { Link, Route } from "react-router-dom";
 import Rating from "@material-ui/lab/Rating";
-
+import SharePost from "../../SharePost";
 import useStyles from "./styles.js";
 
 const PlaceDetails = ({ place, selected, refProp }) => {
@@ -35,6 +37,7 @@ const PlaceDetails = ({ place, selected, refProp }) => {
         <Typography gutterBottom variant="h5">
           {place.name}
         </Typography>
+
         <Box display="flex" justifyContent="space-between" my={2}>
           <Rating name="read-only" value={Number(place.rating)} readOnly />
           <Typography component="legend">
@@ -53,7 +56,6 @@ const PlaceDetails = ({ place, selected, refProp }) => {
             {place.ranking}
           </Typography>
         </Box>
-
         {place?.cuisine?.map(({ name }) => (
           <Chip key={name} size="small" label={name} className={classes.chip} />
         ))}
@@ -82,17 +84,13 @@ const PlaceDetails = ({ place, selected, refProp }) => {
         <Button
           size="small"
           color="primary"
-          onClick={() => window.open(place.web_url, "_blank")}
-        >
-          Trip Advisor
-        </Button>
-        <Button
-          size="small"
-          color="primary"
           onClick={() => window.open(place.website, "_blank")}
         >
           Website
         </Button>
+        <CustomizedDialogs>
+          <SharePost place={place} />
+        </CustomizedDialogs>
       </CardActions>
     </Card>
   );

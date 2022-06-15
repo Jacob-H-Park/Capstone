@@ -82,6 +82,14 @@ form {
   border-radius: 20px;
 }
 
+.shareform {
+  box-sizing: border-box;
+  width: 580px;
+  padding: 20px;
+  margin: 0.5rem;
+
+}
+
 .title {
   padding: 7px;
   margin: 5px;

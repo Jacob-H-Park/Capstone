@@ -10,10 +10,9 @@ import { Route } from "react-router-dom";
 import CreatePost from "./CreatePost";
 import Posts from "./Posts";
 
-
 const Landing = () => {
   const restaurants = useSelector(({ restaurants }) => restaurants);
-  const posts = useSelector(({ posts}) => posts);
+  const posts = useSelector(({ posts }) => posts);
   const auth = useSelector(({ auth }) => auth);
   console.log(auth);
   console.log(restaurants);
@@ -23,26 +22,21 @@ const Landing = () => {
     return null;
   }
 
-  if(!posts) {
+  if (!posts) {
     return null;
   }
 
   return (
     <div className="landing">
+      <CreatePost />
       <Trending />
-
       <ByCity />
-
       <AllRestaurants />
-
       <Favorites />
-  
-        <div id="landing">
-          <h1> Welcome {auth.username}</h1>
-          <Route component={CreatePost} />
-          <h2>My Feed</h2>
-          <Route component={Posts} />
-        </div>
+      <div id="landing">
+        <h2>My Feed</h2>
+        <Route component={Posts} />
+      </div>
     </div>
   );
 };
