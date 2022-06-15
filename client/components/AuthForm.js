@@ -20,12 +20,12 @@ const googleLogin = () => {
 };
 
 const AuthForm = (props) => {
-  const [isSignUp, setIsSignUp] = useState(true);
+  const [isSignUp, setIsSignUp] = useState(false);
   const switchMode = () => {
     setIsSignUp((prevIsSignup) => !prevIsSignup);
   };
 
-  const { name, handleSubmit, error } = props;
+  const { handleSubmit, error } = props;
 
   return (
     <>
@@ -148,7 +148,7 @@ const mapDispatch = (dispatch, { history }) => {
       const formName = evt.target.name;
       const username = evt.target.username.value;
       const password = evt.target.password.value;
-      console.log("this is the formName", formName);
+
       //Stream
       const {
         data: { token, userId, username: streamUserName },

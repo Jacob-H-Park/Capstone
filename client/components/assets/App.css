@@ -1,6 +1,6 @@
 :root {
   --primary-color: #005fff;
-  --primary-color-alpha: #005fff1a;
+  --primary-color-alpha: rgba(121, 242, 248, 0.102);
 }
 
 html,
