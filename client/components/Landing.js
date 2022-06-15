@@ -5,7 +5,6 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import loopedInLogo from "../../public/photos/LoopedIn2.png";
 import landingVideo from "../../public/landing.mp4";
-
 import AuthForm from "./AuthForm";
 
 const Landing = () => {
