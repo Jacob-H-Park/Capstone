@@ -1,21 +1,21 @@
-const db = require("../db")
+const db = require("../db");
 
-const {STRING, Sequelize} = require("sequelize")
+const { STRING, INTEGER, Sequelize } = db.Sequelize;
 
 const Post = db.define("post", {
   review: {
-    type: STRING   
+    type: STRING,
   },
   location: {
-    type: STRING 
+    type: STRING,
   },
   title: {
-    type: STRING  
+    type: STRING,
   },
   wifi: {
-    type: Sequelize.ENUM('Free-Wifi', 'Wifi Not Available', 'Wifi Costs Extra', ""),
-    defaultValue: "Wifi Not Available"
-  }
-})
+    type: Sequelize.ENUM("Free-Wifi", "Wifi Not Available", "Wifi Costs Extra"),
+    defaultValue: "Wifi Not Available",
+  },
+});
 
-module.exports = Post
+module.exports = Post;

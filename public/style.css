@@ -1,6 +1,7 @@
 body {
   font-family: sans-serif;
   margin: 0;
+  overflow: hidden;
 }
 
 a {
@@ -73,6 +74,30 @@ form {
   height:auto
 }
 
+.landingVideo {
+  position: absolute;
+  z-index: -2;
+  top:0;
+  left:0;
+  width:100%;
+  height:100vh;
+  object-fit: cover;
+}
+
+.landingLogo {
+  position: absolute;
+  top: 34%;
+  left: 44%;
+  height: 70px;
+  width: auto; 
+
+}
+
+.login {
+  position: absolute;
+  top: 41%;
+  left: 45.5%;
+}
 .addform {
   box-sizing: border-box;
   width: 600px;
@@ -188,4 +213,3 @@ textarea {
   justify-content: space-evenly;
 
 }
-

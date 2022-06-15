@@ -1,23 +1,22 @@
 import React, { useState, useEffect, createContext } from "react";
 import { connect } from "react-redux";
-import { withRouter, Redirect, Route, Switch } from "react-router-dom";
+import { withRouter, Route, Switch } from "react-router-dom";
+import ReactSwitch from "react-switch";
+import alanBtn from "@alan-ai/alan-sdk-web";
 
 import history from "./history";
-import { Login, Signup } from "./components/AuthForm";
-import Profile from "./components/Profile";
 import { me } from "./store";
+import { loadPosts } from "./store/posts";
+import { fetchRestaurants } from "./store/restaurants";
+
+import Profile from "./components/Profile";
 import Navbar from "./components/Navbar";
 import Welcome from "./components/Welcome";
-import Landing from "./components/Landing";
+import Home from "./components/Home";
 import Stream from "./components/Stream";
-
-import { fetchRestaurants } from "./store/restaurants";
-import { loadPosts } from "./store/posts";
-import Posts from "./components/Posts";
 import Post from "./components/Post";
-import ReactSwitch from "react-switch";
+import Landing from "./components/Landing";
 import Map from "./components/Search";
-import alanBtn from "@alan-ai/alan-sdk-web";
 
 export const ThemeContext = createContext(null);
 
@@ -34,7 +33,7 @@ const App = (props) => {
       key: process.env.ALAN_KEY,
       onCommand: ({ command, articles, number }) => {
         if (command === "homepage") {
-          history.push("/landing");
+          history.push("/");
         } else if (command === "map") {
           history.push("/map");
         } else if (command === "profile") {
@@ -55,24 +54,22 @@ const App = (props) => {
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <div id={theme}>
-        <Navbar />
         {isLoggedIn ? (
-          <Switch>
-            <Route path="/profile" component={Profile} />
-            <Route path="/welcome" component={Welcome} />
-            <Route path="/landing" component={Landing} />
-            <Route path="/map" component={Map} />
-            <Route path="/streamchat" component={Stream} />
-            <Route path="/posts/:id" component={Post} />
-          </Switch>
+          <>
+            <Navbar />
+            <Switch>
+              <Route path="/profile" component={Profile} />
+              <Route path="/welcome" component={Welcome} />
+              <Route exact path="/" component={Home} />
+              <Route path="/map" component={Map} />
+              <Route path="/streamchat" component={Stream} />
+              <Route path="/posts/:id" component={Post} />
+            </Switch>
+            <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
+          </>
         ) : (
-          <Switch>
-            <Route exact path="/" component={Login} />
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
-          </Switch>
+          <Route exact path="/" component={Landing} />
         )}
-        <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
       </div>
     </ThemeContext.Provider>
   );
@@ -90,7 +87,7 @@ const mapDispatch = (dispatch) => {
   return {
     loadInitialData: () => dispatch(me()),
     fetchRestaurants: () => dispatch(fetchRestaurants()),
-    loadPosts: ()=> dispatch(loadPosts())
+    loadPosts: () => dispatch(loadPosts()),
   };
 };
 

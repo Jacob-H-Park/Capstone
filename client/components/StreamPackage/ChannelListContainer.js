@@ -17,7 +17,7 @@ const SideBar = () => (
     </div>
     <div className="channel-list__sidebar__icon2">
       <div className="icon1__inner">
-        <Link to="/landing">
+        <Link to="/">
           <img src={LogoutIcon} alt="Logout" width="30" />
         </Link>
       </div>

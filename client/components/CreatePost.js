@@ -10,16 +10,16 @@ class CreatePost extends Component {
       location: "",
       title: "",
       wifi: "",
-      userId: props.auth.id ? props.auth.id : 0
+      userId: props.auth.id ? props.auth.id : 0,
     };
-    this.initialState = this.state
+    this.initialState = this.state;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
   handleSubmit(e) {
     e.preventDefault();
     this.props.createPost({ ...this.state });
-    this.setState(() => this.initialState)
+    this.setState(() => this.initialState);
   }
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
@@ -29,7 +29,6 @@ class CreatePost extends Component {
     const { handleSubmit, handleChange } = this;
     const {username} = this.props.auth
 
-    console.log("this is username", username)
     return (
       <div>
         <form className='addform' onSubmit={handleSubmit}>
@@ -60,7 +59,6 @@ class CreatePost extends Component {
             <option value='Free-Wifi'>Free-Wifi</option>
             <option value='Wifi Not Available'>Wifi Not Available</option>
             <option value='Wifi Costs Extra'>Wifi Costs Extra</option>
-            
            </select>
 
           <textarea
@@ -79,10 +77,9 @@ class CreatePost extends Component {
   }
 }
 
-const mapState = ({auth}) => {
-  return {auth}
-}
-
+const mapState = ({ auth }) => {
+  return { auth };
+};
 const mapDispatchToProps = (dispatch, { history }) => {
   return {
     createPost: (post) => dispatch(createPost(post, history)),
