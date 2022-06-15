@@ -1,7 +1,6 @@
 body {
   font-family: sans-serif;
   margin: 0;
-  overflow: hidden;
 }
 
 a {
@@ -93,11 +92,16 @@ form {
 
 }
 
-.login {
+.login-button {
   position: absolute;
   top: 41%;
   left: 45.5%;
 }
+
+.login-page {
+  overflow: hidden;
+}
+
 .addform {
   box-sizing: border-box;
   width: 600px;
@@ -213,3 +217,4 @@ textarea {
   justify-content: space-evenly;
 
 }
+

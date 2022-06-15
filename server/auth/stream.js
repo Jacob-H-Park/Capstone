@@ -29,6 +29,9 @@ router.post("/signup", async (req, res) => {
       hashedPassword,
       role: "user",
     });
+    await client.updateAppSettings({
+      enforce_unique_usernames: "app",
+    });
 
     res.status(200).json({ token, username, userId, hashedPassword });
   } catch (error) {

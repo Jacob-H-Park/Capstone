@@ -13,9 +13,9 @@ const Landing = () => {
   const handleClose = () => setOpen(false);
 
   return (
-    <>
+    <div className="login-page">
       <img className="landingLogo" src={loopedInLogo} />
-      <div className="login">
+      <div className="login-button">
         <Button sx={{ fontSize: 18, color: "#DFD2C9" }} onClick={handleOpen}>
           Signup or Login
         </Button>
@@ -31,7 +31,7 @@ const Landing = () => {
       <video className="landingVideo" loop controls={false} muted autoPlay>
         <source src={landingVideo} type="video/mp4" />
       </video>
-    </>
+    </div>
   );
 };
 
