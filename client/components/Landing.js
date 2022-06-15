@@ -1,49 +1,38 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Modal from "@mui/material/Modal";
+import loopedInLogo from "../../public/photos/LoopedIn2.png";
+import landingVideo from "../../public/landing.mp4";
 
-import ByCity from "./ByCity";
-import AllRestaurants from "./AllRestaurants";
-import Trending from "./Trending";
-import Favorites from "./Favorites";
-import Table from "./Table";
-import { Route } from "react-router-dom";
-import CreatePost from "./CreatePost";
-import Posts from "./Posts";
-
+import AuthForm from "./AuthForm";
 
 const Landing = () => {
-  const restaurants = useSelector(({ restaurants }) => restaurants);
-  const posts = useSelector(({ posts}) => posts);
-  const auth = useSelector(({ auth }) => auth);
-  console.log(auth);
-  console.log(restaurants);
-  console.log("this is posts on landing", posts);
-
-  if (!restaurants) {
-    return null;
-  }
-
-  if(!posts) {
-    return null;
-  }
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   return (
-    <div className="landing">
-      <Trending />
-
-      <ByCity />
-
-      <AllRestaurants />
-
-      <Favorites />
-  
-        <div id="landing">
-          <h1> Welcome {auth.username}</h1>
-          <Route component={CreatePost} />
-          <h2>My Feed</h2>
-          <Route component={Posts} />
-        </div>
-    </div>
+    <>
+      <img className="landingLogo" src={loopedInLogo} />
+      <div className="login">
+        <Button sx={{ fontSize: 18, color: "#DFD2C9" }} onClick={handleOpen}>
+          Signup or Login
+        </Button>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <AuthForm />
+        </Modal>
+      </div>
+      <video className="landingVideo" loop controls={false} muted autoPlay>
+        <source src={landingVideo} type="video/mp4" />
+      </video>
+    </>
   );
 };
 

@@ -60,7 +60,7 @@ const Navbar = ({ isLoggedIn }) => {
               backgroundColor: "white",
             }}
           >
-            <Link to="/landing">
+            <Link to="/">
               <img className="logo" src="./photos/LoopedIn2.png" />
             </Link>
           </Typography>
@@ -88,107 +88,54 @@ const Navbar = ({ isLoggedIn }) => {
               <Avatar alt="Remy Sharp" src="/favicon.ico" />
             </IconButton>
 
-            {isLoggedIn ? (
-              <Menu
-                sx={{ mt: "45px" }}
-                id="menu-appbar"
-                anchorEl={anchorElUser}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                open={Boolean(anchorElUser)}
-                onClick={handleCloseUserMenu}
-              >
-                <Link to="/profile">
-                  <MenuItem
-                    key="profile"
-                    onClick={() => {
-                      handleCloseUserMenu;
-                    }}
-                  >
-                    <Typography textAlign="center">Profile</Typography>
-                  </MenuItem>
-                </Link>
-
-                <Link to="/streamchat">
-                  <MenuItem
-                    key="chat"
-                    onClick={() => {
-                      handleCloseUserMenu;
-                    }}
-                  >
-                    <Typography textAlign="center">Chat</Typography>
-                  </MenuItem>
-                </Link>
-
+            <Menu
+              sx={{ mt: "45px" }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={Boolean(anchorElUser)}
+              onClick={handleCloseUserMenu}
+            >
+              <Link to="/profile">
                 <MenuItem
-                  key="logout"
+                  key="profile"
                   onClick={() => {
                     handleCloseUserMenu;
-                    dispatch(logout());
                   }}
                 >
-                  <Typography textAlign="center">Logout</Typography>
+                  <Typography textAlign="center">Profile</Typography>
                 </MenuItem>
-              </Menu>
-            ) : (
-              <Menu
-                sx={{ mt: "45px" }}
-                id="menu-appbar"
-                anchorEl={anchorElUser}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
+              </Link>
+
+              <Link to="/streamchat">
+                <MenuItem
+                  key="chat"
+                  onClick={() => {
+                    handleCloseUserMenu;
+                  }}
+                >
+                  <Typography textAlign="center">Chat</Typography>
+                </MenuItem>
+              </Link>
+
+              <MenuItem
+                key="logout"
+                onClick={() => {
+                  handleCloseUserMenu;
+                  dispatch(logout());
                 }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                open={Boolean(anchorElUser)}
-                onClick={handleCloseUserMenu}
               >
-                <Link to="/login">
-                  <MenuItem
-                    key="login"
-                    onClick={() => {
-                      handleCloseUserMenu;
-                    }}
-                  >
-                    <Typography textAlign="center">Login</Typography>
-                  </MenuItem>
-                </Link>
-
-                <Link to="/google">
-                  <MenuItem
-                    key="google-login"
-                    onClick={() => {
-                      handleCloseUserMenu;
-                      googleLogin();
-                    }}
-                  >
-                    <Typography textAlign="center">Google Login</Typography>
-                  </MenuItem>
-                </Link>
-
-                <Link to="/signup">
-                  <MenuItem
-                    key="signup"
-                    onClick={() => {
-                      handleCloseUserMenu;
-                    }}
-                  >
-                    <Typography textAlign="center">Signup</Typography>
-                  </MenuItem>
-                </Link>
-              </Menu>
-            )}
+                <Typography textAlign="center">Logout</Typography>
+              </MenuItem>
+            </Menu>
           </Box>
         </Toolbar>
       </Container>
