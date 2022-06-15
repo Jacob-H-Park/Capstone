@@ -59,14 +59,15 @@ form div {
 
 textarea {
   width: 600px;
-  height: 150px;
+  height: 50px;
 }
 
 form {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-content: flex-start;
   align-items: flex-start;
+  flex-wrap: wrap;
 }
 .topPhoto{
   width:400px;
@@ -96,4 +97,111 @@ form {
   position: absolute;
   top: 41%;
   left: 45.5%;
+}
+.addform {
+  box-sizing: border-box;
+  width: 600px;
+  padding: 20px;
+  margin: 0.5rem;
+  border: 1px solid black;
+  border-radius: 20px;
+}
+
+.title {
+  padding: 7px;
+  margin: 5px;
+  width: 300px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+}
+
+.title:focus, .location:focus, select:focus, textarea:focus {
+  background-color: aliceblue;
+}
+
+.location {
+  width: 300px;
+  padding: 7px;
+  margin: 5px;
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background-image: url('locate.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+}
+
+select {
+  border: none;
+  border-bottom: 1px solid black;
+  width: 300px;
+  padding: 7px;
+  margin: 5px;
+  outline: none;
+}
+
+textarea {
+  border: none;
+  border-bottom: 1px solid black;
+  width: 500px;
+  padding: 7px;
+  margin: 10px;
+  outline: none;
+}
+
+
+/* CSS */
+.reviewbutton {
+  margin:3px;
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid #1A1A1A;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: #3B3B3B;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  min-height: 60px;
+  min-width: 0;
+  outline: none;
+  padding: 16px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
+  will-change: transform;
+}
+
+.reviewbutton:disabled {
+  pointer-events: none;
+}
+
+.reviewbutton:hover {
+  color: #fff;
+  background-color: #1A1A1A;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.reviewbutton:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+.edit {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
 }

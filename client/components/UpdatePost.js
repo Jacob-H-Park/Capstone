@@ -40,16 +40,16 @@ export class UpdatePost extends React.Component {
       const {review, title, location, wifi} = this.state
       const {handleSubmit, handleChange} = this
       return (
-          <div>
-             <form onSubmit={handleSubmit}>
-                <input
+          <div className="edit">
+             <form className='addform' onSubmit={handleSubmit}>
+                <input className='title'
                   name="title" 
                   type="text"
                   value={title || ""}
                   placeholder="Post Title"
                   onChange={handleChange}
                 />
-                <input 
+                <input className='location'
                   name="location"
                   type="text"
                   value={location || ""}
@@ -77,7 +77,7 @@ export class UpdatePost extends React.Component {
                   onChange={handleChange}
                 />
 
-             <button onClick={handleSubmit}>Edit Review</button>
+             <button className="reviewbutton" onClick={handleSubmit}>Edit Review</button>
              </form> 
           </div>
       )
