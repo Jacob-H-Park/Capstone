@@ -23,6 +23,9 @@ const SingleRestaurant = () => {
         {restaurant.name}
         </div>
        <img src={restaurant.image_url}/>
+       <div> 
+        {restaurant.rating}
+       </div>
        <div>
        <Route component={Posts} />
        </div>

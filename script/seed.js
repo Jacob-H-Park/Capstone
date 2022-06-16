@@ -35,7 +35,8 @@ async function seed() {
       location: "East Village, NYC",
       title: "NYC New Restaurant",
       userId: users[0].id,
-      wifi: "Free-Wifi"
+      wifi: "Free-Wifi",
+      restaurantId: "o0BsnV6Fod42X8TJ-n_4QA"   
     }),
 
     Post.create({
@@ -43,7 +44,8 @@ async function seed() {
       location: "Williamsburg, Brooklyn",
       title: "Perfect Cafe Spot!",
       userId: users[0].id,
-      wifi: "Free-Wifi"
+      wifi: "Free-Wifi",
+      restaurantId: "kpxXi23lUQkeJQH-2BtzDw"
     })
   ])
 

@@ -1,6 +1,6 @@
 const db = require("../db");
 
-const { STRING, INTEGER, Sequelize } = db.Sequelize;
+const { STRING, Sequelize } = db.Sequelize;
 
 const Post = db.define("post", {
   review: {
