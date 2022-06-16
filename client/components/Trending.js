@@ -28,7 +28,7 @@ const Trending= () => {
               <div>
                 <h1> Welcome {auth.username}</h1>
                 <h2> Here are LoopedIn's Top Trending Restaurants! </h2>
-                <Box sx={{ width: 500, minHeight: 829 }}>
+                <Box sx={{ width: 800, minHeight: 829 }}>
                             <Masonry columns={3} spacing={2}>
                               
                               {restaurants.map((restaurant, index) =>  (

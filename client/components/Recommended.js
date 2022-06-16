@@ -19,14 +19,23 @@ const Recommended= () => {
                 <h2> {auth.username} , Loopedin recommends the following resturants in New York City! </h2>
                 <div class="row">
               <div class="column">
+                <Link to={`/trending/${restaurants[0].alias}`}>
                 <img src={restaurants[0].image_url} style={{width:"100%"}}/>
+                </Link>
               </div>
+             
               <div class="column">
+                <Link to={`/trending/${restaurants[1].alias}`}>
                 <img src={restaurants[1].image_url} style={{width:"100%"}} />
+                </Link>
               </div>
+             
               <div class="column">
-                <img src={restaurants[2].image_url} style={{width:"100%"}} />
+                <Link to={`/trending/${restaurants[9].alias}`}>
+                <img src={restaurants[9].image_url} style={{width:"100%"}} />
+                </Link>
               </div>
+            
             </div> 
                
                </div> )}
