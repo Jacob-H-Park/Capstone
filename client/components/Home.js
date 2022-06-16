@@ -1,9 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import ByCity from "./ByCity";
+import ByCity from "./Recommended";
 import Trending from "./Trending";
-import Favorites from "./Favorites";
 import { Route } from "react-router-dom";
 import CreatePost from "./CreatePost";
 import Posts from "./Posts";

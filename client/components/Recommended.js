@@ -7,7 +7,7 @@ import Paper from '@mui/material/Paper';
 import Masonry from '@mui/lab/Masonry';
 import { styled } from '@mui/material/styles';
 
-const Trending= () => {
+const Recommended= () => {
   const {businesses: restaurants} = useSelector(({ restaurants }) => restaurants);
   const auth = useSelector(({ auth }) => auth);
   const Label = styled(Paper)(({ theme }) => ({
@@ -23,16 +23,13 @@ const Trending= () => {
       if (!restaurants) {
           return null;
         }
-
           return (
               <div>
-                <h1> Welcome {auth.username}</h1>
-                <h2> Here are LoopedIn's Top Trending Restaurants! </h2>
+                <h2> {auth.username} , Loopedin recommends the following resturants in New York City! </h2>
                 <Box sx={{ width: 500, minHeight: 829 }}>
                             <Masonry columns={3} spacing={2}>
                               
-                              {restaurants.map((restaurant, index) =>  (
-                                
+                              {restaurants.map((restaurant, index) => (
                                 <div key={index}>
                                   <Link to={`/trending/${restaurant.alias}`}>
                                   <Label>{restaurant.name}</Label>
@@ -58,20 +55,9 @@ const Trending= () => {
               )
           }
         
-          export default Trending;
+          export default Recommended;
 
-
-          /* { <ul >
-                 {restaurants.map((restaurant,idx) => {
-                   if(restaurant.rating === 5 && idx<15)
-            return (
-              <li key={restaurant.id}>
-                Restaurant: {restaurant.name}
-                <br></br>
-                Rating: {restaurant.rating}
-                <br></br>
-                <Link to={`/trending/${restaurant.alias}`}> <img className="topPhoto"src={restaurant.image_url} ></img> </Link>
-              </li>
-            )
-                 })}
-                 </ul> } */
+      
+      
+ 
+  
