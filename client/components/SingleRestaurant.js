@@ -3,6 +3,11 @@ import {connect, useSelector} from "react-redux";
 import {Link, Route} from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Posts from "./Posts";
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { Button, CardActionArea, CardActions } from '@mui/material';
 
 
 const SingleRestaurant = () => {
@@ -19,13 +24,11 @@ const SingleRestaurant = () => {
 
   return (
     <div>
-        <div>
-        {restaurant.name}
-        </div>
-       <img src={restaurant.image_url}/>
-       <div>
+      <h1 id="singlePlace"> {restaurant.name} </h1>
+      <img id="singleImage" src={restaurant.image_url} />
+      <Link to='/'> Home page </Link>
        <Route component={Posts} />
-       </div>
+  
     </div>
   )
 }

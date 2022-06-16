@@ -1,12 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import ByCity from "./ByCity";
+import Recommended from "./Recommended";
 import Trending from "./Trending";
-import Favorites from "./Favorites";
 import { Route } from "react-router-dom";
 import CreatePost from "./CreatePost";
 import Posts from "./Posts";
+
 
 const Home = () => {
   const restaurants = useSelector(({ restaurants }) => restaurants);
@@ -23,8 +23,10 @@ const Home = () => {
 
   return (
     <div className="landing">
+      <Recommended />
       <Trending />
-      <ByCity />
+     
+      
       <div id="landing">
         <h1> Welcome {auth.username}</h1>
         <Route component={CreatePost} />
