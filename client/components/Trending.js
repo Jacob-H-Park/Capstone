@@ -1,20 +1,16 @@
 
-
 import React from "react";
 import { useSelector } from "react-redux";
+import {Link} from "react-router-dom";
 
 const Trending= () => {
   const {businesses: restaurants} = useSelector(({ restaurants }) => restaurants);
   const auth = useSelector(({ auth }) => auth);
   
-
       if (!restaurants) {
           return null;
         }
-
           return (
-
-
               <div>
                 <h1> Welcome {auth.username}</h1>
                 <h2> {auth.username} , we recommend the following resturants! </h2>
@@ -27,7 +23,7 @@ const Trending= () => {
                 <br></br>
                 Rating: {restaurant.rating}
                 <br></br>
-                <img className="topPhoto"src={restaurant.image_url} ></img>
+                <Link to={`/trending/${restaurant.alias}`}> <img className="topPhoto"src={restaurant.image_url} ></img> </Link>
               </li>
             )
                  })}
