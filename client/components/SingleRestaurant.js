@@ -24,31 +24,9 @@ const SingleRestaurant = () => {
 
   return (
     <div>
-      <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          height="300"
-          margin="10px"
-          image={`${restaurant.image_url}`}
-          alt={restaurant.name}
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {restaurant.name}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {restaurant.name}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-      </CardActions>
-    </Card>
-     
+      <h1 id="singlePlace"> {restaurant.name} </h1>
+      <img id="singleImage" src={restaurant.image_url} />
+      <Link to='/'> Home page </Link>
        <Route component={Posts} />
   
     </div>
