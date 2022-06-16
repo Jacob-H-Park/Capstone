@@ -12,6 +12,11 @@ Post.belongsTo(User)
 User.hasMany(Post)
 
 
+Post.belongsTo(Restaurant)
+Restaurant.hasMany(Post)
+
+
+
 module.exports = {
   db,
   models: {
