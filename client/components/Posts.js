@@ -10,19 +10,32 @@ import { IconButton } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useSelector } from 'react-redux';
 import { Avatar } from '@mui/material';
-import { red } from '@mui/material/colors';
-import { grey } from '@mui/material/colors';
+import {useParams} from "react-router-dom";
+
 
 
 const Posts = ({ posts }) => {
   const auth = useSelector(({ auth }) => auth.username);
+  const {businesses: restaurants} = useSelector(({ restaurants }) => restaurants);
+
+  const {alias} = useParams();
+
+
+  if(!restaurants || !posts) {
+    return null
+}
+
+  const restaurant = restaurants.filter((place) => place.alias === alias)[0]
+  const specificPosts = posts.filter((post) => post.restaurantName === restaurant.alias)
   
+
+
    return (
       <div>
        <div>
           <ul>
            {
-             posts.map(post => {
+             specificPosts.map(post => {
                return (
                 <Card sx={{ maxWidth: 600, m:2, boxShadow: 3, variant: "outlined"}}>
                 <CardHeader sx={{ mb: -1}} style={{backgroundColor: "#b3e5fc"}}

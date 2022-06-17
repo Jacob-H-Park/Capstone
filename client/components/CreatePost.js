@@ -8,10 +8,11 @@ class CreatePost extends Component {
     super(props);
     this.state = {
       review: "",
-      location: props.restaurant.alias ? props.restaurant.alias : "", 
       title: "",
       wifi: "",
       userId: props.auth.id ? props.auth.id : 0,
+      restaurantName: props.restaurant.alias ? props.restaurant.alias : "",
+
     };
     this.initialState = this.state;
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,7 +27,7 @@ class CreatePost extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
   render() {
-    const { review, location, title, wifi } = this.state;
+    const { review, restaurantName, title, wifi } = this.state;
     const { handleSubmit, handleChange } = this;
     const {username} = this.props.auth
     console.log(this.props)
@@ -44,7 +45,7 @@ class CreatePost extends Component {
           <input className="location"
             style={{ color: "black" }}
             name="location"
-            value={location}
+            value={restaurantName}
             type="text"
             placeholder="Location"
             onChange={handleChange}

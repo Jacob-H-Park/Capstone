@@ -16,6 +16,7 @@ import { Avatar } from '@mui/material';
 import { red } from '@mui/material/colors';
 import { grey } from '@mui/material/colors';
 
+
  
 
 
@@ -34,10 +35,11 @@ const SingleRestaurant = () => {
   const specificPosts = posts.filter((post) => post.restaurantName === restaurant.alias)
 
   console.log(specificPosts)
-
+  console.log("this is alias",alias)
 
   return (
     <div>
+     {/* <Posts/> */}
       <Link to='/'> <i class="fa-solid fa-circle-arrow-left"></i> </Link>
       <h1 id="singlePlace"> {restaurant.name} </h1>
       <img id="singleImage" src={restaurant.image_url} />
