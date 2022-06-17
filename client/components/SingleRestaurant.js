@@ -19,6 +19,7 @@ import { grey } from '@mui/material/colors';
  
 
 
+
 const SingleRestaurant = () => {
   const {businesses: restaurants} = useSelector(({ restaurants }) => restaurants);
   const posts = useSelector(({ posts }) => posts);
@@ -78,7 +79,6 @@ const SingleRestaurant = () => {
         } 
       </ul>
        <CreatePost restaurant={restaurant} />
-      
     </div>
   )
 }
