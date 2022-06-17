@@ -8,6 +8,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
+import { textAlign } from "@mui/system";
 
 
 const SingleRestaurant = () => {
@@ -24,10 +25,10 @@ const SingleRestaurant = () => {
 
   return (
     <div>
-      <h1 id="singlePlace"> {restaurant.name} </h1>
-      <img id="singleImage" src={restaurant.image_url} />
+      <h1 id="singlePlace" style={{textAlign:"center"}}> {restaurant.name} </h1>
+      <img id="singleImage" src={restaurant.image_url}style={{width:"500px",display:"center"}} />
       <Link to='/'> Home page </Link>
-       <Route component={Posts} />
+       <Route component={Posts}  />
   
     </div>
   )
