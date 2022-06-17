@@ -21,7 +21,7 @@ const Post = ({ post, deletePost}) => {
             <h4> {post.title} </h4> 
         </Typography>
         <Typography sx={{mb:0, ml:2}} variant='subtitle2' >
-            <div><i class="fa-solid fa-location-dot"></i> {post.location}</div>
+            <div><i class="fa-solid fa-location-dot"></i> {post.restaurantName}</div>
             <div><i class="fa-solid fa-wifi"></i> {post.wifi}</div>
         </Typography>
         <Typography sx={{p:2}} variant="body2" color="text.secondary">

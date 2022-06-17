@@ -29,8 +29,8 @@ const Home = () => {
       
       <div id="landing">
         <h1> Welcome {auth.username}</h1>
-        <Route component={CreatePost} />
       </div>
+      {/* <Posts /> */}
     </div>
   );
 };

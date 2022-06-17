@@ -26,3 +26,21 @@ router.get("/yelp", async (req, res, next) => {
   }
 });
 
+router.get("/yelp/:alias", async (req, res, next) => {
+  try {
+    const alias = req.params.alias
+    const response = await axios.get(
+      `https://api.yelp.com/v3/businesses/${alias}`,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.bearerToken}`,
+          Origin: "localhost",
+          withCredentials: true,
+        },
+      }
+    );
+    res.send(response.data);
+  } catch (err) {
+    next(err);
+  }
+});
