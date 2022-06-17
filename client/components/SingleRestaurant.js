@@ -3,6 +3,7 @@ import {connect, useSelector} from "react-redux";
 import {Link, Route} from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Posts from "./Posts";
+
 import CreatePost from "./CreatePost";
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -17,7 +18,6 @@ import { red } from '@mui/material/colors';
 import { grey } from '@mui/material/colors';
 
 
- 
 
 
 const SingleRestaurant = () => {
@@ -81,6 +81,7 @@ const SingleRestaurant = () => {
       </ul>
        <CreatePost restaurant={restaurant} />
       
+
     </div>
   )
 }
