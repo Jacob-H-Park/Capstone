@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, connect } from "react-redux";
+import { useSelector } from "react-redux";
+
 import { logout } from "../store";
 
 import { Link } from "react-router-dom";
@@ -13,19 +15,79 @@ import Menu from "@mui/material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
+import MenuIcon from "@mui/icons-material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
+import { styled, alpha } from "@mui/material/styles";
+import InputBase from "@mui/material/InputBase";
+import Badge from "@mui/material/Badge";
+import FastfoodRoundedIcon from "@mui/icons-material/FastfoodRounded";
+import ForumRoundedIcon from "@mui/icons-material/ForumRounded";
+import AccountCircle from "@mui/icons-material/AccountCircle";
+import SearchIcon from "@mui/icons-material/Search";
+import MoreIcon from "@mui/icons-material/MoreVert";
+import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
 
-const navbarMenu = ["tab1", "tab2", "tab3"];
+import AdbIcon from "@mui/icons-material/Adb";
+import { debounce } from "./helpers";
 
 const googleLogin = () => {
   window.open("http://localhost:8080/google", "_self");
 };
 
 const Navbar = ({ isLoggedIn }) => {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const auth = useSelector(({ auth }) => auth);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
+
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
+
+  const isMenuOpen = Boolean(anchorEl);
+  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [visible, setVisible] = useState(true);
+
   const dispatch = useDispatch();
+
+  const handleScroll = debounce(() => {
+    const currentScrollPos = window.pageYOffset;
+
+    setVisible(
+      (prevScrollPos > currentScrollPos &&
+        prevScrollPos - currentScrollPos > 70) ||
+        currentScrollPos < 10
+    );
+
+    setPrevScrollPos(currentScrollPos);
+  }, 100);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [prevScrollPos, visible, handleScroll]);
+
+  const BootstrapTooltip = styled(({ className, ...props }) => (
+    <Tooltip {...props} arrow classes={{ popper: className }} />
+  ))(({ theme }) => ({
+    [`& .${tooltipClasses.arrow}`]: {
+      color: theme.palette.common.black,
+    },
+    [`& .${tooltipClasses.tooltip}`]: {
+      backgroundColor: theme.palette.common.black,
+    },
+  }));
+
+  const navbarStyles = {
+    position: "fixed",
+    height: "60px",
+    width: "100%",
+    backgroundColor: "RGB(253, 0, 25,0.8)",
+    backdropFilter: "blur(4px)",
+    textAlign: "center",
+    transition: "top 0.6s",
+  };
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -41,91 +103,80 @@ const Navbar = ({ isLoggedIn }) => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+  const handleProfileMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMobileMenuClose = () => {
+    setMobileMoreAnchorEl(null);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+    handleMobileMenuClose();
+  };
+
+  const handleMobileMenuOpen = (event) => {
+    setMobileMoreAnchorEl(event.currentTarget);
+  };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: "white" }}>
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Typography
-            variant="h6"
-            noWrap
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-              backgroundColor: "white",
-            }}
-          >
-            <Link to="/">
-              <img className="logo" src="./photos/LoopedIn2.png" />
-            </Link>
-          </Typography>
-          <Link to="/map">map</Link>
-
-          <Box
-            sx={{
-              flexGrow: 1,
-              display: { xs: "none", md: "flex", justifyContent: "center" },
-            }}
-          >
-            {navbarMenu.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "black", display: "block" }}
-              >
-                {page}
-              </Button>
-            ))}
-          </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
-            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              <Avatar alt="Remy Sharp" src="/favicon.ico" />
-            </IconButton>
-
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <div style={{ ...navbarStyles, top: visible ? "0" : "-60px" }}>
+          <Toolbar>
+            <Typography
+              variant="h6"
+              noWrap
+              sx={{
+                mr: 2,
+                display: { xs: "none", md: "flex" },
+                fontFamily: "monospace",
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+                color: "inherit",
+                textDecoration: "none",
               }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClick={handleCloseUserMenu}
             >
-              <Link to="/profile">
-                <MenuItem
-                  key="profile"
-                  onClick={() => {
-                    handleCloseUserMenu;
-                  }}
-                >
-                  <Typography textAlign="center">Profile</Typography>
-                </MenuItem>
+              <Link to="/">
+                <img className="logo" src="./photos/LoopedIn2.png" />
               </Link>
-
-              <Link to="/streamchat">
-                <MenuItem
-                  key="chat"
-                  onClick={() => {
-                    handleCloseUserMenu;
-                  }}
-                >
-                  <Typography textAlign="center">Chat</Typography>
-                </MenuItem>
-              </Link>
-
+            </Typography>
+            <Box sx={{ flexGrow: 1 }} />
+            <Box sx={{ display: { xs: "none", md: "flex" } }}>
+              <BootstrapTooltip title="Map">
+                <Link to="/map">
+                  <IconButton size="large" color="inherit">
+                    <Avatar
+                      sx={{
+                        backgroundColor: "inherit",
+                      }}
+                    >
+                      <FastfoodRoundedIcon />
+                    </Avatar>
+                  </IconButton>
+                </Link>
+              </BootstrapTooltip>
+              <BootstrapTooltip title="Chat">
+                <IconButton size="large" color="inherit">
+                  <Link to="/streamchat">
+                    <Avatar
+                      sx={{
+                        backgroundColor: "inherit",
+                      }}
+                    >
+                      <ForumRoundedIcon />
+                    </Avatar>
+                  </Link>
+                </IconButton>
+              </BootstrapTooltip>
+              <IconButton size="large" edge="end" color="inherit">
+                <Link to="/profile">
+                  <Avatar sx={{ bgcolor: "RGB(240, 207, 101)" }}>
+                    {auth.username.charAt(0).toUpperCase()}
+                  </Avatar>
+                </Link>
+              </IconButton>{" "}
               <MenuItem
                 key="logout"
                 onClick={() => {
@@ -135,11 +186,11 @@ const Navbar = ({ isLoggedIn }) => {
               >
                 <Typography textAlign="center">Logout</Typography>
               </MenuItem>
-            </Menu>
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
+            </Box>
+          </Toolbar>
+        </div>
+      </AppBar>
+    </Box>
   );
 };
 

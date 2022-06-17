@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { withRouter, Route, Switch } from "react-router-dom";
 import ReactSwitch from "react-switch";
 import alanBtn from "@alan-ai/alan-sdk-web";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 import history from "./history";
 import { me } from "./store";
@@ -57,14 +58,27 @@ const App = (props) => {
         {isLoggedIn ? (
           <>
             <Navbar />
-            <Switch>
-              <Route path="/profile" component={Profile} />
-              <Route path="/welcome" component={Welcome} />
-              <Route exact path="/" component={Home} />
-              <Route path="/map" component={Map} />
-              <Route path="/streamchat" component={Stream} />
-              <Route path="/posts/:id" component={Post} />
-            </Switch>
+            <Route
+              render={({ location }) => (
+                <TransitionGroup>
+                  <CSSTransition
+                    key={location.key}
+                    timeout={450}
+                    classNames="fade"
+                  >
+                    <Switch>
+                      <Route path="/profile" component={Profile} />
+                      <Route path="/welcome" component={Welcome} />
+                      <Route exact path="/" component={Home} />
+                      <Route path="/map" component={Map} />
+                      <Route path="/streamchat" component={Stream} />
+                      <Route path="/posts/:id" component={Post} />
+                    </Switch>
+                  </CSSTransition>
+                </TransitionGroup>
+              )}
+            />
+
             <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
           </>
         ) : (

@@ -3,22 +3,22 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { Link, Route } from "react-router-dom";
 import Posts from "./Posts";
-import Card from '@mui/material/Card';
+import Card from "@mui/material/Card";
 import { CardContent, Typography } from "@mui/material";
-
+import ClippedDrawer from "./SideBar";
 
 const Profile = () => {
   const auth = useSelector(({ auth }) => auth);
-  console.log("this is auth id", auth.id)
+  console.log("this is auth id", auth.id);
   const posts = useSelector(({ posts }) => {
-    return posts.filter((post) => post.userId === auth.id)
-  })
-  console.log("this is posts on profile", posts)
+    return posts.filter((post) => post.userId === auth.id);
+  });
+  console.log("this is posts on profile", posts);
   const [data, setData] = useState({});
 
- if(!posts) {
-   return null;
- }
+  if (!posts) {
+    return null;
+  }
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -66,8 +66,8 @@ const Profile = () => {
     }
   };
   return (
-    <div>
-      <div className="greeting">
+    <div style={{ marginTop: "80px" }} className="landing">
+      <div>
         <p>Welcome, {auth.username},</p>
         <p>
           {months[month]} {day}, {year}
@@ -86,39 +86,59 @@ const Profile = () => {
           <p>{data.weather ? <span>{data.weather[0].main}</span> : null}</p>
         </div>
       </div>
-     
-     
-      <h2>My Reviews</h2>  
-      <div>
-      {posts.map((post) => {
-         return (
-          <Card sx={{ maxWidth: 800, p:3, m:2, boxShadow: 3, variant: "outlined"}}>
-          <div>
-          <div>
-          <Link to= {`/posts/${post.id}`}><i class="fa-solid fa-pen-to-square"></i></Link>
-          </div>
-          <CardContent>
-          <Typography sx={{mb:-2, ml: 2, mt: -3, fontStyle: 'oblique'}} gutterBottom variant="h6" component="div">
-            <h4> {post.title} </h4> 
-          </Typography>
 
-          <Typography sx={{mb:0, ml:2}} variant='subtitle2' >
-            <div><i class="fa-solid fa-location-dot"></i> {post.location}</div>
-            <div><i class="fa-solid fa-wifi"></i> {post.wifi}</div>
-         </Typography> 
-         
-          <Typography sx={{p:2}} variant="body2" color="text.secondary">
-            <div>  {post.review} </div>
-          </Typography>
-          </CardContent>
-          </div>
-          
-          </Card>
-         )
-         })}
+      <h2>My Reviews</h2>
+      <div>
+        {posts.map((post) => {
+          return (
+            <Card
+              sx={{
+                maxWidth: 800,
+                p: 3,
+                m: 2,
+                boxShadow: 3,
+                variant: "outlined",
+              }}
+            >
+              <div>
+                <div>
+                  <Link to={`/posts/${post.id}`}>
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  </Link>
+                </div>
+                <CardContent>
+                  <Typography
+                    sx={{ mb: -2, ml: 2, mt: -3, fontStyle: "oblique" }}
+                    gutterBottom
+                    variant="h6"
+                    component="div"
+                  >
+                    <h4> {post.title} </h4>
+                  </Typography>
+
+                  <Typography sx={{ mb: 0, ml: 2 }} variant="subtitle2">
+                    <div>
+                      <i class="fa-solid fa-location-dot"></i> {post.location}
+                    </div>
+                    <div>
+                      <i class="fa-solid fa-wifi"></i> {post.wifi}
+                    </div>
+                  </Typography>
+
+                  <Typography
+                    sx={{ p: 2 }}
+                    variant="body2"
+                    color="text.secondary"
+                  >
+                    <div> {post.review} </div>
+                  </Typography>
+                </CardContent>
+              </div>
+            </Card>
+          );
+        })}
       </div>
-      </div>
-      
+    </div>
   );
 };
 

@@ -51,7 +51,7 @@ const ChannelListContent = ({
   const filters = { members: { $in: [client.userID] } };
 
   return (
-    <>
+    <div style={{ display: "flex", width: "100%", marginTop: "60px" }}>
       <SideBar />
       <div className="channel-list__list__wrapper">
         <MessengerHeader />
@@ -107,7 +107,7 @@ const ChannelListContent = ({
           )}
         />
       </div>
-    </>
+    </div>
   );
 };
 

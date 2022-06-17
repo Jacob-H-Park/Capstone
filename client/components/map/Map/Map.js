@@ -17,7 +17,7 @@ const Map = ({
   const classes = useStyles();
 
   return (
-    <div className={classes.mapContainer}>
+    <div className={classes.mapContainer} style={{ marginTop: "90px" }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY }}
         defaultCenter={coordinates}

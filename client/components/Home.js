@@ -7,6 +7,7 @@ import Trending from "./Trending";
 import Favorites from "./Favorites";
 import { Route } from "react-router-dom";
 import CreatePost from "./CreatePost";
+import ClippedDrawer from "./SideBar";
 import Posts from "./Posts";
 
 const Home = () => {
@@ -23,20 +24,19 @@ const Home = () => {
   }
 
   return (
-    <div className="landing">
-      <Trending />
-
-      <ByCity />
-
-      <AllRestaurants />
-
-      <Favorites />
-
-      <div id="landing">
-        <h1> Welcome {auth.username}</h1>
-        <Route component={CreatePost} />
-        <h2>My Feed</h2>
-        <Route component={Posts} />
+    <div>
+      {/* <ClippedDrawer /> */}
+      <div className="landing">
+        <Trending />
+        <ByCity />
+        <AllRestaurants />
+        <Favorites />
+        <div id="landing">
+          <h1> Welcome {auth.username}</h1>
+          <Route component={CreatePost} />
+          <h2>My Feed</h2>
+          <Route component={Posts} />
+        </div>
       </div>
     </div>
   );
