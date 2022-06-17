@@ -16,6 +16,9 @@ const Post = db.define("post", {
     type: Sequelize.ENUM("Free-Wifi", "Wifi Not Available", "Wifi Costs Extra"),
     defaultValue: "Wifi Not Available",
   },
+  restaurantName: {
+    type: STRING
+  }
 });
 
 module.exports = Post;

@@ -36,7 +36,7 @@ async function seed() {
       title: "NYC New Restaurant",
       userId: users[0].id,
       wifi: "Free-Wifi",
-      restaurantId: "o0BsnV6Fod42X8TJ-n_4QA"   
+      restaurantName: "arabica-brooklyn"
     }),
 
     Post.create({
@@ -45,7 +45,7 @@ async function seed() {
       title: "Perfect Cafe Spot!",
       userId: users[0].id,
       wifi: "Free-Wifi",
-      restaurantId: "kpxXi23lUQkeJQH-2BtzDw"
+      restaurantName: "arabica-brooklyn"
     })
   ])
 
