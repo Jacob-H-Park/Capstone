@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import { connect, useSelector } from "react-redux";
 import { Link, Route } from "react-router-dom";
 import { useParams } from "react-router-dom";
@@ -30,17 +30,17 @@ const SingleRestaurant = () => {
   if (!restaurants || !posts) {
     return null;
   }
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const restaurant = restaurants.filter((place) => place.alias === alias)[0];
   const specificPosts = posts.filter(
     (post) => post.restaurantName === restaurant.alias
   );
 
-  console.log(specificPosts);
-  console.log("this is alias", alias);
-
   return (
-    <div style={{ marginTop: "300px" }}>
+    <div style={{ marginTop: "90px" }}>
       <AnimatedPage>
         {/* <Posts/> */}
         <Link to="/">

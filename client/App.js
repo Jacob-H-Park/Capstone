@@ -70,6 +70,7 @@ const App = (props) => {
                 <Route path="/map" component={Map} />
                 <Route path="/streamchat" component={Stream} />
                 <Route path="/posts/:id" component={Post} />
+                <Route path="/trending/:alias" component={SingleRestaurant} />
               </Switch>
             </AnimatePresence>
 
