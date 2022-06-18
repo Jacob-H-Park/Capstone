@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
+import AnimatedPage from "./AnimatedPage";
 
 import ByCity from "./ByCity";
 import AllRestaurants from "./AllRestaurants";
@@ -14,6 +15,10 @@ const Home = () => {
   const posts = useSelector(({ posts }) => posts);
   const auth = useSelector(({ auth }) => auth);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   if (!restaurants) {
     return null;
   }
@@ -23,21 +28,23 @@ const Home = () => {
   }
 
   return (
-    <div className="landing">
-      <Trending />
+    <div className="landing" style={{ marginTop: "90px" }}>
+      <AnimatedPage>
+        <Trending />
 
-      <ByCity />
+        <ByCity />
 
-      <AllRestaurants />
+        <AllRestaurants />
 
-      <Favorites />
+        <Favorites />
 
-      <div id="landing">
-        <h1> Welcome {auth.username}</h1>
-        <Route component={CreatePost} />
-        <h2>My Feed</h2>
-        <Route component={Posts} />
-      </div>
+        <div id="landing">
+          <h1> Welcome {auth.username}</h1>
+          <Route component={CreatePost} />
+          <h2>My Feed</h2>
+          <Route component={Posts} />
+        </div>
+      </AnimatedPage>
     </div>
   );
 };

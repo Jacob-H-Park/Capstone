@@ -1,6 +1,6 @@
 :root {
-    --primary-color: #f5a47f;
-    --primary-color-alpha: #f9c284e0;
+    --primary-color: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+    --primary-color-alpha: #80d0c7;
   }
   
   html,
@@ -372,7 +372,7 @@
   
   .channel-list__sidebar {
     width: 80px;
-    background: linear-gradient(0deg, rgba(237, 95, 87, 0.888), rgba(242, 235, 23, 0.2)),
+    background: linear-gradient(0deg, rgba(35, 212, 124, 0.888), rgba(0, 0, 0, 0.2)),
       var(--primary-color);
     box-shadow: 1px 0px 0px rgba(0, 0, 0, 0.25);
     /* border-top-left-radius: 16px; */
@@ -400,7 +400,7 @@
     align-items: 'center';
     background: var(--primary-color);
     width: 280px;
-    height: 92vh;
+    height: 100vh;
   }
   
   .icon1__inner {
@@ -988,7 +988,7 @@
     height: auto;
     display: flex;
     align-items: center;
-    background: rgba(218, 129, 124, 0.888);
+    background: rgba(124, 218, 190, 0.888);
     border-radius: 14px;
     font-weight: bold;
     margin-right: 6px;
