@@ -18,6 +18,7 @@ import Stream from "./components/Stream";
 import Post from "./components/Post";
 import Landing from "./components/Landing";
 import Map from "./components/Search";
+import SingleRestaurant from "./components/SingleRestaurant";
 
 export const ThemeContext = createContext(null);
 
@@ -58,27 +59,15 @@ const App = (props) => {
         {isLoggedIn ? (
           <>
             <Navbar />
-            <Route
-              render={({ location }) => (
-                <TransitionGroup>
-                  <CSSTransition
-                    key={location.key}
-                    timeout={450}
-                    classNames="fade"
-                  >
-                    <Switch>
-                      <Route path="/profile" component={Profile} />
-                      <Route path="/welcome" component={Welcome} />
-                      <Route exact path="/" component={Home} />
-                      <Route path="/map" component={Map} />
-                      <Route path="/streamchat" component={Stream} />
-                      <Route path="/posts/:id" component={Post} />
-                    </Switch>
-                  </CSSTransition>
-                </TransitionGroup>
-              )}
-            />
-
+            <Switch>
+              <Route path="/profile" component={Profile} />
+              <Route path="/welcome" component={Welcome} />
+              <Route exact path="/" component={Home} />
+              <Route path="/map" component={Map} />
+              <Route path="/streamchat" component={Stream} />
+              <Route path="/posts/:id" component={Post} />
+              <Route path="/trending/:alias" component={SingleRestaurant} />
+            </Switch>
             <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
           </>
         ) : (
