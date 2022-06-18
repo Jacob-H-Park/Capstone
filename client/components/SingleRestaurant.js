@@ -1,5 +1,10 @@
-import React from 'react'
-import {connect} from 'react-redux'
+import React, {Component} from "react";
+import {connect, useSelector} from "react-redux";
+import {Link, Route} from "react-router-dom";
+import { useParams } from "react-router-dom";
+import Posts from "./Posts";
+
+import CreatePost from "./CreatePost";
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -8,18 +13,19 @@ import { CardHeader } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { IconButton } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { useSelector } from 'react-redux';
 import { Avatar } from '@mui/material';
-import {useParams} from "react-router-dom";
+import { red } from '@mui/material/colors';
+import { grey } from '@mui/material/colors';
 
 
 
-const Posts = ({ posts }) => {
-  const auth = useSelector(({ auth }) => auth.username);
+
+const SingleRestaurant = () => {
   const {businesses: restaurants} = useSelector(({ restaurants }) => restaurants);
+  const posts = useSelector(({ posts }) => posts);
+  const auth = useSelector(({ auth }) => auth.username);
 
   const {alias} = useParams();
-
 
   if(!restaurants || !posts) {
     return null
@@ -27,16 +33,20 @@ const Posts = ({ posts }) => {
 
   const restaurant = restaurants.filter((place) => place.alias === alias)[0]
   const specificPosts = posts.filter((post) => post.restaurantName === restaurant.alias)
-  
 
+  console.log(specificPosts)
+  console.log("this is alias",alias)
 
-   return (
-      <div>
-       <div>
-          <ul>
-           {
-             specificPosts.map(post => {
-               return (
+  return (
+    <div>
+     {/* <Posts/> */}
+      <Link to='/'> <i class="fa-solid fa-circle-arrow-left"></i> </Link>
+      <h1 id="singlePlace"> {restaurant.name} </h1>
+      <img id="singleImage" src={restaurant.image_url} />
+      <ul>
+         {
+         specificPosts.map(post => {
+             return (
                 <Card sx={{ maxWidth: 600, m:2, boxShadow: 3, variant: "outlined"}}>
                 <CardHeader sx={{ mb: -1}} style={{backgroundColor: "#b3e5fc"}}
                   avatar= {
@@ -65,18 +75,16 @@ const Posts = ({ posts }) => {
                   <FavoriteIcon />
                 </IconButton>
                  </Card>
-               )  
-             })  
-           }
-          </ul> 
-       </div> 
-      </div> 
-    
-   ) 
+             )
+          })
+        } 
+      </ul>
+       <CreatePost restaurant={restaurant} />
+      
+
+    </div>
+  )
 }
 
+export default SingleRestaurant
 
-
-export default connect(
-   state => state,
-)(Posts)
