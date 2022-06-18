@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 import { styled, alpha } from "@mui/material/styles";
+
 import { useDispatch, connect } from "react-redux";
+import { useSelector } from "react-redux";
+
 import { logout } from "../store";
 import { debounce } from "./helpers";
 
@@ -297,6 +299,7 @@ const Navbar = ({ isLoggedIn }) => {
                   </Link>
                 </BootstrapTooltip>
               </IconButton>
+
               <MenuItem
                 key="logout"
                 onClick={() => {

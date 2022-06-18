@@ -19,6 +19,7 @@ import Stream from "./components/Stream";
 import Post from "./components/Post";
 import Landing from "./components/Landing";
 import Map from "./components/Search";
+import SingleRestaurant from "./components/SingleRestaurant";
 
 export const ThemeContext = createContext(null);
 
@@ -71,6 +72,7 @@ const App = (props) => {
                 <Route path="/posts/:id" component={Post} />
               </Switch>
             </AnimatePresence>
+
             <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
           </>
         ) : (

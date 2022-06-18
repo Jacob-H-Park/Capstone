@@ -24,7 +24,7 @@ const List = ({ places, childClicked, isLoading, rating, setRating }) => {
     );
   }, [places]);
   return (
-    <div className={classes.container}>
+    <div className={classes.container} style={{ marginTop: "50px" }}>
       <Typography variant="h4">Food & Dining around you</Typography>
       {isLoading ? (
         <div className={classes.loading}>
