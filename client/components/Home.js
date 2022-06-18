@@ -24,7 +24,6 @@ const Home = () => {
   if (!posts) {
     return null;
   }
-
   return (
     <div className="landing" style={{ marginTop: "90px" }}>
       <AnimatedPage>

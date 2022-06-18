@@ -40,11 +40,10 @@ const SingleRestaurant = () => {
   console.log("this is alias", alias);
 
   return (
-    <div>
+    <div style={{ marginTop: "300px" }}>
       <AnimatedPage>
         {/* <Posts/> */}
         <Link to="/">
-          {" "}
           <i class="fa-solid fa-circle-arrow-left"></i>{" "}
         </Link>
         <h1 id="singlePlace"> {restaurant.name} </h1>

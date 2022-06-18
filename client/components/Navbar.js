@@ -144,6 +144,7 @@ const Navbar = ({ isLoggedIn }) => {
     background: "linear-gradient(15deg, #13547a 0%, #80d0c7 100%)",
     textAlign: "center",
     transition: "top 0.6s",
+    zIndex: "6",
   };
 
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
