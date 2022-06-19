@@ -5,6 +5,7 @@ import LocationOnOutlinedIcon from "@material-ui/icons/LocationOnOutlined";
 import Rating from "@material-ui/lab/Rating";
 
 import useStyles from "./styles.js";
+import mapStyles from "./mapStyles";
 
 const Map = ({
   setCoordinates,
@@ -17,14 +18,18 @@ const Map = ({
   const classes = useStyles();
 
   return (
-    <div className={classes.mapContainer}>
+    <div className={classes.mapContainer} style={{ marginTop: "70px" }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY }}
         defaultCenter={coordinates}
         center={coordinates}
         defaultZoom={15}
         margin={[50, 50, 50, 50]}
-        options={""}
+        options={{
+          disableDefaultUI: true,
+          zoomControl: true,
+          styles: mapStyles,
+        }}
         onChange={(e) => {
           setCoordinates({ lat: e.center.lat, lng: e.center.lng });
           setBounds({

@@ -9,7 +9,7 @@ import LogoutIcon from "../../../public/photos/logout.png";
 const sort = { last_message_at: -1 };
 
 const SideBar = () => (
-  <div className="channel-list__sidebar">
+  <div className="channel-list__sidebar" style={{ marginTop: "60px" }}>
     <div className="channel-list__sidebar__icon1">
       <div className="icon1__inner">
         <img src={LoopedInIcon} alt="LoopedIn Logo" width="30" />
@@ -51,9 +51,12 @@ const ChannelListContent = ({
   const filters = { members: { $in: [client.userID] } };
 
   return (
-    <>
+    <div style={{ display: "flex", width: "100%", marginTop: "0px" }}>
       <SideBar />
-      <div className="channel-list__list__wrapper">
+      <div
+        className="channel-list__list__wrapper"
+        style={{ marginTop: "60px" }}
+      >
         <MessengerHeader />
         <ChannelSearch setToggleContainer={setToggleContainer} />
         <ChannelList
@@ -107,7 +110,7 @@ const ChannelListContent = ({
           )}
         />
       </div>
-    </>
+    </div>
   );
 };
 
