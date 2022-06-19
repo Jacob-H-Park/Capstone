@@ -37,6 +37,7 @@ app.use("/auth", require("./auth"));
 
 app.use("/google", require("./auth/googleOauth"));
 app.use("/api", require("./api"));
+app.use("/s3Url", require("./api/s3Url"));
 
 app.get("/", (req, res) =>
   res.sendFile(path.join(__dirname, "..", "public/index.html"))
