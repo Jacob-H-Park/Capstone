@@ -60,13 +60,13 @@ const SingleRestaurant = () => {
         </CustomizedDialogs>
         </Grid >
         <Grid 
-          container
+          container spacing={11}
           direction="row"
           justifyContent="center"
           alignItems="center"
           >
-        <Grid item xs={5}>
-        <Card sx={{ ml: 2, borderRadius: 10, boxShadow: 3, variant: "outlined" }}>
+        <Grid item s={4}>
+        <Card sx={{ ml: 1, borderRadius: 10, boxShadow: 3, variant: "outlined" }}>
         <CardHeader sx={{ m: 3, fontStyle: 'bold'}} style={{ textAlign: 'center'}} 
           titleTypographyProps={{variant:'h3'}}
           title= {restaurant.name}
@@ -77,6 +77,19 @@ const SingleRestaurant = () => {
         image={restaurant.image_url}
         id="singleImage" 
          />
+         <Typography
+           sx={{ p: 2, m: 3, textAlign: "center" }}
+           variant="body1"
+           color="text.secondary"
+         >
+        <div className="info">
+        <span> <i class="fa-solid fa-magnifying-glass-dollar fa-1x"></i> {restaurant.price} </span>
+        <span> <i class="fa-solid fa-map-location-dot fa-1x"></i> {restaurant.location["display_address"][0]}
+        &nbsp;
+        {restaurant.location["display_address"][1]}</span>
+        </div>
+        </Typography>
+
         </Card>
         </Grid>
         <Grid item xs={5}>
@@ -107,7 +120,7 @@ const SingleRestaurant = () => {
                     </Typography> */}
                     <Typography sx={{ m: 1, ml: 2 }} variant="subtitle2">
                       <div>
-                        <i class="fa-solid fa-location-dot"></i> {post.location}
+                        <i class="fa-solid fa-location-dot"></i> {post.restaurantName}
                       </div>
                       <div>
                         <i class="fa-solid fa-wifi"></i> {post.wifi}
