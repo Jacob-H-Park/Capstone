@@ -20,37 +20,44 @@ async function seed() {
       password: "123",
       city: "Brooklyn",
       state: "New York",
+      likes: 111,
+      following: 89,
+      followers: 982,
+      bio: "Hi, I am Cody",
     }),
     User.create({
       username: "murphy",
       password: "123",
       city: "Bronx",
       state: "New York",
+      likes: 111,
+      following: 1,
+      followers: 829,
+      bio: "Hi, I am Murphy",
     }),
   ]);
 
   const post = await Promise.all([
     Post.create({
-      review: 'I visited a new restaurant in NYC today called Fish Cheeks! They have great thai food and great happy hour deals!',
+      review:
+        "I visited a new restaurant in NYC today called Fish Cheeks! They have great thai food and great happy hour deals!",
       location: "East Village, NYC",
       title: "NYC New Restaurant",
       userId: users[0].id,
       wifi: "Free-Wifi",
-      restaurantName: "arabica-brooklyn"
+      restaurantName: "arabica-brooklyn",
     }),
 
     Post.create({
-      review: 'I went to a cafe in Williamsburg today called Qahwah House! Their Adeni Chai drink is so good and there is free wifi so you can do work there!',
+      review:
+        "I went to a cafe in Williamsburg today called Qahwah House! Their Adeni Chai drink is so good and there is free wifi so you can do work there!",
       location: "Williamsburg, Brooklyn",
       title: "Perfect Cafe Spot!",
       userId: users[0].id,
       wifi: "Free-Wifi",
-      restaurantName: "arabica-brooklyn"
-    })
-  ])
-
-  
-
+      restaurantName: "arabica-brooklyn",
+    }),
+  ]);
 
   const restaurants = await Promise.all([
     Restaurant.create({
@@ -61,7 +68,7 @@ async function seed() {
       state: "NY",
       image: "./public/photos/mcdonalds.jpg",
       ranking: 1,
-      isFavorite:true
+      isFavorite: true,
     }),
 
     Restaurant.create({
@@ -72,7 +79,7 @@ async function seed() {
       state: "NY",
       image: "./public/photos/dominos.jpg",
       ranking: 2,
-      isFavorite:true
+      isFavorite: true,
     }),
     Restaurant.create({
       name: "Burger King",
@@ -82,7 +89,7 @@ async function seed() {
       state: "NY",
       image: "./public/photos/bk.jpg",
       ranking: 3,
-      isFavorite:true
+      isFavorite: true,
     }),
     Restaurant.create({
       name: "Burger Princess",
@@ -92,7 +99,7 @@ async function seed() {
       state: "NY",
       image: "./public/photos/bk.jpg",
       ranking: 6,
-      isFavorite:true
+      isFavorite: true,
     }),
     Restaurant.create({
       name: "Burger Queen",
@@ -102,7 +109,7 @@ async function seed() {
       state: "NY",
       image: "./public/photos/bk.jpg",
       ranking: 4,
-      isFavorite:false
+      isFavorite: false,
     }),
     Restaurant.create({
       name: "Burger Prince",
@@ -112,7 +119,7 @@ async function seed() {
       state: "NY",
       image: "./public/photos/bk.jpg",
       ranking: 5,
-      isFavorite:true
+      isFavorite: true,
     }),
     Restaurant.create({
       name: "Ugly Baby",
@@ -122,7 +129,7 @@ async function seed() {
       state: "NY",
       image: "./public/photos/bk.jpg",
       ranking: 7,
-      isFavorite:true
+      isFavorite: true,
     }),
     Restaurant.create({
       name: "Joya",
@@ -132,7 +139,7 @@ async function seed() {
       state: "NY",
       image: "./public/photos/bk.jpg",
       ranking: 8,
-      isFavorite:false
+      isFavorite: false,
     }),
     Restaurant.create({
       name: "Osaka",
@@ -142,7 +149,7 @@ async function seed() {
       state: "NY",
       image: "./public/photos/bk.jpg",
       ranking: 9,
-      isFavorite:true
+      isFavorite: true,
     }),
     Restaurant.create({
       name: "The Soul Spot",
@@ -152,7 +159,7 @@ async function seed() {
       state: "NY",
       image: "./public/photos/bk.jpg",
       ranking: 10,
-      isFavorite:false
+      isFavorite: false,
     }),
     Restaurant.create({
       name: "Claro",
@@ -162,7 +169,7 @@ async function seed() {
       state: "NY",
       image: "./public/photos/bk.jpg",
       ranking: 11,
-      isFavorite:false
+      isFavorite: false,
     }),
     Restaurant.create({
       name: "Burger Prince",
@@ -172,7 +179,7 @@ async function seed() {
       state: "NY",
       image: "./public/photos/bk.jpg",
       ranking: 12,
-      isFavorite:false
+      isFavorite: false,
     }),
     Restaurant.create({
       name: "Bijan's",
@@ -182,7 +189,7 @@ async function seed() {
       state: "NY",
       image: "./public/photos/bk.jpg",
       ranking: 13,
-      isFavorite:false
+      isFavorite: false,
     }),
     Restaurant.create({
       name: "Olmstead",
@@ -192,7 +199,7 @@ async function seed() {
       state: "NY",
       image: "./public/photos/bk.jpg",
       ranking: 14,
-      isFavorite:false
+      isFavorite: false,
     }),
     Restaurant.create({
       name: "The Quarter",
@@ -202,7 +209,7 @@ async function seed() {
       state: "NY",
       image: "./public/photos/bk.jpg",
       ranking: 15,
-      isFavorite:false
+      isFavorite: false,
     }),
     Restaurant.create({
       name: "Cataldo's",
@@ -212,7 +219,7 @@ async function seed() {
       state: "NY",
       image: "./public/photos/bk.jpg",
       ranking: 16,
-      isFavorite:false
+      isFavorite: false,
     }),
   ]);
   console.log(`seeded ${users.length} users`);

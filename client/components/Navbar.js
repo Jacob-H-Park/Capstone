@@ -289,6 +289,7 @@ const Navbar = ({ isLoggedIn }) => {
                   </Link>
                 </BootstrapTooltip>
               </IconButton>
+
               <IconButton size="large" color="inherit">
                 <BootstrapTooltip title="Profile">
                   <Link to="/profile">
