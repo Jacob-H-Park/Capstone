@@ -8,9 +8,7 @@ import Card from '@mui/material/Card';
 import { Button, CardContent, Typography, Grid, Box } from "@mui/material";
 
 const Post = ({ post, deletePost}) => {
-   
     return (
-
         <Grid direction="column"  
         justify="center"
         alignItems="center"> 

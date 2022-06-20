@@ -58,8 +58,9 @@ export default function CustomizedDialogs({children}) {
 
   return (
     <div>
-      <Button sx={{mb:3}} variant="outlined" onClick={handleClickOpen}>
-        Edit Review
+      <Button sx={{mb:3 }} 
+      variant="text" onClick={handleClickOpen}>
+      <i class="fa-solid fa-circle-plus fa-3x"></i>
       </Button>
       <BootstrapDialog
         onClose={handleClose}
@@ -67,7 +68,7 @@ export default function CustomizedDialogs({children}) {
         open={open}
       >
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-          Edit Review
+          Add New Review
         </BootstrapDialogTitle>
         <DialogContent dividers>
           {children}
