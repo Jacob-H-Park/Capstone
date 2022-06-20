@@ -2,21 +2,19 @@ import React, { Component, useEffect } from "react";
 import { connect, useSelector } from "react-redux";
 import { Link, Route } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import Posts from "./Posts";
 import AnimatedPage from "./AnimatedPage";
-
 import CreatePost from "./CreatePost";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
 import { CardHeader } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { IconButton } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Avatar } from "@mui/material";
-import { red } from "@mui/material/colors";
-import { grey } from "@mui/material/colors";
+import {Grid} from "@mui/material";
+import { CardMedia } from "@mui/material";
+import {List, ListItem}  from "@mui/material";
+import CustomizedDialogs from "./PostDialog";
 
 const SingleRestaurant = () => {
   const { businesses: restaurants } = useSelector(
@@ -40,38 +38,74 @@ const SingleRestaurant = () => {
   );
 
   return (
-    <div style={{ marginTop: "90px" }}>
+    <div className="singlerestpage" style={{ marginTop: "100px" }}>
       <AnimatedPage>
-        {/* <Posts/> */}
-        <Link to="/">
-          <i class="fa-solid fa-circle-arrow-left"></i>{" "}
+       
+        <Link className="backlink" to="/">
+          <i className="backlink" class="fa-solid fa-circle-arrow-left fa-2x"></i>{" "}
         </Link>
-        <h1 id="singlePlace"> {restaurant.name} </h1>
-        <img id="singleImage" src={restaurant.image_url} />
-        <ul>
+        <Grid 
+          container
+          direction="row"
+          justifyContent="center"
+          >
+        <Grid 
+          container
+          direction="row"
+          justifyContent="flex-end"
+          alignItems="flex-end"
+          >
+        <CustomizedDialogs>
+          <CreatePost restaurant={restaurant} />
+        </CustomizedDialogs>
+        </Grid >
+        <Grid 
+          container
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+          >
+        <Grid item xs={5}>
+        <Card sx={{ ml: 2, borderRadius: 10, boxShadow: 3, variant: "outlined" }}>
+        <CardHeader sx={{ m: 3, fontStyle: 'bold'}} style={{ textAlign: 'center'}} 
+          titleTypographyProps={{variant:'h3'}}
+          title= {restaurant.name}
+        />
+        <CardMedia 
+        sx={{ borderRadius: 100 , mb: 7}}
+        component="img"
+        image={restaurant.image_url}
+        id="singleImage" 
+         />
+        </Card>
+        </Grid>
+        <Grid item xs={5}>
+        <List>
           {specificPosts.map((post) => {
             return (
+            <ListItem>
               <Card
-                sx={{ maxWidth: 600, m: 2, boxShadow: 3, variant: "outlined" }}
+                sx={{ borderRadius: 10, maxWidth: 600, maxHeight: 275, m: 2, boxShadow: 3, variant: "outlined" }}
               >
                 <CardHeader
                   sx={{ mb: -1 }}
                   style={{ backgroundColor: "#b3e5fc" }}
                   avatar={<Avatar sx={{ bgcolor: "#009688" }}>C</Avatar>}
-                  title={auth}
+                  titleTypographyProps={{variant:'h5', fontStyle: 'oblique'}}
+                  title={post.title}
                   subheader={post.createdAt.slice(0, 10)}
                 />
                 <CardContent>
                   <div key={post.id}>
-                    <Typography
+                    {/* <Typography
                       sx={{ mb: -2, ml: 2, mt: -3, fontStyle: "oblique" }}
                       gutterBottom
                       variant="h6"
                       component="div"
                     >
                       <h4> {post.title} </h4>
-                    </Typography>
-                    <Typography sx={{ mb: 0, ml: 2 }} variant="subtitle2">
+                    </Typography> */}
+                    <Typography sx={{ m: 1, ml: 2 }} variant="subtitle2">
                       <div>
                         <i class="fa-solid fa-location-dot"></i> {post.location}
                       </div>
@@ -95,10 +129,13 @@ const SingleRestaurant = () => {
                   <FavoriteIcon />
                 </IconButton>
               </Card>
+              </ListItem>
             );
           })}
-        </ul>
-        <CreatePost restaurant={restaurant} />
+        </List>
+        </Grid>
+        </Grid>
+        </Grid>
       </AnimatedPage>
     </div>
   );
