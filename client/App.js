@@ -20,6 +20,8 @@ import Post from "./components/Post";
 import Landing from "./components/Landing";
 import Map from "./components/Search";
 import SingleRestaurant from "./components/SingleRestaurant";
+import About from "./components/About";
+import Footer from "./components/Footer";
 
 export const ThemeContext = createContext(null);
 
@@ -71,8 +73,10 @@ const App = (props) => {
                 <Route path="/streamchat" component={Stream} />
                 <Route path="/posts/:id" component={Post} />
                 <Route path="/trending/:alias" component={SingleRestaurant} />
+                <Route path="/about" component={About} />
               </Switch>
             </AnimatePresence>
+            <Footer />
 
             <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
           </>

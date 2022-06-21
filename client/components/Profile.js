@@ -89,7 +89,11 @@ const Profile = () => {
               )}
             </aside>
             <section className="profile-info">
-              <h1 className="first-name">{auth.username.toUpperCase()}</h1>
+              <h1 className="first-name">
+                <div className="glitch" data-text={auth.username.toUpperCase()}>
+                  {auth.username.toUpperCase()}
+                </div>
+              </h1>
               <h2>ABOUT</h2>
               <p>{auth.bio}</p>
             </section>
