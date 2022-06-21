@@ -324,3 +324,12 @@ textarea {
 }
 
 
+.info {
+  display: flex;
+  direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  border: lightblue solid 5px;
+  border-radius: 25px;
+  padding: 10px
+}
