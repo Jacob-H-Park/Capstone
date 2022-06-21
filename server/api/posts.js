@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const { ProductionQuantityLimits } = require("@mui/icons-material");
 const {
   models: { Post, User },
 } = require("../db");
@@ -35,10 +34,10 @@ router.get("/:id", async (req, res, next) => {
 
 router.post("/", token, async (req, res, next) => {
   try {
-    const { review, location, title, wifi, userId } = req.body;
+    const { review, restaurantName, title, wifi, userId } = req.body;
     const post = await Post.create({
       review,
-      location,
+      restaurantName,
       title,
       wifi,
       userId,

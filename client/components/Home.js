@@ -28,8 +28,9 @@ const Home = () => {
      
       
       <div id="landing">
-        <Route component={CreatePost} />
+
       </div>
+      {/* <Posts /> */}
     </div>
   );
 };
