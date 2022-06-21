@@ -69,7 +69,48 @@ const Profile = () => {
   return (
     <div style={{ marginTop: "90px" }}>
       <AnimatedPage>
-        <div className="greeting">
+        <main className="profile">
+          <div className="profile-bg" />
+          <section className="container">
+            <aside className="profile-image">
+              {auth.username === "cody" || auth.username === "murphy" ? (
+                <img
+                  alt={`${auth.username}`}
+                  src={`./photos/${auth.username}.jpeg`}
+                  sx={{ width: 250, height: 250 }}
+                />
+              ) : (
+                <Avatar
+                  sx={{ bgcolor: "#37515F" }}
+                  alt={`${auth.username}`}
+                  sx={{ width: 250, height: 250 }}
+                  variant="rounded"
+                />
+              )}
+            </aside>
+            <section className="profile-info">
+              <h1 className="first-name">{auth.username.toUpperCase()}</h1>
+              <h2>ABOUT</h2>
+              <p>{auth.bio}</p>
+            </section>
+          </section>
+          <section className="statistics">
+            <button className="icon arrow left" />
+            <button className="icon arrow right" />
+            <p>
+              <strong>{auth.followers}</strong> Followers
+            </p>
+            <p>
+              <strong>{auth.following}</strong> Following
+            </p>
+            <p>
+              <strong>{auth.likes}</strong> Likes
+            </p>
+          </section>
+        </main>
+        <button className="icon close" />
+
+        {/* <div className="greeting">
           {auth.username === "cody" || auth.username === "murphy" ? (
             <img
               alt={`${auth.username}`}
@@ -153,6 +194,39 @@ const Profile = () => {
               </Card>
             );
           })}
+        </div> */}
+        <div className="gallery1">
+          {posts.map((post) => {
+            return (
+              <div className="gallery-item1" tabIndex={0}>
+                <div className="example-2 card">
+                  <div className="wrapper">
+                    <div className="header">
+                      <div className="date"></div>
+                      <ul className="menu-content">
+                        <li>
+                          <a href="#" className="fa fa-bookmark-o" />
+                        </li>
+                        <li>{post.location}</li>
+                      </ul>
+                    </div>
+                    <div className="data">
+                      <div className="content">
+                        <span className="author">{auth.username}</span>
+                        <h1 className="title">
+                          <Link to={`/posts/${post.id}`}>{post.title} </Link>
+                        </h1>
+                        <h4>{post.wifi}</h4>
+                        <p className="text">{post.review}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+
+          <div className="loader" />
         </div>
       </AnimatedPage>
     </div>
