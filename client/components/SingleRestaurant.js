@@ -4,6 +4,7 @@ import { Link, Route } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import AnimatedPage from "./AnimatedPage";
 import CreatePost from "./CreatePost";
+import CardActions from '@mui/material/CardActions';
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { CardHeader } from "@mui/material";
@@ -15,6 +16,8 @@ import {Grid} from "@mui/material";
 import { CardMedia } from "@mui/material";
 import {List, ListItem}  from "@mui/material";
 import CustomizedDialogs from "./PostDialog";
+
+
 
 const SingleRestaurant = () => {
   const { businesses: restaurants } = useSelector(
@@ -38,6 +41,7 @@ const SingleRestaurant = () => {
   );
 
   return (
+
     <div className="singlerestpage" style={{ marginTop: "100px" }}>
       <AnimatedPage>
        
@@ -107,6 +111,7 @@ const SingleRestaurant = () => {
                   titleTypographyProps={{variant:'h5', fontStyle: 'oblique'}}
                   title={post.title}
                   subheader={post.createdAt.slice(0, 10)}
+
                 />
                 <CardContent>
                   <div key={post.id}>
@@ -141,6 +146,7 @@ const SingleRestaurant = () => {
                 >
                   <FavoriteIcon />
                 </IconButton>
+
               </Card>
               </ListItem>
             );
@@ -150,6 +156,7 @@ const SingleRestaurant = () => {
         </Grid>
         </Grid>
       </AnimatedPage>
+
     </div>
   );
 };

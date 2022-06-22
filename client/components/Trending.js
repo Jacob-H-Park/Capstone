@@ -26,8 +26,8 @@ const Trending= () => {
 
           return (
               <div>
-                <h1> Welcome {auth.username}</h1>
-                <h2> Here are LoopedIn's Top Trending Restaurants! </h2>
+               
+                <h2 style={{textAlign:"center"}}> Here are LoopedIn's Top Trending Restaurants! </h2>
                 <Box sx={{ width: 800, minHeight: 829 }}>
                             <Masonry columns={3} spacing={2}>
                               
