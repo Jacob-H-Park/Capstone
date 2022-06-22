@@ -55,6 +55,7 @@
     "passport": "^0.5.0",
     "passport-google-oauth20": "^2.0.0",
     "pg": "^8.5.1",
+    "react-copy-to-clipboard": "^5.1.0",
     "react-icons": "^4.4.0",
     "react-switch": "^6.0.0",
     "react-transition-group": "^4.4.2",

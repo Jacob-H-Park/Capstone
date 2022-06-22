@@ -10,11 +10,9 @@ import AnimatedPage from "./AnimatedPage";
 
 const Profile = () => {
   const auth = useSelector(({ auth }) => auth);
-  console.log("this is auth id", auth.id);
   const posts = useSelector(({ posts }) => {
     return posts.filter((post) => post.userId === auth.id);
   });
-  console.log("this is posts on profile", posts);
   const [data, setData] = useState({});
 
   if (!posts) {
