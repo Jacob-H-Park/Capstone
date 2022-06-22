@@ -24,7 +24,6 @@ const Trending = () => {
   if (!restaurants) {
     return null;
   }
-  console.log(restaurants);
   return (
     <div>
       <h2 style={{ textAlign: "center" }}>

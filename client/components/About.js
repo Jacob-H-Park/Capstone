@@ -9,10 +9,24 @@ const About = () => {
     <>
       <AnimatedPage>
         <div style={{ marginTop: "90px" }}>
-          <div className="container11">
+          <div className="container11" style={{ marginLeft: "120px" }}>
             <div className="title11">MEET THE TEAM</div>
+            <div
+              className="title22"
+              style={{ marginLeft: "70px", marginTop: "90px" }}
+            >
+              Thank you all, sincerely, for being true professionals, for being
+              inspirational! We are a great team. This successful outcome, the
+              result of all our hard work and dedication, is down to us. And,
+              lastly thank you for the pleasure and privilege of working with
+              you all!
+            </div>
           </div>
-          <ul id="categories" className="clr" style={{ marginTop: "90px" }}>
+          <ul
+            id="categories"
+            className="clr"
+            style={{ marginTop: "130px", marginLeft: "420px" }}
+          >
             <li className="pusher" />
             <li>
               <div>
@@ -76,6 +90,38 @@ const About = () => {
             </li>
           </ul>
         </div>{" "}
+        <>
+          <div className="container22" style={{ marginTop: "50px" }}>
+            <div className="objects">
+              <div className="objects_computer" />
+              <div className="objects_table" />
+              <div className="objects_cup" />
+              <div className="smoke" />
+              <div className="objects_chair" />
+            </div>
+            <div className="box">
+              <div className="box_1">
+                <div />
+                <div />
+                <div />
+                <div />
+                <div />
+                <div />
+                <div />
+                <div />
+              </div>
+              <div className="box_2">
+                <div />
+                <div />
+                <div />
+              </div>
+              <div className="box_3" />
+            </div>
+          </div>
+          <div className="footer">
+            <div className="title mod">Always Be Coding</div>
+          </div>
+        </>
       </AnimatedPage>
     </>
   );
