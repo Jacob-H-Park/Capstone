@@ -22,6 +22,7 @@ import Map from "./components/Search";
 import SingleRestaurant from "./components/SingleRestaurant";
 import About from "./components/About";
 import Footer from "./components/Footer";
+import NotFound from "./components/NotFound";
 
 export const ThemeContext = createContext(null);
 
@@ -66,14 +67,19 @@ const App = (props) => {
             <Navbar />
             <AnimatePresence exitBeforeEnter>
               <Switch key={location.pathname} location={location}>
-                <Route path="/profile" component={Profile} />
-                <Route path="/welcome" component={Welcome} />
+                <Route exact path="/profile" component={Profile} />
+                <Route exact path="/welcome" component={Welcome} />
                 <Route exact path="/" component={Home} />
-                <Route path="/map" component={Map} />
-                <Route path="/streamchat" component={Stream} />
-                <Route path="/posts/:id" component={Post} />
-                <Route path="/trending/:alias" component={SingleRestaurant} />
-                <Route path="/about" component={About} />
+                <Route exact path="/map" component={Map} />
+                <Route exact path="/streamchat" component={Stream} />
+                <Route exact path="/posts/:id" component={Post} />
+                <Route
+                  exact
+                  path="/trending/:alias"
+                  component={SingleRestaurant}
+                />
+                <Route exact path="/about" component={About} />
+                <Route component={NotFound} />
               </Switch>
             </AnimatePresence>
             <Footer />
