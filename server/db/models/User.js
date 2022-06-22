@@ -1,4 +1,4 @@
-const { STRING } = require("sequelize");
+const { STRING, INTEGER } = require("sequelize");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const axios = require("axios");
@@ -24,6 +24,18 @@ const User = db.define("user", {
     type: STRING,
   },
   state: {
+    type: STRING,
+  },
+  likes: {
+    type: INTEGER,
+  },
+  following: {
+    type: INTEGER,
+  },
+  followers: {
+    type: INTEGER,
+  },
+  bio: {
     type: STRING,
   },
 });

@@ -1,8 +1,10 @@
 import React, { useState, useEffect, createContext } from "react";
 import { connect } from "react-redux";
 import { withRouter, Route, Switch } from "react-router-dom";
+import { useLocation } from "react-router";
 import ReactSwitch from "react-switch";
 import alanBtn from "@alan-ai/alan-sdk-web";
+import { AnimatePresence } from "framer-motion";
 
 import history from "./history";
 import { me } from "./store";
@@ -18,6 +20,8 @@ import Post from "./components/Post";
 import Landing from "./components/Landing";
 import Map from "./components/Search";
 import SingleRestaurant from "./components/SingleRestaurant";
+import About from "./components/About";
+import Footer from "./components/Footer";
 
 export const ThemeContext = createContext(null);
 
@@ -52,21 +56,28 @@ const App = (props) => {
     loadPosts();
   }, []);
 
+  const location = useLocation();
+
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <div id={theme}>
         {isLoggedIn ? (
           <>
             <Navbar />
-            <Switch>
-              <Route path="/profile" component={Profile} />
-              <Route path="/welcome" component={Welcome} />
-              <Route exact path="/" component={Home} />
-              <Route path="/map" component={Map} />
-              <Route path="/streamchat" component={Stream} />
-              <Route path="/posts/:id" component={Post} />
-              <Route path="/trending/:alias" component ={SingleRestaurant} />
-            </Switch>
+            <AnimatePresence exitBeforeEnter>
+              <Switch key={location.pathname} location={location}>
+                <Route path="/profile" component={Profile} />
+                <Route path="/welcome" component={Welcome} />
+                <Route exact path="/" component={Home} />
+                <Route path="/map" component={Map} />
+                <Route path="/streamchat" component={Stream} />
+                <Route path="/posts/:id" component={Post} />
+                <Route path="/trending/:alias" component={SingleRestaurant} />
+                <Route path="/about" component={About} />
+              </Switch>
+            </AnimatePresence>
+            <Footer />
+
             <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
           </>
         ) : (

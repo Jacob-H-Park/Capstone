@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import loopedInLogo from "../../public/photos/LoopedIn2.png";
+import { shadows } from "@mui/system";
 import landingVideo from "../../public/landing.mp4";
 import AuthForm from "./AuthForm";
 
@@ -16,8 +17,14 @@ const Landing = () => {
     <div className="login-page">
       <img className="landingLogo" src={loopedInLogo} />
       <div className="login-button">
-        <Button sx={{ fontSize: 18, color: "#DFD2C9" }} onClick={handleOpen}>
-          Signup or Login
+        <Button
+          sx={{
+            fontSize: 18,
+            color: "#DFD2C9",
+          }}
+          onClick={handleOpen}
+        >
+          <p sx={{ boxShadow: 10 }}>Signup or Login</p>
         </Button>
         <Modal
           open={open}

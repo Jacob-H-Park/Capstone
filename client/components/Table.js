@@ -6,6 +6,7 @@ import { CssBaseline, Grid } from "@material-ui/core";
 import { getPlacesData } from "../../server/api/map";
 import List from "./map/List/List";
 import Map from "./map/Map/Map";
+import AnimatedPage from "./AnimatedPage";
 
 const Table = () => {
   const auth = useSelector(({ auth }) => auth);
@@ -31,8 +32,8 @@ const Table = () => {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const filtered = places.filter((place) => Number(place.rating) > rating);
-
     setFilteredPlaces(filtered);
   }, [rating]);
 
@@ -58,28 +59,30 @@ const Table = () => {
   }, [coordinates, bounds]);
 
   return (
-    <div className="wrapper-users">
-      <CssBaseline />
-      <Grid container spacing={3} style={{ width: "100%" }}>
-        <Grid item xs={12} md={4}>
-          <List
-            places={filteredPlaces.length ? filteredPlaces : places}
-            childClicked={childClicked}
-            isLoading={isLoading}
-            rating={rating}
-            setRating={setRating}
-          />
+    <div style={{ marginTop: "40px" }}>
+      <AnimatedPage>
+        <CssBaseline />
+        <Grid container spacing={3}>
+          <Grid item xs={12} md={4}>
+            <List
+              places={filteredPlaces.length ? filteredPlaces : places}
+              childClicked={childClicked}
+              isLoading={isLoading}
+              rating={rating}
+              setRating={setRating}
+            />
+          </Grid>
+          <Grid item xs={12} md={8}>
+            <Map
+              setCoordinates={setCoordinates}
+              setBounds={setBounds}
+              coordinates={coordinates}
+              places={filteredPlaces.length ? filteredPlaces : places}
+              setChildClicked={setChildClicked}
+            />
+          </Grid>
         </Grid>
-        <Grid item xs={12} md={8}>
-          <Map
-            setCoordinates={setCoordinates}
-            setBounds={setBounds}
-            coordinates={coordinates}
-            places={filteredPlaces.length ? filteredPlaces : places}
-            setChildClicked={setChildClicked}
-          />
-        </Grid>
-      </Grid>
+      </AnimatedPage>
     </div>
   );
 };
