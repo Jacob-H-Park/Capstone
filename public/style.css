@@ -1225,14 +1225,6 @@ bottom: 0;}
     transform: rotate(-3600deg) !important;
 }
 
-/* html, body{
-    margin: 0;
-    width: 100%;
-    height: 100%;
-    font-family: 'Dosis', sans-serif;
-    font-weight: 300;
-
-} */
 
 .bg-purple{
   background-image: linear-gradient(-225deg, #473B7B 0%, #3584A7 51%, #30D2BE 100%);
