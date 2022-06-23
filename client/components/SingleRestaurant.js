@@ -1,10 +1,13 @@
-import React, { Component, useEffect } from "react";
-import { connect, useSelector } from "react-redux";
-import { Link, Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import AnimatedPage from "./AnimatedPage";
 import CreatePost from "./CreatePost";
+<<<<<<< HEAD
 import CardActions from "@mui/material/CardActions";
+=======
+>>>>>>> 141c5ab (posting photo in progress)
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { CardHeader } from "@mui/material";
@@ -16,7 +19,10 @@ import { Grid } from "@mui/material";
 import { CardMedia } from "@mui/material";
 import { List, ListItem } from "@mui/material";
 import CustomizedDialogs from "./PostDialog";
+<<<<<<< HEAD
 import GoogleMap from "./GoogleMap";
+=======
+>>>>>>> 141c5ab (posting photo in progress)
 
 const SingleRestaurant = () => {
   const { businesses: restaurants } = useSelector(
@@ -40,9 +46,15 @@ const SingleRestaurant = () => {
   );
 
   return (
+<<<<<<< HEAD
     <div style={{ marginTop: "100px" }}>
       <AnimatedPage>
         {/* <Link className="backlink" to="/">
+=======
+    <div className="singlerestpage" style={{ marginTop: "100px" }}>
+      <AnimatedPage>
+        <Link className="backlink" to="/">
+>>>>>>> 141c5ab (posting photo in progress)
           <i
             className="backlink"
             class="fa-solid fa-circle-arrow-left fa-2x"
@@ -54,6 +66,7 @@ const SingleRestaurant = () => {
             direction="row"
             justifyContent="flex-end"
             alignItems="flex-end"
+<<<<<<< HEAD
           >
             <CustomizedDialogs>
               <CreatePost restaurant={restaurant} />
@@ -86,6 +99,41 @@ const SingleRestaurant = () => {
                   image={restaurant.image_url}
                   id="singleImage"
                 />
+=======
+          >
+            <CustomizedDialogs>
+              <CreatePost restaurant={restaurant} />
+            </CustomizedDialogs>
+          </Grid>
+          <Grid
+            container
+            spacing={11}
+            direction="row"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <Grid item s={4}>
+              <Card
+                sx={{
+                  ml: 1,
+                  borderRadius: 10,
+                  boxShadow: 3,
+                  variant: "outlined",
+                }}
+              >
+                <CardHeader
+                  sx={{ m: 3, fontStyle: "bold" }}
+                  style={{ textAlign: "center" }}
+                  titleTypographyProps={{ variant: "h3" }}
+                  title={restaurant.name}
+                />
+                <CardMedia
+                  sx={{ borderRadius: 100, mb: 7 }}
+                  component="img"
+                  image={restaurant.image_url}
+                  id="singleImage"
+                />
+>>>>>>> 141c5ab (posting photo in progress)
                 <Typography
                   sx={{ p: 2, m: 3, textAlign: "center" }}
                   variant="body1"
@@ -106,6 +154,7 @@ const SingleRestaurant = () => {
                     </span>
                   </div>
                 </Typography>
+<<<<<<< HEAD
                 <div
                   style={{
                     height: "500px",
@@ -118,6 +167,10 @@ const SingleRestaurant = () => {
               </Card>
             </Grid>
 
+=======
+              </Card>
+            </Grid>
+>>>>>>> 141c5ab (posting photo in progress)
             <Grid item xs={5}>
               <List>
                 {specificPosts.map((post) => {
@@ -148,6 +201,17 @@ const SingleRestaurant = () => {
                         />
                         <CardContent>
                           <div key={post.id}>
+<<<<<<< HEAD
+=======
+                            {/* <Typography
+                      sx={{ mb: -2, ml: 2, mt: -3, fontStyle: "oblique" }}
+                      gutterBottom
+                      variant="h6"
+                      component="div"
+                    >
+                      <h4> {post.title} </h4>
+                    </Typography> */}
+>>>>>>> 141c5ab (posting photo in progress)
                             <Typography
                               sx={{ m: 1, ml: 2 }}
                               variant="subtitle2"
@@ -182,6 +246,7 @@ const SingleRestaurant = () => {
               </List>
             </Grid>
           </Grid>
+<<<<<<< HEAD
         </Grid> */}
 
         <div className="container55">
@@ -283,6 +348,8 @@ const SingleRestaurant = () => {
               );
             })}
           </List>
+=======
+>>>>>>> 141c5ab (posting photo in progress)
         </Grid>
       </AnimatedPage>
     </div>

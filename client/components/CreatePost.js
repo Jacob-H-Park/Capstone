@@ -1,6 +1,8 @@
 import { StarRateRounded } from "@mui/icons-material";
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import axios from "axios";
+
 import { createPost } from "../store";
 
 class CreatePost extends Component {
@@ -12,23 +14,61 @@ class CreatePost extends Component {
       wifi: "",
       userId: props.auth.id ? props.auth.id : 0,
       restaurantName: props.restaurant.alias ? props.restaurant.alias : "",
+<<<<<<< HEAD
+=======
+      uploadedFile: "",
+      imageUrl: "",
+>>>>>>> 141c5ab (posting photo in progress)
     };
     this.initialState = this.state;
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleFile = this.handleFile.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
+
   handleSubmit(e) {
     e.preventDefault();
     this.props.createPost({ ...this.state });
     this.setState(() => this.initialState);
   }
+
+  async handleFile(ev) {
+    ev.preventDefault();
+    const file = ev.target.files[0];
+    console.log("file selected", file);
+    this.setState({ uploadeFile: file });
+    console.log("uploaded file", this.state.uploadedFile);
+
+    //Amazon S3
+    //get the secure URL from the server to connect to the s3 bucket
+    const { url } = (await axios.get("/s3Url")).data;
+
+    //upload image to the s3 bucket - POST? PUT?
+    await axios.put(
+      `${url}`,
+      //ask if uploadedFile and headers can be passed in combined instead of two different objects
+      file,
+      {
+        headers: { "Content-Type": "multipart/form-data" },
+      }
+    );
+    this.setState({ imageUrl: url.split("?")[0] });
+  }
+
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
   render() {
+<<<<<<< HEAD
     const { review, restaurantName, title, wifi } = this.state;
     const { handleSubmit, handleChange } = this;
     const { username } = this.props.auth;
+=======
+    const { review, restaurantName, title, wifi, imageUrl } = this.state;
+    console.log(imageUrl);
+    const { handleSubmit, handleChange, handleFile } = this;
+
+>>>>>>> 141c5ab (posting photo in progress)
     return (
       <div>
         <form className="addform" onSubmit={handleSubmit}>
@@ -62,6 +102,17 @@ class CreatePost extends Component {
             <option value="Wifi Not Available">Wifi Not Available</option>
             <option value="Wifi Costs Extra">Wifi Costs Extra</option>
           </select>
+<<<<<<< HEAD
+=======
+
+          <label htmlFor="upload-image-file" />
+          <input
+            accept="image/*"
+            id="upload-image-file"
+            type="file"
+            onChange={handleFile}
+          />
+>>>>>>> 141c5ab (posting photo in progress)
 
           <textarea
             style={{ color: "black" }}
@@ -72,6 +123,24 @@ class CreatePost extends Component {
             onChange={handleChange}
           ></textarea>
 
+<<<<<<< HEAD
+=======
+          {imageUrl ? (
+            <div>
+              <img
+                display="flex"
+                style={{
+                  height: "200px",
+                  maxWidth: "100%",
+                }}
+                src={imageUrl}
+                alt="not loaded"
+              />
+            </div>
+          ) : (
+            ""
+          )}
+>>>>>>> 141c5ab (posting photo in progress)
           <button className="reviewbutton">Post</button>
         </form>
       </div>
