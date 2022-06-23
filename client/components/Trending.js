@@ -28,8 +28,8 @@ const Trending= () => {
               <div>
                
                 <h2 style={{textAlign:"center"}}> Here are LoopedIn's Top Trending Restaurants! </h2>
-                <Box sx={{ width: 800, minHeight: 829 }}>
-                            <Masonry columns={3} spacing={2}>
+                <Box sx={{ width: 1370, minHeight: 829 }}>
+                            <Masonry columns={4} spacing={2}>
                               
                               {restaurants.map((restaurant, index) =>  (
                                 

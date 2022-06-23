@@ -6,13 +6,25 @@ import { deletePost } from "../store";
 import CustomizedDialogs from "./EditDialog";
 import Card from '@mui/material/Card';
 import { Button, CardContent, Typography, Grid, Box } from "@mui/material";
+import history from "../history";
 
 const Post = ({ post, deletePost}) => {
+    const [open, setOpen] = React.useState(false)
     return (
-        <Grid direction="column"  
-        justify="center"
-        alignItems="center"> 
-       
+        <div className="editPost">
+        <div className="backbutton"> <Link className="backlink" to="/profile">
+          <i className="backlink" class="fa-solid fa-circle-arrow-left fa-2x"></i>{" "}
+        </Link> </div>
+        <h1 className="editheader">
+            Change Your Mind?
+         </h1>
+        <Grid 
+        container spacing = {12}
+        direction="row"  
+        justifyContent="center"
+        alignItems="space-around"
+        > 
+        <Grid item s={4}>
         <Card  sx={{ maxWidth: 600, m:3, boxShadow: 3, variant: "outlined"}}>
         <CardContent>
         <Typography sx={{mb:-2, ml: 2, mt: -3, fontStyle: 'oblique'}} gutterBottom variant="h6" component="div">
@@ -27,14 +39,15 @@ const Post = ({ post, deletePost}) => {
         </Typography>
         </CardContent>
     <Grid container justify="center" direction='row'>
-     <Link to='/profile'><Button sx={{mb:3, ml:19, mr: 2}} variant="outlined" onClick={()=> deletePost(post)}>Delete Review</Button></Link> 
-     <CustomizedDialogs>
-     <Route component={UpdatePost} />
+     <Link to='/profile'><Button sx={{mb:3, ml:19, mr: 2}} variant="outlined" onClick={()=> deletePost(post)}><i class="fa-solid fa-trash-can"></i></Button></Link> 
+     <CustomizedDialogs open={open} setOpen={setOpen}>
+     <UpdatePost post={post} open={open} setOpen={setOpen} />
      </CustomizedDialogs>
      </Grid>
        </Card>
-    </Grid>
-    
+       </Grid>
+     </Grid>
+     </div>
     )
 }
 

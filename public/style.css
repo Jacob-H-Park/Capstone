@@ -1174,7 +1174,21 @@ bottom: 0;}
 	 text-align: center;
 }
  
- 
+.editPost, .editheader {
+  margin: 20px;
+  padding: 25px;
+  
+} 
+
+.editheader {
+  text-align: center;
+}
+
+.backbutton {
+  margin-top: 40px;
+  padding-top: 20px;
+}
+
 
 
 

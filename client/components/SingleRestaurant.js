@@ -140,13 +140,6 @@ const SingleRestaurant = () => {
                     </Typography>
                   </div>
                 </CardContent>
-                <IconButton
-                  sx={{ ml: 68, mb: 2, mt: 0 }}
-                  aria-label="add to favorites"
-                >
-                  <FavoriteIcon />
-                </IconButton>
-
               </Card>
               </ListItem>
             );

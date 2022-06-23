@@ -1,11 +1,13 @@
+import { SettingsInputComponent } from "@mui/icons-material";
 import React from "react";
 import {connect} from "react-redux"
 import { updatePost } from "../store";
+import { useState } from "react";
 
 export class UpdatePost extends React.Component {
     constructor(props) {
        super(props);
-       const { post } = this.props;
+       const { post, id } = this.props;
        this.state = {
            review: post ? post.review : '',
            title: post ? post.title: '',
@@ -25,6 +27,16 @@ export class UpdatePost extends React.Component {
             })
         }
     }
+    componentDidMount(){
+    //    const post = this.props.posts.find((post) => post.id === id)
+       this.setState({
+        post: this.props.post.review,
+        title: this.props.post.title,
+        location: this.props.post.location,
+        wifi: this.props.post.wifi
+      })
+    }
+
     handleChange(evt) {
         this.setState({
             [evt.target.name]: evt.target.value
@@ -34,14 +46,15 @@ export class UpdatePost extends React.Component {
         evt.preventDefault()
         console.log("this is post" , this.props)
         this.props.updatePost(this.props.post.id, {...this.state})
-        
+        this.props.setOpen(false)
     }
    render() {
       const {review, title, location, wifi} = this.state
       const {handleSubmit, handleChange} = this
+    //   const [open, setOpen] = React.useState(false)
       return (
           <div className="edit">
-             <form className='addform' onSubmit={handleSubmit}>
+             <form className='addform'>
                 <input className='title'
                   name="title" 
                   type="text"
@@ -84,17 +97,15 @@ export class UpdatePost extends React.Component {
    } 
 }
 
-const mapState = (state, {match}) => {
-    const id = match.params.id;
-    console.log("this is id" , id)
+const mapState = (state) => {
+    // const id = match.params.id;
+    // console.log("this is history" , history)
     
-    const post = state.posts.find((post) => post.id === id * 1) 
-    console.log("this is mapState Post", post)
+    // const post = state.posts.find((post) => post.id === id * 1) 
+    // console.log("this is mapState Post", post)
     return {
-        post
+    posts: state.posts      
     }
-        
-        
 }
 
 

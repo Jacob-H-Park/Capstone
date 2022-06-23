@@ -49,7 +49,6 @@ async function seed() {
     }),
 
     Post.create({
-
       review: 'I was looking for a place to do work today and stumbled upon % Arabica, their drinks are so yummy and I recommend the Iced Matcha Latte!',
       location: "Arabica Brooklyn",
       title: "100% Fav Cafe",
@@ -57,6 +56,53 @@ async function seed() {
       wifi: "Free-Wifi",
       restaurantName: "arabica-brooklyn",
     }),
+
+    Post.create({
+      review: 'This small cafe has the best drinks, not alot of space for sitting but good for a quick stop by! They have alot of plant decor as well!',
+      location: "PPL Brooklyn",
+      title: "For the plant lovers!",
+      userId: users[0].id,
+      wifi: "Wifi Not Available",
+      restaurantName: 'ppl-brooklyn',
+    }),
+
+    Post.create({
+      review: 'I go here everyday! They have the best pastries and I can do work with the free-wifi!',
+      location: "Sey Coffee",
+      title: "My daily coffee spot",
+      userId: users[0].id,
+      wifi: "Free-Wifi",
+      restaurantName: 'sey-coffee-brooklyn',
+    }),
+
+    Post.create({
+      review: 'They have the BEST Adeni Chai and the honeycomb pastry is a must-try! One of my favorite spots to go do work and sip on a drink!',
+      location: "Qahwah House",
+      title: "Not Your Regular Coffee Spot",
+      userId: users[0].id,
+      wifi: "Free-Wifi",
+      restaurantName: 'qahwah-house-brooklyn',
+    }),
+
+    Post.create({
+      review: 'Great cafe to meet up with colleagues and do work while sipping on some drinks!',
+      location: "Blend Coffee & Cowork",
+      title: "Perfect Co-working Cafe",
+      userId: users[0].id,
+      wifi: "Free-Wifi",
+      restaurantName: 'blend-coffee-cowork-brooklyn',
+    }),
+  
+    Post.create({
+      review: 'The Eggs on Croissant and Banana & Walnut Bread with Marscapone are some of my top picks from this place! Also love the ambience of the place inside!',
+      location: "Milk & Honey Cafe",
+      title: "Good Food & Vibes",
+      userId: users[0].id,
+      wifi: "Wifi Not Available",
+      restaurantName: "milk-and-honey-cafe-brooklyn-2",
+    }),
+
+
   ]);
 
   const restaurants = await Promise.all([
