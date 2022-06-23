@@ -141,7 +141,8 @@ const Navbar = ({ isLoggedIn }) => {
     height: "60px",
     width: "100%",
     backgroundColor: "grey",
-    background: "linear-gradient(15deg, #13547a 0%, #80d0c7 100%)",
+    background:
+      "linear-gradient(15deg, rgb(19,84,122, 0.8) 0%, rgb(128,208,199, 0.5) 100%)",
     textAlign: "center",
     transition: "top 0.6s",
     zIndex: "6",

@@ -25,7 +25,6 @@ const Home = () => {
     return null;
   }
   return (
-
     <div className="landing" style={{ marginTop: "90px" }}>
       <AnimatedPage>
         <Recommended />

@@ -10,11 +10,9 @@ import AnimatedPage from "./AnimatedPage";
 
 const Profile = () => {
   const auth = useSelector(({ auth }) => auth);
-  console.log("this is auth id", auth.id);
   const posts = useSelector(({ posts }) => {
     return posts.filter((post) => post.userId === auth.id);
   });
-  console.log("this is posts on profile", posts);
   const [data, setData] = useState({});
 
   if (!posts) {
@@ -70,24 +68,28 @@ const Profile = () => {
     <div style={{ marginTop: "90px" }}>
       <AnimatedPage>
         <main className="profile">
+          <header className="profileHeader">
+            <i className="fa fa-bars" aria-hidden="true" />
+          </header>
           <div className="profile-bg" />
           <section className="container">
-            <aside className="profile-image">
+            <aside className="profile-image" style={{ marginTop: "-80px" }}>
               {auth.username === "cody" || auth.username === "murphy" ? (
                 <img
                   alt={`${auth.username}`}
                   src={`./photos/${auth.username}.jpeg`}
-                  sx={{ width: 250, height: 250 }}
+                  sx={{ width: 150, height: 150 }}
                 />
               ) : (
                 <Avatar
                   sx={{ bgcolor: "#37515F" }}
                   alt={`${auth.username}`}
-                  sx={{ width: 250, height: 250 }}
+                  sx={{ width: 150, height: 150 }}
                   variant="rounded"
                 />
               )}
             </aside>
+
             <section className="profile-info">
               <h1 className="first-name">
                 <div className="glitch" data-text={auth.username.toUpperCase()}>
@@ -110,9 +112,18 @@ const Profile = () => {
             <p>
               <strong>{auth.likes}</strong> Likes
             </p>
+            <div className="social1111">
+              <i className="fa fa-facebook-square" aria-hidden="true" />
+              <i className="fa fa-twitter-square" aria-hidden="true" />
+              <i className="fa fa-pinterest-square" aria-hidden="true" />
+              <i className="fa fa-tumblr-square" aria-hidden="true" />
+            </div>
           </section>
         </main>
+
         <button className="icon close" />
+
+        {/* 1 */}
 
         {/* <div className="greeting">
           {auth.username === "cody" || auth.username === "murphy" ? (
@@ -199,11 +210,13 @@ const Profile = () => {
             );
           })}
         </div> */}
+
+        {/* continue 1 */}
         <div className="gallery1">
           {posts.map((post) => {
             return (
               <div className="gallery-item1" tabIndex={0}>
-                <div className="example-2 card">
+                <div className="example-2 card11">
                   <div className="wrapper">
                     <div className="header">
                       <div className="date"></div>
@@ -215,7 +228,7 @@ const Profile = () => {
                       </ul>
                     </div>
                     <div className="data">
-                      <div className="content">
+                      <div className="content1">
                         <span className="author">{auth.username}</span>
                         <h1 className="title">
                           <Link to={`/posts/${post.id}`}>{post.title} </Link>
