@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Box,
   Typography,
@@ -32,10 +32,6 @@ const PlaceDetails = ({ place, selected, refProp }) => {
   );
   const [open, setOpen] = useState(false);
   const [copied, setCopied] = useState(false);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   const handleToClose = (event, reason) => {
     if ("clickaway" == reason) return;

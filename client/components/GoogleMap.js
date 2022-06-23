@@ -31,11 +31,11 @@ export class GoogleMap extends Component {
 
   render() {
     const mapStyles = {
-      maxWidth: "450px",
+      maxWidth: "850px",
       height: "350px",
     };
     const containerStyle = {
-      maxWidth: "450px",
+      maxWidth: "850px",
       height: "50px",
     };
     return (

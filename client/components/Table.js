@@ -32,7 +32,6 @@ const Table = () => {
   };
 
   useEffect(() => {
-    window.scrollTo(0, 0);
     const filtered = places.filter((place) => Number(place.rating) > rating);
     setFilteredPlaces(filtered);
   }, [rating]);
