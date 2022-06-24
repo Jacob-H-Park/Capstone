@@ -8,7 +8,11 @@ import {
   FormControl,
   Select,
   Box,
+<<<<<<< HEAD
 } from "@mui/material";
+=======
+} from "@material-ui/core";
+>>>>>>> 74058c5 (posting photo in progress -)
 
 import PlaceDetails from "../PlaceDetails/PlaceDetails";
 import theme from "./styles.js";
@@ -26,7 +30,11 @@ const List = ({ places, childClicked, isLoading, rating, setRating }) => {
   }, [places]);
   
   return (
+<<<<<<< HEAD
     <Box sx={{ p: "25px" }}>
+=======
+    <Box className={classes.container} style={{ marginTop: "50px" }}>
+>>>>>>> 74058c5 (posting photo in progress -)
       <Typography variant="h4">Food & Dining around you</Typography>
       {isLoading ? (
         <Box

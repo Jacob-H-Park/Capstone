@@ -4,10 +4,7 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import AnimatedPage from "./AnimatedPage";
 import CreatePost from "./CreatePost";
-<<<<<<< HEAD
 import CardActions from "@mui/material/CardActions";
-=======
->>>>>>> 141c5ab (posting photo in progress)
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { CardHeader } from "@mui/material";
@@ -19,10 +16,7 @@ import { Grid } from "@mui/material";
 import { CardMedia } from "@mui/material";
 import { List, ListItem } from "@mui/material";
 import CustomizedDialogs from "./PostDialog";
-<<<<<<< HEAD
 import GoogleMap from "./GoogleMap";
-=======
->>>>>>> 141c5ab (posting photo in progress)
 
 const SingleRestaurant = () => {
   const { businesses: restaurants } = useSelector(
@@ -46,15 +40,9 @@ const SingleRestaurant = () => {
   );
 
   return (
-<<<<<<< HEAD
-    <div style={{ marginTop: "100px" }}>
-      <AnimatedPage>
-        {/* <Link className="backlink" to="/">
-=======
     <div className="singlerestpage" style={{ marginTop: "100px" }}>
       <AnimatedPage>
         <Link className="backlink" to="/">
->>>>>>> 141c5ab (posting photo in progress)
           <i
             className="backlink"
             class="fa-solid fa-circle-arrow-left fa-2x"
@@ -66,40 +54,6 @@ const SingleRestaurant = () => {
             direction="row"
             justifyContent="flex-end"
             alignItems="flex-end"
-<<<<<<< HEAD
-          >
-            <CustomizedDialogs>
-              <CreatePost restaurant={restaurant} />
-            </CustomizedDialogs>
-          </Grid>
-          <Grid
-            container
-            direction="row"
-            justifyContent="center"
-            alignItems="center"
-          >
-            <Grid item s={4}>
-              <Card
-                sx={{
-                  borderRadius: 10,
-                  boxShadow: 3,
-                  variant: "outlined",
-                  maxWidth: 600,
-                }}
-              >
-                <CardHeader
-                  sx={{ mt: 1, fontStyle: "bold" }}
-                  style={{ textAlign: "center" }}
-                  titleTypographyProps={{ variant: "h3" }}
-                  title={restaurant.name}
-                />
-                <CardMedia
-                  sx={{ borderRadius: 10, mb: 7 }}
-                  component="img"
-                  image={restaurant.image_url}
-                  id="singleImage"
-                />
-=======
           >
             <CustomizedDialogs>
               <CreatePost restaurant={restaurant} />
@@ -133,7 +87,6 @@ const SingleRestaurant = () => {
                   image={restaurant.image_url}
                   id="singleImage"
                 />
->>>>>>> 141c5ab (posting photo in progress)
                 <Typography
                   sx={{ p: 2, m: 3, textAlign: "center" }}
                   variant="body1"
@@ -154,23 +107,8 @@ const SingleRestaurant = () => {
                     </span>
                   </div>
                 </Typography>
-<<<<<<< HEAD
-                <div
-                  style={{
-                    height: "500px",
-                    width: "500px",
-                    marginLeft: "75px",
-                  }}
-                >
-                  <GoogleMap restaurant={restaurant} />
-                </div>
               </Card>
             </Grid>
-
-=======
-              </Card>
-            </Grid>
->>>>>>> 141c5ab (posting photo in progress)
             <Grid item xs={5}>
               <List>
                 {specificPosts.map((post) => {
@@ -201,8 +139,6 @@ const SingleRestaurant = () => {
                         />
                         <CardContent>
                           <div key={post.id}>
-<<<<<<< HEAD
-=======
                             {/* <Typography
                       sx={{ mb: -2, ml: 2, mt: -3, fontStyle: "oblique" }}
                       gutterBottom
@@ -211,7 +147,6 @@ const SingleRestaurant = () => {
                     >
                       <h4> {post.title} </h4>
                     </Typography> */}
->>>>>>> 141c5ab (posting photo in progress)
                             <Typography
                               sx={{ m: 1, ml: 2 }}
                               variant="subtitle2"
@@ -246,110 +181,6 @@ const SingleRestaurant = () => {
               </List>
             </Grid>
           </Grid>
-<<<<<<< HEAD
-        </Grid> */}
-
-        <div className="container55">
-          <div className="box">
-            <div className="title">
-              <span className="block" />
-              <h1>{restaurant.name}</h1>
-            </div>
-            <div className="role">
-              <div className="block" />
-              <p>
-                {restaurant.location["display_address"][0]}
-                &nbsp;
-                {restaurant.location["display_address"][1]}
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="scene">
-          <div id="plant" className="item" />
-          <div id="mirror">
-            <div
-              id="mirror-content"
-              style={{
-                backgroundImage: `url(${restaurant.image_url})`,
-              }}
-            />
-          </div>
-          <div id="plant-2" className="item" />
-          <div id="books" className="item">
-            <div id="apple" className="item" />
-          </div>
-          <div id="plant-3" className="item" />
-          <div id="clock" className="item" />{" "}
-        </div>
-        {/* <div id="mirror2">
-          <GoogleMap restaurant={restaurant} />
-        </div> */}
-        <CustomizedDialogs style={{ marginTop: "-1400px" }}>
-          <CreatePost restaurant={restaurant} />
-        </CustomizedDialogs>
-        <Grid item xs={5}>
-          <List>
-            {specificPosts.map((post) => {
-              return (
-                <ListItem>
-                  <Card
-                    sx={{
-                      borderRadius: 10,
-                      maxWidth: 600,
-                      maxHeight: 275,
-                      m: 2,
-                      boxShadow: 3,
-                      variant: "outlined",
-                    }}
-                  >
-                    <CardHeader
-                      sx={{ mb: -1 }}
-                      style={{
-                        background:
-                          " linear-gradient(15deg, #13547a 0%, #80d0c7 100%)",
-                      }}
-                      avatar={<Avatar sx={{ bgcolor: "#009688" }}>C</Avatar>}
-                      titleTypographyProps={{
-                        variant: "h5",
-                        fontStyle: "oblique",
-                      }}
-                      title={post.title}
-                      subheader={post.createdAt.slice(0, 10)}
-                    />
-                    <CardContent>
-                      <div key={post.id}>
-                        <Typography sx={{ m: 1, ml: 2 }} variant="subtitle2">
-                          <div>
-                            <i class="fa-solid fa-location-dot"></i>{" "}
-                            {post.restaurantName}
-                          </div>
-                          <div>
-                            <i class="fa-solid fa-wifi"></i> {post.wifi}
-                          </div>
-                        </Typography>
-                        <Typography
-                          sx={{ p: 2 }}
-                          variant="body2"
-                          color="text.secondary"
-                        >
-                          <div> {post.review} </div>
-                        </Typography>
-                      </div>
-                    </CardContent>
-                    <IconButton
-                      sx={{ ml: 68, mb: 2, mt: 0 }}
-                      aria-label="add to favorites"
-                    >
-                      <FavoriteIcon />
-                    </IconButton>
-                  </Card>
-                </ListItem>
-              );
-            })}
-          </List>
-=======
->>>>>>> 141c5ab (posting photo in progress)
         </Grid>
       </AnimatedPage>
     </div>

@@ -14,11 +14,8 @@ class CreatePost extends Component {
       wifi: "",
       userId: props.auth.id ? props.auth.id : 0,
       restaurantName: props.restaurant.alias ? props.restaurant.alias : "",
-<<<<<<< HEAD
-=======
       uploadedFile: "",
       imageUrl: "",
->>>>>>> 141c5ab (posting photo in progress)
     };
     this.initialState = this.state;
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -59,16 +56,10 @@ class CreatePost extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
   render() {
-<<<<<<< HEAD
-    const { review, restaurantName, title, wifi } = this.state;
-    const { handleSubmit, handleChange } = this;
-    const { username } = this.props.auth;
-=======
     const { review, restaurantName, title, wifi, imageUrl } = this.state;
     console.log(imageUrl);
     const { handleSubmit, handleChange, handleFile } = this;
 
->>>>>>> 141c5ab (posting photo in progress)
     return (
       <div>
         <form className="addform" onSubmit={handleSubmit}>
@@ -102,8 +93,6 @@ class CreatePost extends Component {
             <option value="Wifi Not Available">Wifi Not Available</option>
             <option value="Wifi Costs Extra">Wifi Costs Extra</option>
           </select>
-<<<<<<< HEAD
-=======
 
           <label htmlFor="upload-image-file" />
           <input
@@ -112,7 +101,6 @@ class CreatePost extends Component {
             type="file"
             onChange={handleFile}
           />
->>>>>>> 141c5ab (posting photo in progress)
 
           <textarea
             style={{ color: "black" }}
@@ -123,8 +111,6 @@ class CreatePost extends Component {
             onChange={handleChange}
           ></textarea>
 
-<<<<<<< HEAD
-=======
           {imageUrl ? (
             <div>
               <img
@@ -140,7 +126,6 @@ class CreatePost extends Component {
           ) : (
             ""
           )}
->>>>>>> 141c5ab (posting photo in progress)
           <button className="reviewbutton">Post</button>
         </form>
       </div>
