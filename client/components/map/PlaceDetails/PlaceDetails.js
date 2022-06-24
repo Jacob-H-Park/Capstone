@@ -8,18 +8,18 @@ import {
   CardContent,
   CardActions,
   Chip,
-} from "@material-ui/core";
-import LocationOnIcon from "@material-ui/icons/LocationOn";
+} from "@mui/material";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 import CustomizedDialogs from "../../ShareDialog";
-import PhoneIcon from "@material-ui/icons/Phone";
+import PhoneIcon from "@mui/icons-material/Phone";
 import { Link, Route } from "react-router-dom";
-import Rating from "@material-ui/lab/Rating";
+import Rating from "@mui/lab/Rating";
 import SharePost from "../../SharePost";
 import useStyles from "./styles.js";
 import copy from "copy-to-clipboard";
-import IconButton from "@material-ui/core/IconButton";
-import Snackbar from "@material-ui/core/Snackbar";
-import CloseIcon from "@material-ui/icons/Close";
+import IconButton from "@mui/material/IconButton";
+import Snackbar from "@mui/material/Snackbar";
+import CloseIcon from "@mui/icons-material/Close";
 import MuiAlert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
 
