@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Masonry from "@mui/lab/Masonry";
-import { styled } from "@mui/material/styles";
+import { styled } from "@mui/styles";
 
 const Trending = () => {
   const { businesses: restaurants } = useSelector(
