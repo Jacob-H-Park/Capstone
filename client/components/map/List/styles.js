@@ -1,13 +1,15 @@
-import { makeStyles } from "@mui/styles";
+import { createTheme } from '@mui/material/styles';
 
-export default makeStyles((theme) => ({
+
+
+const theme = createTheme({
   formControl: {
-    margin: theme.spacing(1),
+    margin: "16px",
     minWidth: 120,
     marginBottom: "30px",
   },
   selectEmpty: {
-    marginTop: theme.spacing(2),
+    marginTop: "32px",
   },
   loading: {
     height: "600px",
@@ -25,4 +27,6 @@ export default makeStyles((theme) => ({
     height: "70vh",
     overflow: "auto",
   },
-}));
+});
+
+export default theme
