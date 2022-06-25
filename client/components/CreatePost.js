@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 
+import { Box } from "@mui/material";
 import { createPost } from "../store";
 
 class CreatePost extends Component {
@@ -11,7 +12,7 @@ class CreatePost extends Component {
     this.state = {
       review: "",
       title: "",
-      wifi: "",
+      wifi: "Wifi Not Available",
       userId: props.auth.id ? props.auth.id : 0,
       restaurantName: props.restaurant.alias ? props.restaurant.alias : "",
       uploadedFile: "",
@@ -94,13 +95,16 @@ class CreatePost extends Component {
             <option value="Wifi Costs Extra">Wifi Costs Extra</option>
           </select>
 
-          <label htmlFor="upload-image-file" />
-          <input
-            accept="image/*"
-            id="upload-image-file"
-            type="file"
-            onChange={handleFile}
-          />
+          <Box width={300}>
+            <label htmlFor="upload-image-file" />
+            <input
+              accept="image/*"
+              id="upload-image-file"
+              type="file"
+              className="custom-file-input"
+              onChange={handleFile}
+            />
+          </Box>
 
           <textarea
             style={{ color: "black" }}

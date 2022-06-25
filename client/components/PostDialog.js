@@ -59,7 +59,7 @@ export default function CustomizedDialogs({ children }) {
   return (
     <div>
       <Button sx={{ mb: 3 }} variant="text" onClick={handleClickOpen}>
-        <i class="fa-solid fa-circle-plus fa-3x"></i>
+        <i className="fa-solid fa-circle-plus fa-3x"></i>
       </Button>
       <BootstrapDialog
         onClose={handleClose}
