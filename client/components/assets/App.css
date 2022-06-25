@@ -443,6 +443,9 @@ body {
   font-size: 18px;
   line-height: 28px;
   color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .channel-search__container {
@@ -1734,6 +1737,8 @@ div.rta__autocomplete.str-chat__emojisearch {
 .str-chat__input-flat {
   width: 100%;
   padding: 10px;
+  position: absolute;
+  top: 40%;
 }
 
 @media screen and (max-width: 960px) {

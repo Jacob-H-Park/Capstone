@@ -1,6 +1,6 @@
 import { SettingsInputComponent } from "@mui/icons-material";
 import React from "react";
-import {connect} from "react-redux"
+import { connect } from "react-redux";
 import { updatePost } from "../store";
 import { useState } from "react";
 
@@ -70,32 +70,36 @@ export class UpdatePost extends React.Component {
                   onChange={handleChange}
                 />
 
-                <select
-                  name='wifi'
-                  value={wifi || ""}
-                  placeholder='Wifi Availability'
-                  onChange={handleChange}
-                 >
-                <option value=''>Select Wifi Availability</option> 
-                <option value='Free-Wifi'>Free-Wifi</option>
-                <option value='Wifi Not Available'>Wifi Not Available</option>
-                <option value='Wifi Costs Extra'>Wifi Costs Extra</option>
-                </select>
 
-                <textarea
-                  name="review"
-                  type="text"
-                  value={review || ""}
-                  placeholder="Share your review..."
-                  onChange={handleChange}
-                />
+          <select
+            name="wifi"
+            value={wifi || ""}
+            placeholder="Wifi Availability"
+            onChange={handleChange}
+          >
+            <option value="">Select Wifi Availability</option>
+            <option value="Free-Wifi">Free-Wifi</option>
+            <option value="Wifi Not Available">Wifi Not Available</option>
+            <option value="Wifi Costs Extra">Wifi Costs Extra</option>
+          </select>
 
-             <button className="reviewbutton" onClick={handleSubmit}>Edit Review</button>
-             </form> 
-          </div>
-      )
-   } 
+          <textarea
+            name="review"
+            type="text"
+            value={review || ""}
+            placeholder="Share your review..."
+            onChange={handleChange}
+          />
+
+          <button className="reviewbutton" onClick={handleSubmit}>
+            Edit Review
+          </button>
+        </form>
+      </div>
+    );
+  }
 }
+
 
 const mapState = (state) => {
     // const id = match.params.id;
@@ -109,10 +113,16 @@ const mapState = (state) => {
 }
 
 
-const mapDispatch = (dispatch) => {
-    return {
-        updatePost: (postId, post) => dispatch(updatePost(postId, post))
-    }
-}
+  const post = state.posts.find((post) => post.id === id * 1);
+  return {
+    post,
+  };
+};
 
-export default connect(mapState, mapDispatch)(UpdatePost)
+const mapDispatch = (dispatch) => {
+  return {
+    updatePost: (postId, post) => dispatch(updatePost(postId, post)),
+  };
+};
+
+export default connect(mapState, mapDispatch)(UpdatePost);

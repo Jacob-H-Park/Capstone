@@ -39,8 +39,8 @@ async function seed() {
 
   const post = await Promise.all([
     Post.create({
-
-      review: 'I visited a new cafe in NYC today called Arabica! They have great coffee and wifi so you can do work there too!',
+      review:
+        "I visited a new cafe in NYC today called Arabica! They have great coffee and wifi so you can do work there too!",
       location: "Arabica Brooklyn",
       title: "Great Coffee Spot",
       userId: users[0].id,
@@ -49,7 +49,8 @@ async function seed() {
     }),
 
     Post.create({
-      review: 'I was looking for a place to do work today and stumbled upon % Arabica, their drinks are so yummy and I recommend the Iced Matcha Latte!',
+      review:
+        "I was looking for a place to do work today and stumbled upon % Arabica, their drinks are so yummy and I recommend the Iced Matcha Latte!",
       location: "Arabica Brooklyn",
       title: "100% Fav Cafe",
       userId: users[0].id,
@@ -268,8 +269,6 @@ async function seed() {
       isFavorite: false,
     }),
   ]);
-  console.log(`seeded ${users.length} users`);
-  console.log(`seeded successfully`);
 
   return {
     users: {

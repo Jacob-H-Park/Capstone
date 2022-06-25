@@ -8,9 +8,7 @@ const Map = () => {
 
   return (
     <div>
-      <AnimatedPage>
-        <Table />
-      </AnimatedPage>
+      <Table />
     </div>
   );
 };

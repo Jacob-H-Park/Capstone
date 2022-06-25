@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import "../App";
 import axios from "axios";
-import { CssBaseline, Grid } from "@material-ui/core";
+import { CssBaseline, Grid } from "@mui/material";
 import { getPlacesData } from "../../server/api/map";
 import List from "./map/List/List";
 import Map from "./map/Map/Map";
@@ -32,7 +32,6 @@ const Table = () => {
   };
 
   useEffect(() => {
-    window.scrollTo(0, 0);
     const filtered = places.filter((place) => Number(place.rating) > rating);
     setFilteredPlaces(filtered);
   }, [rating]);

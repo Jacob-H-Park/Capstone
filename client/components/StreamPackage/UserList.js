@@ -34,7 +34,7 @@ const UserItem = ({ user, setSelectedUsers }) => {
     <div
       className="user-item__wrapper"
       onClick={handleSelect}
-      style={{ marginTop: "90px" }}
+      style={{ margin: "8px" }}
     >
       <div className="user-item__name-wrapper">
         <Avatar image={user.image} name={user.name || user.id} size={32} />

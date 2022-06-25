@@ -10,16 +10,10 @@ import AnimatedPage from "./AnimatedPage";
 
 const Profile = () => {
   const auth = useSelector(({ auth }) => auth);
-  console.log("this is auth id", auth.id);
   const posts = useSelector(({ posts }) => {
     return posts.filter((post) => post.userId === auth.id);
   });
-  console.log("this is posts on profile", posts);
   const [data, setData] = useState({});
-
-  if (!posts) {
-    return null;
-  }
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -31,6 +25,10 @@ const Profile = () => {
     };
     fetchData();
   }, []);
+
+  if (!posts) {
+    return null;
+  }
 
   let today = new Date();
   let time = today.toLocaleString("en-US", {
@@ -70,24 +68,27 @@ const Profile = () => {
     <div style={{ marginTop: "90px" }}>
       <AnimatedPage>
         <main className="profile">
+          <header className="profileHeader">
+            <i className="fa fa-bars" aria-hidden="true" />
+          </header>
           <div className="profile-bg" />
           <section className="container">
-            <aside className="profile-image">
+            <aside className="profile-image" style={{ marginTop: "-80px" }}>
               {auth.username === "cody" || auth.username === "murphy" ? (
                 <img
                   alt={`${auth.username}`}
                   src={`./photos/${auth.username}.jpeg`}
-                  sx={{ width: 250, height: 250 }}
+                  sx={{ width: 150, height: 150 }}
                 />
               ) : (
                 <Avatar
-                  sx={{ bgcolor: "#37515F" }}
+                  sx={{ bgcolor: "#37515F", width: 150, height: 150 }}
                   alt={`${auth.username}`}
-                  sx={{ width: 250, height: 250 }}
                   variant="rounded"
                 />
               )}
             </aside>
+
             <section className="profile-info">
               <h1 className="first-name">
                 <div className="glitch" data-text={auth.username.toUpperCase()}>
@@ -110,102 +111,27 @@ const Profile = () => {
             <p>
               <strong>{auth.likes}</strong> Likes
             </p>
+            <div className="social1111">
+              <i className="fa fa-facebook-square" aria-hidden="true" />
+              <i className="fa fa-twitter-square" aria-hidden="true" />
+              <i className="fa fa-pinterest-square" aria-hidden="true" />
+              <i className="fa fa-tumblr-square" aria-hidden="true" />
+            </div>
           </section>
         </main>
+
         <button className="icon close" />
 
-        {/* <div className="greeting">
-          {auth.username === "cody" || auth.username === "murphy" ? (
-            <img
-              alt={`${auth.username}`}
-              src={`./photos/${auth.username}.jpeg`}
-              sx={{ width: 350, height: 350 }}
-            />
-          ) : (
-            <Avatar
-              sx={{ bgcolor: "#37515F" }}
-              alt={`${auth.username}`}
-              sx={{ width: 350, height: 350 }}
-              variant="rounded"
-            />
-          )}
-          <p>Welcome, {auth.username},</p>
-          <p>
-            {months[month]} {day}, {year}
-          </p>
-          <p>
-            {displayGreeting()}, {auth.username.toUpperCase()}
-          </p>
-          <p>{time}</p>
-        </div>
-        <div className="weather">
-          <p>
-            Weather in {auth.city}, {auth.state}:
-          </p>
-          <p>{data.main ? <span>{data.main.temp.toFixed()}°F</span> : null}</p>
-          <div>
-            <p>{data.weather ? <span>{data.weather[0].main}</span> : null}</p>
-          </div>
-        </div>
-
-        <h2>My Reviews</h2>
-        <div>
-          {posts.map((post) => {
-            return (
-              <Card
-                sx={{
-                  maxWidth: 800,
-                  p: 3,
-                  m: 2,
-                  boxShadow: 3,
-                  variant: "outlined",
-                }}
-              >
-                <div>
-                  <div>
-                    <Link to={`/posts/${post.id}`}>
-                      <i class="fa-solid fa-pen-to-square"></i>
-                    </Link>
-                  </div>
-                  <CardContent>
-                    <Typography
-                      sx={{ mb: -2, ml: 2, mt: -3, fontStyle: "oblique" }}
-                      gutterBottom
-                      variant="h6"
-                      component="div"
-                    >
-                      <h4> {post.title} </h4>
-                    </Typography>
-
-                    <Typography sx={{ mb: 0, ml: 2 }} variant="subtitle2">
-                      <div>
-                        <i class="fa-solid fa-location-dot"></i> {post.location}
-                      </div>
-                      <div>
-                        <i class="fa-solid fa-wifi"></i> {post.wifi}
-                      </div>
-                    </Typography>
-
-                    <Typography
-                      sx={{ p: 2 }}
-                      variant="body2"
-                      color="text.secondary"
-                    >
-                      <div> {post.review} </div>
-                    </Typography>
-                  </CardContent>
-                </div>
-              </Card>
-            );
-          })}
-        </div> */}
         <div className="gallery1">
           {posts.map((post) => {
             return (
               <div className="gallery-item1" tabIndex={0}>
-                <div className="example-2 card">
+                <div className="example-2 card11">
                   <div className="wrapper">
-                    <div className="header">
+                    <div
+                      className="header"
+                      style={{ backgroundImage: post.imageUrl }}
+                    >
                       <div className="date"></div>
                       <ul className="menu-content">
                         <li>
@@ -215,7 +141,7 @@ const Profile = () => {
                       </ul>
                     </div>
                     <div className="data">
-                      <div className="content">
+                      <div className="content1">
                         <span className="author">{auth.username}</span>
                         <h1 className="title">
                           <Link to={`/posts/${post.id}`}>{post.title} </Link>

@@ -7,15 +7,16 @@ import {
   MenuItem,
   FormControl,
   Select,
-} from "@material-ui/core";
+  Box,
+} from "@mui/material";
 
 import PlaceDetails from "../PlaceDetails/PlaceDetails";
-import useStyles from "./styles.js";
+import theme from "./styles.js";
+import { ThemeProvider } from "@mui/material/styles";
 
 const List = ({ places, childClicked, isLoading, rating, setRating }) => {
-  const classes = useStyles();
+  //const classes = useStyles();
   const [elRefs, setElRefs] = useState([]);
-
   useEffect(() => {
     setElRefs((refs) =>
       Array(places?.length)
@@ -23,16 +24,30 @@ const List = ({ places, childClicked, isLoading, rating, setRating }) => {
         .map((_, i) => refs[i] || createRef())
     );
   }, [places]);
+
   return (
-    <div className={classes.container} style={{ marginTop: "50px" }}>
+    <Box sx={{ p: "25px" }}>
       <Typography variant="h4">Food & Dining around you</Typography>
       {isLoading ? (
-        <div className={classes.loading}>
+        <Box
+          sx={{
+            height: "600px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <CircularProgress size="5rem" />
-        </div>
+        </Box>
       ) : (
         <>
-          <FormControl className={classes.formControl}>
+          <FormControl
+            sx={{
+              margin: "16px",
+              minWidth: "120px",
+              marginBottom: "30px",
+            }}
+          >
             <InputLabel id="rating">Rating</InputLabel>
             <Select
               id="rating"
@@ -45,9 +60,9 @@ const List = ({ places, childClicked, isLoading, rating, setRating }) => {
               <MenuItem value="4.5">Above 4.5</MenuItem>
             </Select>
           </FormControl>
-          <Grid container spacing={3} className={classes.list}>
+          <Grid container spacing={3} sx={{ height: "70vh", overflow: "auto" }}>
             {places?.map((place, i) => (
-              <Grid ref={elRefs[i]} item key={i} item xs={12}>
+              <Grid ref={elRefs[i]} item key={i} xs={12}>
                 <PlaceDetails
                   place={place}
                   selected={Number(childClicked) === i}
@@ -58,7 +73,7 @@ const List = ({ places, childClicked, isLoading, rating, setRating }) => {
           </Grid>
         </>
       )}
-    </div>
+    </Box>
   );
 };
 
