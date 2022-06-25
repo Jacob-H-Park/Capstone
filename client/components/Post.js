@@ -39,7 +39,7 @@ const Post = ({ post, deletePost}) => {
         </Typography>
         </CardContent>
     <Grid container justify="center" direction='row'>
-     <Link to='/profile'><Button sx={{mb:3, ml:3, mr: 2}} variant="outlined" onClick={()=> deletePost(post)}><i class="fa-solid fa-trash-can"></i></Button></Link> 
+     <Link to='/profile'><Button sx={{mb:3, ml:3, mr: 2, borderColor: 'red', color: 'red'}} variant="outlined" onClick={()=> deletePost(post)}><i class="fa-solid fa-trash-can" style="color:red"></i></Button></Link> 
      <CustomizedDialogs open={open} setOpen={setOpen}>
      <UpdatePost post={post} open={open} setOpen={setOpen} />
      </CustomizedDialogs>

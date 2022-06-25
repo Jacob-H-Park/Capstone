@@ -40,6 +40,8 @@ const SingleRestaurant = () => {
     (post) => post.restaurantName === restaurant.alias
   );
 
+  const [open, setOpen] = React.useState(false)
+
   return (
 
     <div className="singlerestpage" style={{ marginTop: "100px" }}>
@@ -59,8 +61,8 @@ const SingleRestaurant = () => {
           justifyContent="flex-end"
           alignItems="flex-end"
           >
-        <CustomizedDialogs>
-          <CreatePost restaurant={restaurant} />
+        <CustomizedDialogs open={open} setOpen={setOpen} >
+          <CreatePost restaurant={restaurant} open={open} setOpen={setOpen}/>
         </CustomizedDialogs>
         </Grid >
         <Grid 

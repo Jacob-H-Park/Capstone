@@ -22,6 +22,7 @@ class CreatePost extends Component {
     e.preventDefault();
     this.props.createPost({ ...this.state });
     this.setState(() => this.initialState);
+    this.props.setOpen(false)
   }
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
