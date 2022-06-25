@@ -40,6 +40,8 @@ const SingleRestaurant = () => {
     (post) => post.restaurantName === restaurant.alias
   );
 
+  const [open, setOpen] = React.useState(false)
+
   return (
     <div className="singlerestpage" style={{ marginTop: "100px" }}>
       <AnimatedPage>
@@ -53,16 +55,16 @@ const SingleRestaurant = () => {
             justifyContent="flex-end"
             alignItems="flex-end"
           >
-            <CustomizedDialogs>
-              <CreatePost restaurant={restaurant} />
-            </CustomizedDialogs>
-          </Grid>
-          <Grid
-            container
-            spacing={11}
-            direction="row"
-            justifyContent="center"
-            alignItems="center"
+        <CustomizedDialogs open={open} setOpen={setOpen} >
+          <CreatePost restaurant={restaurant} open={open} setOpen={setOpen}/>
+        </CustomizedDialogs>
+        </Grid >
+        <Grid 
+          container spacing={11}
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+
           >
             <Grid item s={4}>
               <Card
@@ -79,6 +81,7 @@ const SingleRestaurant = () => {
                   titleTypographyProps={{ variant: "h3" }}
                   title={restaurant.name}
                 />
+
                 <CardMedia
                   sx={{ borderRadius: 100, mb: 7 }}
                   component="img"

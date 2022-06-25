@@ -46,8 +46,10 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default function CustomizedDialogs({ children }) {
-  const [open, setOpen] = React.useState(false);
+
+export default function CustomizedDialogs({children, open, setOpen}) {
+  // const [open, setOpen] = React.useState(false);
+
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -58,8 +60,9 @@ export default function CustomizedDialogs({ children }) {
 
   return (
     <div>
-      <Button sx={{ mb: 3 }} variant="outlined" onClick={handleClickOpen}>
-        Edit Review
+      <Button sx={{mb:3}} variant="outlined" onClick={handleClickOpen}>
+      <i class="fa-solid fa-pen"></i>
+
       </Button>
       <BootstrapDialog
         onClose={handleClose}

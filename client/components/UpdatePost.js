@@ -1,61 +1,75 @@
+import { SettingsInputComponent } from "@mui/icons-material";
 import React from "react";
 import { connect } from "react-redux";
 import { updatePost } from "../store";
+import { useState } from "react";
 
 export class UpdatePost extends React.Component {
-  constructor(props) {
-    super(props);
-    const { post } = this.props;
-    this.state = {
-      review: post ? post.review : "",
-      title: post ? post.title : "",
-      location: post ? post.location : "",
-      wifi: post ? post.wifi : "",
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-  componentDidUpdate(prevProps) {
-    if (this.props.post !== prevProps.post) {
-      this.setState({
+    constructor(props) {
+       super(props);
+       const { post, id } = this.props;
+       this.state = {
+           review: post ? post.review : '',
+           title: post ? post.title: '',
+           location: post ? post.location: '',
+           wifi: post ? post.wifi: ''
+       }
+       this.handleChange = this.handleChange.bind(this)
+       this.handleSubmit = this.handleSubmit.bind(this) 
+    }
+    componentDidUpdate(prevProps) {
+        if(this.props.post !== prevProps.post) {
+            this.setState({
+                post: this.props.post.review,
+                title: this.props.post.title,
+                location: this.props.post.location,
+                wifi: this.props.post.wifi
+            })
+        }
+    }
+    componentDidMount(){
+    //    const post = this.props.posts.find((post) => post.id === id)
+       this.setState({
         post: this.props.post.review,
         title: this.props.post.title,
         location: this.props.post.location,
-        wifi: this.props.post.wifi,
-      });
+        wifi: this.props.post.wifi
+      })
     }
-  }
-  handleChange(evt) {
-    this.setState({
-      [evt.target.name]: evt.target.value,
-    });
-  }
-  handleSubmit(evt) {
-    evt.preventDefault();
-    this.props.updatePost(this.props.post.id, { ...this.state });
-  }
-  render() {
-    const { review, title, location, wifi } = this.state;
-    const { handleSubmit, handleChange } = this;
-    return (
-      <div className="edit">
-        <form className="addform" onSubmit={handleSubmit}>
-          <input
-            className="title"
-            name="title"
-            type="text"
-            value={title || ""}
-            placeholder="Post Title"
-            onChange={handleChange}
-          />
-          <input
-            className="location"
-            name="location"
-            type="text"
-            value={location || ""}
-            placeholder="Location"
-            onChange={handleChange}
-          />
+
+    handleChange(evt) {
+        this.setState({
+            [evt.target.name]: evt.target.value
+        })
+    }
+    handleSubmit(evt) {
+        evt.preventDefault()
+        console.log("this is post" , this.props)
+        this.props.updatePost(this.props.post.id, {...this.state})
+        this.props.setOpen(false)
+    }
+   render() {
+      const {review, title, location, wifi} = this.state
+      const {handleSubmit, handleChange} = this
+    //   const [open, setOpen] = React.useState(false)
+      return (
+          <div className="edit">
+             <form className='addform'>
+                <input className='title'
+                  name="title" 
+                  type="text"
+                  value={title || ""}
+                  placeholder="Post Title"
+                  onChange={handleChange}
+                />
+                <input className='location'
+                  name="location"
+                  type="text"
+                  value={location || ""}
+                  placeholder="Location"
+                  onChange={handleChange}
+                />
+
 
           <select
             name="wifi"
@@ -86,8 +100,18 @@ export class UpdatePost extends React.Component {
   }
 }
 
-const mapState = (state, { match }) => {
-  const id = match.params.id;
+
+const mapState = (state) => {
+    // const id = match.params.id;
+    // console.log("this is history" , history)
+    
+    // const post = state.posts.find((post) => post.id === id * 1) 
+    // console.log("this is mapState Post", post)
+    return {
+    posts: state.posts      
+    }
+}
+
 
   const post = state.posts.find((post) => post.id === id * 1);
   return {

@@ -1,13 +1,9 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import { CardHeader } from '@mui/material';
 import Typography from '@mui/material/Typography';
-import { IconButton } from '@mui/material';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useSelector } from 'react-redux';
 import { Avatar } from '@mui/material';
 import {useParams} from "react-router-dom";
@@ -61,9 +57,6 @@ const Posts = ({ posts }) => {
                   </Typography>
                  </div>  
                  </CardContent> 
-                 <IconButton sx={{ml:68, mb: 2, mt: 0}} aria-label="add to favorites">
-                  <FavoriteIcon />
-                </IconButton>
                  </Card>
                )  
              })  
