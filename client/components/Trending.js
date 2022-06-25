@@ -25,45 +25,8 @@ const Trending = () => {
     return null;
   }
   return (
-    // <div>
-    //   <h2 style={{ textAlign: "center" }}>
-    //     {" "}
-    //     Here are LoopedIn's Top Trending Restaurants!{" "}
-    //   </h2>
-    //   <Box sx={{ width: 800, minHeight: 829 }}>
-    //     <Masonry columns={3} spacing={2}>
-    //       {restaurants.map((restaurant, index) => (
-    //         <div key={index}>
-    //           <Link to={`/trending/${restaurant.alias}`}>
-    //             <Label>{restaurant.name}</Label>
-    //             <img
-    //               src={`${restaurant.image_url}?w=162&auto=format`}
-    //               srcSet={`${restaurant.image_url}?w=162&auto=format&dpr=2 2x`}
-    //               alt={restaurant.title}
-    //               loading="lazy"
-    //               style={{
-    //                 borderBottomLeftRadius: 4,
-    //                 borderBottomRightRadius: 4,
-    //                 display: "block",
-    //                 width: "100%",
-    //               }}
-    //             />
-    //           </Link>
-    //         </div>
-    //       ))}
-    //     </Masonry>
-    //   </Box>
-    // </div>
-
     <>
-      {/* <div className="box">
-        <div className="wave -one" />
-        <div className="wave -two" />
-        <div className="wave -three" />
-        <div className="title">{auth.city}</div>
-      </div> */}
-
-      <h1 class="title111">BEST Restaurants </h1>
+      <h1 className="title111">BEST Restaurants </h1>
 
       <section className="hero-section">
         <div className="card-grid">

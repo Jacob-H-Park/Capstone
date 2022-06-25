@@ -34,13 +34,14 @@ router.get("/:id", async (req, res, next) => {
 
 router.post("/", token, async (req, res, next) => {
   try {
-    const { review, restaurantName, title, wifi, userId } = req.body;
+    const { review, restaurantName, title, wifi, userId, imageUrl } = req.body;
     const post = await Post.create({
       review,
       restaurantName,
       title,
       wifi,
       userId,
+      imageUrl,
     });
     return res.json(post);
   } catch (e) {

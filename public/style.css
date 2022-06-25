@@ -92,7 +92,7 @@ form {
 
 .login-button {
   position: absolute;
-  top: 41%;
+  top: 38%;
   left: 45.5%;
 }
 
@@ -2644,4 +2644,31 @@ html {
   line-height: 1.4;
   margin-top: 30px;
   text-decoration: underline;
+}
+
+.custom-file-input {
+  width: 300px;
+}
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input::before {
+  content: 'Select Photo';
+  display: inline-block;
+  background: -webkit-linear-gradient(15deg, rgb(19,84,122, 0.8) 0%, rgb(128,208,199, 0.5) 100%);
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 10pt;
+  color: white;
+}
+.custom-file-input:hover::before {
+  border-color: black;
+}
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
 }

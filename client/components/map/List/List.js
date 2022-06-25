@@ -12,7 +12,7 @@ import {
 
 import PlaceDetails from "../PlaceDetails/PlaceDetails";
 import theme from "./styles.js";
-import { ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider } from "@mui/material/styles";
 
 const List = ({ places, childClicked, isLoading, rating, setRating }) => {
   //const classes = useStyles();
@@ -24,7 +24,7 @@ const List = ({ places, childClicked, isLoading, rating, setRating }) => {
         .map((_, i) => refs[i] || createRef())
     );
   }, [places]);
-  
+
   return (
     <Box sx={{ p: "25px" }}>
       <Typography variant="h4">Food & Dining around you</Typography>
@@ -77,6 +77,4 @@ const List = ({ places, childClicked, isLoading, rating, setRating }) => {
   );
 };
 
-
-  
 export default List;

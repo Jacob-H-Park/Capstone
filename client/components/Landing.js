@@ -20,7 +20,8 @@ const Landing = () => {
         <Button
           sx={{
             fontSize: 18,
-            color: "#DFD2C9",
+            // color: "#DFD2C9",
+            color: "white",
           }}
           onClick={handleOpen}
         >
