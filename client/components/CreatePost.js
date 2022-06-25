@@ -28,7 +28,7 @@ class CreatePost extends Component {
     e.preventDefault();
     this.props.createPost({ ...this.state });
     this.setState(() => this.initialState);
-    this.props.setOpen(false)
+    this.props.setOpen(false);
   }
 
   async handleFile(ev) {

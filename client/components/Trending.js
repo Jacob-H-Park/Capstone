@@ -21,41 +21,6 @@ const Trending = () => {
     borderBottomRightRadius: 0,
   }));
 
-  
-      if (!restaurants) {
-          return null;
-        }
-
-          return (
-              <div>
-               
-                <h2 style={{textAlign:"center"}}> Here are LoopedIn's Top Trending Restaurants! </h2>
-                <Box sx={{ width: 1370, minHeight: 829 }}>
-                            <Masonry columns={4} spacing={2}>
-                              
-                              {restaurants.map((restaurant, index) =>  (
-                                
-                                <div key={index}>
-                                  <Link to={`/trending/${restaurant.alias}`}>
-                                  <Label>{restaurant.name}</Label>
-                                  <img
-                                    src={`${restaurant.image_url}?w=162&auto=format`}
-                                    srcSet={`${restaurant.image_url}?w=162&auto=format&dpr=2 2x`}
-                                    alt={restaurant.title}
-                                    loading="lazy"
-                                    style={{
-                                      borderBottomLeftRadius: 4,
-                                      borderBottomRightRadius: 4,
-                                      display: 'block',
-                                      width: '100%',
-                                    }}
-                                  />
-                                  </Link>
-                                </div>
-                              ))}
-                            </Masonry>
-                          </Box>
-
   if (!restaurants) {
     return null;
   }
